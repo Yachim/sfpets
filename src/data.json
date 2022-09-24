@@ -1,0 +1,191 @@
+// day_of_week - 0 = all, 1 = monday, 2 = tuesday,..., 7 = sunday
+// time - w_hour = witching hour (0:00-1:00)
+{
+    "locations": [{}],
+    "pets": {
+        "shadow": [
+            {
+                "cs_name": "Žabloid",
+                "en_name": "Slurp",
+                "time": "day",
+                "day_of_week": 0,
+                "event": 0,
+                "cs_loc": "Nevermoor",
+                "en_loc": "Nevermoor"
+            },
+            {
+                "cs_name": "Čmuchyč",
+                "en_name": "Digmol",
+                "time": "night",
+                "day_of_week": 0,
+                "event": 0,
+                "cs_loc": "Maerwyn",
+                "en_loc": "Maerwyn"
+            },
+            {
+                "cs_name": "Zublen",
+                "en_name": "Toothey",
+                "time": "night",
+                "day_of_week": 0,
+                "event": 0,
+                "cs_loc": "Hustodžungle",
+                "en_loc": "Sprawling Jungle"
+            },
+            {
+                "cs_name": "Okotnice",
+                "en_name": "Okultacle",
+                "time": "night",
+                "day_of_week": 0,
+                "event": 0,
+                "cs_loc": "Puklý kaňon",
+                "en_loc": "Split Canyon"
+            },
+            {
+                "cs_name": "Pavukin",
+                "en_name": "Spidor",
+                "time": "night",
+                "day_of_week": 1,
+                "event": 0,
+                "cs_loc": "Černý les",
+                "en_loc": "Black Forest"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Jackobu",
+                "time": "w_hour",
+                "day_of_week": 0,
+                "event": 0,
+                "cs_loc": "",
+                "en_loc": "Black Water Swamp"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Shrimpfly",
+                "time": "day",
+                "day_of_week": 0,
+                "event": "summer",
+                "cs_loc": "",
+                "en_loc": "Evernight Forest"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Reaprim",
+                "time": "day",
+                "day_of_week": 0,
+                "event": "winter",
+                "cs_loc": "",
+                "en_loc": "Skull Island"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Petdacat",
+                "time": "night",
+                "day_of_week": 5,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Shadowrock Mountain"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Mykon",
+                "time": "day",
+                "day_of_week": 0,
+                "event": "fall",
+                "cs_loc": "",
+                "en_loc": "Moldy Forest"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Fishorr",
+                "time": "night",
+                "day_of_week": 1,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Flooded Caldwell"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Cuckooly",
+                "time": "night",
+                "day_of_week": 2,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Tusk Mountain"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Battlutter",
+                "time": "night",
+                "day_of_week": 3,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Erogenion"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Pinklynx",
+                "time": "day",
+                "day_of_week": 4,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Stumble Steppe"
+            },
+            {
+                // on Halloween??
+                "cs_name": "",
+                "en_name": "Pharamumm",
+                "time": null,
+                "day_of_week": 0,
+                "event": "Crazy Mushroom Harvest",
+                "cs_loc": "",
+                "en_loc": "Black Forest"
+            },
+            {
+                // Hall of fame top 1000 or 50000 honor when finishing the quest.
+                "cs_name": "",
+                "en_name": "Ninstarr",
+                "time": null,
+                "day_of_week": 0,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Gnarogrim"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Luchtablong",
+                "time": null,
+                "day_of_week": 0,
+                "event": "Exceptional XP Event",
+                "cs_loc": "",
+                "en_loc": "Busted Lands"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Angrack",
+                "time": null,
+                "day_of_week": 0,
+                "event": "Friday the 13th",
+                "cs_loc": "",
+                "en_loc": "Rotten Lands"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Devilsatt",
+                "time": null,
+                "day_of_week": 0,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Plains of Oz'Kurr"
+            },
+            {
+                "cs_name": "",
+                "en_name": "Poisnake",
+                "time": null,
+                "day_of_week": 0,
+                "event": null,
+                "cs_loc": "",
+                "en_loc": "Sunburn Desert"
+            }
+        ]
+    }
+}

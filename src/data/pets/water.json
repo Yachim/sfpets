@@ -1,0 +1,222 @@
+[
+    {
+        "names": { "en": "Goldy", "cs": "Zlatík" },
+        "loc_index": 8,
+        "time": "day",
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet1.jpg"
+    },
+    {
+        "names": { "en": "Orcahle", "cs": "Kosatkin" },
+        "loc_index": 15,
+        "time": "day",
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet2.jpg"
+    },
+    {
+        "names": { "en": "Ocodile", "cs": "Okodýl" },
+        "loc_index": 4,
+        "time": "night",
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet3.jpg"
+    },
+    {
+        "names": { "en": "Penguwater", "cs": "Tučňoplav" },
+        "loc_index": 11,
+        "time": "day",
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet4.jpg"
+    },
+    {
+        "names": { "en": "Walrophin", "cs": "Mrožoun" },
+        "loc_index": 13,
+        "time": "day",
+        "day_of_week": 1,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet5.jpg"
+    },
+    {
+        "names": { "en": "Colsnail", "cs": "Šnekomlat" },
+        "loc_index": 20,
+        "time": "night",
+        "day_of_week": 2,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet6.jpg"
+    },
+    {
+        "names": { "en": "Aquaphant", "cs": "Slonovod" },
+        "loc_index": 16,
+        "time": "day",
+        "day_of_week": 3,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet7.jpg"
+    },
+    {
+        "names": { "en": "Naar", "cs": "Jednobodec" },
+        "loc_index": 5,
+        "time": "day",
+        "day_of_week": null,
+        "event": null,
+        "season": "winter",
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet8.jpg"
+    },
+    {
+        "names": { "en": "Octoboss", "cs": "Chobošéf" },
+        "loc_index": 9,
+        "time": "night",
+        "day_of_week": 4,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet9.jpg"
+    },
+    {
+        "names": { "en": "Ewilgryn", "cs": "Zlatožral" },
+        "loc_index": 15,
+        "time": "day",
+        "day_of_week": 5,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet10.jpg"
+    },
+    {
+        "names": { "en": "Seapard", "cs": "Koňovod" },
+        "loc_index": 1,
+        "time": "day",
+        "day_of_week": 6,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet11.jpg"
+    },
+    {
+        "names": { "en": "Shellzy", "cs": "Mušlin" },
+        "loc_index": 3,
+        "time": "night",
+        "day_of_week": null,
+        "event": null,
+        "season": "fall",
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet12.jpg"
+    },
+    {
+        "names": { "en": "Mingho", "cs": "Zobovod" },
+        "loc_index": 17,
+        "time": "day",
+        "day_of_week": null,
+        "event": null,
+        "season": "summer",
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet13.jpg"
+    },
+    {
+        "names": { "en": "Angbite", "cs": "Hryzoplav" },
+        "loc_index": 14,
+        "time": "night",
+        "day_of_week": 7,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet14.jpg"
+    },
+    {
+        "names": { "en": "Mermoid", "cs": "Víloděs" },
+        "loc_index": 15,
+        "time": null,
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": { "type": "pets", "top": 100, "honor": 4000 },
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet15.jpg"
+    },
+    {
+        "names": { "en": "Watnake", "cs": "Peřejohad" },
+        "loc_index": "magic_shop",
+        "time": null,
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet16.jpg"
+    },
+    {
+        "names": { "en": "Cannoturtle", "cs": "Děloželva" },
+        "loc_index": 15,
+        "time": null,
+        "day_of_week": null,
+        "event": "birthday",
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet17.jpg"
+    },
+    {
+        "names": { "en": "Unhere", "cs": "Antivod" },
+        "loc_index": "toilet",
+        "time": null,
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet18.jpg"
+    },
+    {
+        "names": { "en": "Tritosting", "cs": "Tritonec" },
+        "loc_index": 2,
+        "time": null,
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": "Easteros needs to be cleared.",
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet19.jpg"
+    },
+    {
+        "names": { "en": "Hydrospir", "cs": "Hydroděs" },
+        "loc_index": 10,
+        "time": null,
+        "day_of_week": null,
+        "event": null,
+        "season": null,
+        "hof": {},
+        "notes": null,
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet20.jpg"
+    }
+]
