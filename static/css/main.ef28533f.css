@@ -1,2 +1,0 @@
-.pet-card{border:.1rem solid #000;border-radius:1rem;padding:1rem;transition:border-radius .2s ease-in-out;width:-webkit-min-content;width:min-content}.pet-card:hover,.pet-card:hover img{border-radius:0}.pet-card img{border-radius:1rem;transition:border-radius .2s ease-in-out}:root{font-size:20px}main{padding:1.5rem}.container,.element-container{display:flex;gap:3rem}.element-container{flex-direction:column}a{background:none;border:none;font-size:2rem;position:fixed;right:.75rem;text-decoration:none;top:.75rem}
-/*# sourceMappingURL=main.ef28533f.css.map*/
