@@ -205,7 +205,10 @@
         "event": null,
         "season": null,
         "hof": {},
-        "notes": "Rewarded for clearing 10th floor of the 13th dungeon of the Shadow World.",
+        "notes": {
+            "cs": "Odměna za vyčištění 10. podlaží 13. podzemí ve stinném světě.",
+            "en": "Rewarded for clearing 10th floor of the 13th dungeon of the Shadow World."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet19.jpg"
     },
     {

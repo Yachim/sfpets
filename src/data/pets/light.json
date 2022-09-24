@@ -205,7 +205,10 @@
         "event": null,
         "season": null,
         "hof": {},
-        "notes": "Tower needs to be cleared.",
+        "notes": {
+            "cs": "Je nutné vyčištění věže.",
+            "en": "Tower needs to be cleared."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/light-pet19.jpg"
     },
     {

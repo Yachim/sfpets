@@ -199,13 +199,16 @@
     },
     {
         "names": { "en": "Tricerawood", "cs": "Kořenomlat" },
-        "loc_index": "gem_mine",
+        "loc_index": null,
         "time": null,
         "day_of_week": null,
         "event": null,
         "season": null,
         "hof": {},
-        "notes": null,
+        "notes": {
+            "cs": "Lze nalézt v dolu na drahokamy.",
+            "en": "Found in the gem mine."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/earth-pet19.jpg"
     },
     {

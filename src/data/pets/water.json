@@ -166,13 +166,16 @@
     },
     {
         "names": { "en": "Watnake", "cs": "Peřejohad" },
-        "loc_index": "magic_shop",
+        "loc_index": null,
         "time": null,
         "day_of_week": null,
         "event": null,
         "season": null,
         "hof": {},
-        "notes": null,
+        "notes": {
+            "cs": "Lze koupit v čaroobchodě.",
+            "en": "Can be bought from the magic shop."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/water-pet16.jpg"
     },
     {
@@ -188,13 +191,16 @@
     },
     {
         "names": { "en": "Unhere", "cs": "Antivod" },
-        "loc_index": "toilet",
+        "loc_index": null,
         "time": null,
         "day_of_week": null,
         "event": null,
         "season": null,
         "hof": {},
-        "notes": null,
+        "notes": {
+            "cs": "Nalezen v Tajemné toaletě.",
+            "en": "Found in the Sacred toilet."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/water-pet18.jpg"
     },
     {
@@ -205,7 +211,10 @@
         "event": null,
         "season": null,
         "hof": {},
-        "notes": "Easteros needs to be cleared.",
+        "notes": {
+            "cs": "Po vyčištění 14. podzemí.",
+            "en": "Easteros needs to be cleared."
+        },
         "img": "https://en.sfporadnik.pl/img/pets/water-pet19.jpg"
     },
     {
