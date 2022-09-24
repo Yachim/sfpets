@@ -8,7 +8,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet1.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet1.jpg",
+        "index": 1
     },
     {
         "names": { "en": "Orcahle", "cs": "Kosatkin" },
@@ -19,7 +20,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet2.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet2.jpg",
+        "index": 2
     },
     {
         "names": { "en": "Ocodile", "cs": "Okodýl" },
@@ -30,7 +32,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet3.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet3.jpg",
+        "index": 3
     },
     {
         "names": { "en": "Penguwater", "cs": "Tučňoplav" },
@@ -41,7 +44,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet4.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet4.jpg",
+        "index": 4
     },
     {
         "names": { "en": "Walrophin", "cs": "Mrožoun" },
@@ -52,7 +56,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet5.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet5.jpg",
+        "index": 5
     },
     {
         "names": { "en": "Colsnail", "cs": "Šnekomlat" },
@@ -63,7 +68,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet6.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet6.jpg",
+        "index": 6
     },
     {
         "names": { "en": "Aquaphant", "cs": "Slonovod" },
@@ -74,7 +80,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet7.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet7.jpg",
+        "index": 7
     },
     {
         "names": { "en": "Naar", "cs": "Jednobodec" },
@@ -85,7 +92,8 @@
         "season": "winter",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet8.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet8.jpg",
+        "index": 8
     },
     {
         "names": { "en": "Octoboss", "cs": "Chobošéf" },
@@ -96,7 +104,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet9.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet9.jpg",
+        "index": 9
     },
     {
         "names": { "en": "Ewilgryn", "cs": "Zlatožral" },
@@ -107,7 +116,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet10.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet10.jpg",
+        "index": 10
     },
     {
         "names": { "en": "Seapard", "cs": "Koňovod" },
@@ -118,7 +128,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet11.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet11.jpg",
+        "index": 11
     },
     {
         "names": { "en": "Shellzy", "cs": "Mušlin" },
@@ -129,7 +140,8 @@
         "season": "fall",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet12.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet12.jpg",
+        "index": 12
     },
     {
         "names": { "en": "Mingho", "cs": "Zobovod" },
@@ -140,7 +152,8 @@
         "season": "summer",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet13.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet13.jpg",
+        "index": 13
     },
     {
         "names": { "en": "Angbite", "cs": "Hryzoplav" },
@@ -151,7 +164,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet14.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet14.jpg",
+        "index": 14
     },
     {
         "names": { "en": "Mermoid", "cs": "Víloděs" },
@@ -162,7 +176,8 @@
         "season": null,
         "hof": { "type": "pets", "top": 100, "honor": 4000 },
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet15.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet15.jpg",
+        "index": 15
     },
     {
         "names": { "en": "Watnake", "cs": "Peřejohad" },
@@ -176,7 +191,8 @@
             "cs": "Lze koupit v čaroobchodě.",
             "en": "Can be bought from the magic shop."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet16.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet16.jpg",
+        "index": 16
     },
     {
         "names": { "en": "Cannoturtle", "cs": "Děloželva" },
@@ -187,7 +203,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet17.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet17.jpg",
+        "index": 17
     },
     {
         "names": { "en": "Unhere", "cs": "Antivod" },
@@ -201,7 +218,8 @@
             "cs": "Nalezen v Tajemné toaletě.",
             "en": "Found in the Sacred toilet."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet18.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet18.jpg",
+        "index": 18
     },
     {
         "names": { "en": "Tritosting", "cs": "Tritonec" },
@@ -215,7 +233,8 @@
             "cs": "Po vyčištění 14. podzemí.",
             "en": "Easteros needs to be cleared."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet19.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet19.jpg",
+        "index": 19
     },
     {
         "names": { "en": "Hydrospir", "cs": "Hydroděs" },
@@ -226,6 +245,7 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/water-pet20.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/water-pet20.jpg",
+        "index": 20
     }
 ]

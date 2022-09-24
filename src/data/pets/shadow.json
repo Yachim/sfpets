@@ -8,7 +8,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet1.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet1.jpg",
+        "index": 1
     },
     {
         "names": { "en": "Digmol", "cs": "Čmuchyč" },
@@ -19,7 +20,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet2.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet2.jpg",
+        "index": 2
     },
     {
         "names": { "en": "Toothey", "cs": "Zublen" },
@@ -30,7 +32,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet3.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet3.jpg",
+        "index": 3
     },
     {
         "names": { "en": "Okultacle", "cs": "Okotnice" },
@@ -41,7 +44,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet4.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet4.jpg",
+        "index": 4
     },
     {
         "names": { "en": "Spidor", "cs": "Pavukin" },
@@ -52,7 +56,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet5.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet5.jpg",
+        "index": 5
     },
     {
         "names": { "en": "Jackobu", "cs": "Dýňoch" },
@@ -63,7 +68,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet6.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet6.jpg",
+        "index": 6
     },
     {
         "names": { "en": "Shrimpfly", "cs": "Much" },
@@ -74,7 +80,8 @@
         "season": "summer",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet7.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet7.jpg",
+        "index": 7
     },
     {
         "names": { "en": "Reaprim", "cs": "Smrtkin" },
@@ -85,7 +92,8 @@
         "season": "winter",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet8.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet8.jpg",
+        "index": 8
     },
     {
         "names": { "en": "Petdacat", "cs": "Kočkodráp" },
@@ -96,7 +104,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet9.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet9.jpg",
+        "index": 9
     },
     {
         "names": { "en": "Mykon", "cs": "Hublen" },
@@ -107,7 +116,8 @@
         "season": "fall",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet10.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet10.jpg",
+        "index": 10
     },
     {
         "names": { "en": "Fishorr", "cs": "Rybokul" },
@@ -118,7 +128,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet11.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet11.jpg",
+        "index": 11
     },
     {
         "names": { "en": "Cuckooly", "cs": "Kulolet" },
@@ -129,7 +140,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet12.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet12.jpg",
+        "index": 12
     },
     {
         "names": { "en": "Battlutter", "cs": "Vampýrouch" },
@@ -140,7 +152,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet13.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet13.jpg",
+        "index": 13
     },
     {
         "names": { "en": "Pinklynx", "cs": "Rysoděs" },
@@ -151,7 +164,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet14.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet14.jpg",
+        "index": 14
     },
     {
         "names": { "en": "Pharamumm", "cs": "Faramum" },
@@ -162,7 +176,8 @@
         "season": "halloween",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet15.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet15.jpg",
+        "index": 15
     },
     {
         "names": { "en": "Ninstarr", "cs": "Ninstar" },
@@ -173,7 +188,8 @@
         "season": null,
         "hof": { "type": "player", "top": 1000, "honor": 50000 },
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet16.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet16.jpg",
+        "index": 16
     },
     {
         "names": { "en": "Luchtablong", "cs": "Hlavyč" },
@@ -184,7 +200,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet17.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet17.jpg",
+        "index": 17
     },
     {
         "names": { "en": "Angrack", "cs": "Těžkotur" },
@@ -195,7 +212,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet18.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet18.jpg",
+        "index": 18
     },
     {
         "names": { "en": "Devilsatt", "cs": "Pekloškleb" },
@@ -209,7 +227,8 @@
             "cs": "Odměna za vyčištění 10. podlaží 13. podzemí ve stinném světě.",
             "en": "Rewarded for clearing 10th floor of the 13th dungeon of the Shadow World."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet19.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet19.jpg",
+        "index": 19
     },
     {
         "names": { "en": "Poisnake", "cs": "Jeduhad" },
@@ -220,6 +239,7 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/dark-pet20.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/dark-pet20.jpg",
+        "index": 20
     }
 ]

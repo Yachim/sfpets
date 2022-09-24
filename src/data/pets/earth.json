@@ -8,7 +8,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet1.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet1.jpg",
+        "index": 1
     },
     {
         "names": { "en": "Monkorrage", "cs": "Opopěst" },
@@ -19,7 +20,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet2.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet2.jpg",
+        "index": 2
     },
     {
         "names": { "en": "Smaponyck", "cs": "Pyskoník" },
@@ -30,7 +32,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet3.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet3.jpg",
+        "index": 3
     },
     {
         "names": { "en": "Bittnutz", "cs": "Kruťovevruch" },
@@ -41,7 +44,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet4.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet4.jpg",
+        "index": 4
     },
     {
         "names": { "en": "Roarear", "cs": "Řevoval" },
@@ -52,7 +56,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet5.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet5.jpg",
+        "index": 5
     },
     {
         "names": { "en": "Muscudon", "cs": "Krutokel" },
@@ -63,7 +68,8 @@
         "season": "summer",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet6.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet6.jpg",
+        "index": 6
     },
     {
         "names": { "en": "Apstick", "cs": "Klackopice" },
@@ -74,7 +80,8 @@
         "season": "fall",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet7.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet7.jpg",
+        "index": 7
     },
     {
         "names": { "en": "Horrnington", "cs": "Kozobuch" },
@@ -85,7 +92,8 @@
         "season": "winter",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet8.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet8.jpg",
+        "index": 8
     },
     {
         "names": { "en": "Boaringg", "cs": "Vepřokul" },
@@ -96,7 +104,8 @@
         "season": "spring",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet9.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet9.jpg",
+        "index": 9
     },
     {
         "names": { "en": "Mameloth", "cs": "Kulokam" },
@@ -107,7 +116,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet10.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet10.jpg",
+        "index": 10
     },
     {
         "names": { "en": "Rheynooh", "cs": "Nosorohub" },
@@ -118,7 +128,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet11.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet11.jpg",
+        "index": 11
     },
     {
         "names": { "en": "Rockastonn", "cs": "Kamenolam" },
@@ -129,7 +140,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet12.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet12.jpg",
+        "index": 12
     },
     {
         "names": { "en": "Redwoofox", "cs": "Rudoliška" },
@@ -140,7 +152,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet13.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet13.jpg",
+        "index": 13
     },
     {
         "names": { "en": "Lilbeatzup", "cs": "Osinečka" },
@@ -151,7 +164,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet14.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet14.jpg",
+        "index": 14
     },
     {
         "names": { "en": "Forror", "cs": "Stromochod" },
@@ -162,7 +176,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet15.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet15.jpg",
+        "index": 15
     },
     {
         "names": { "en": "Nipprabs", "cs": "Krabokul" },
@@ -173,7 +188,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet16.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet16.jpg",
+        "index": 16
     },
     {
         "names": { "en": "Armoruck", "cs": "Obrňouch" },
@@ -184,7 +200,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet17.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet17.jpg",
+        "index": 17
     },
     {
         "names": { "en": "Canocle", "cs": "Zlatozub" },
@@ -195,7 +212,8 @@
         "season": null,
         "hof": { "type": "fort", "top": 100, "honor": 2500 },
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet18.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet18.jpg",
+        "index": 18
     },
     {
         "names": { "en": "Tricerawood", "cs": "Kořenomlat" },
@@ -209,7 +227,8 @@
             "cs": "Lze nalézt v dolu na drahokamy.",
             "en": "Found in the gem mine."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet19.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet19.jpg",
+        "index": 19
     },
     {
         "names": { "en": "Mouthrexor", "cs": "Obrotlam" },
@@ -220,6 +239,7 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/earth-pet20.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/earth-pet20.jpg",
+        "index": 20
     }
 ]

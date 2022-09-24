@@ -14,8 +14,10 @@ export function Pet(props: PetType) {
 
     return (
         <div>
-            <h2>{props.names[lang]}</h2>
-            <img src={props.img}></img>
+            <h3>
+                {props.names[lang]} ({props.index}.)
+            </h3>
+            <img alt="" src={props.img}></img>
             {location && (
                 <p>
                     <FontAwesomeIcon icon={faMap} />

@@ -8,7 +8,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet1.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet1.jpg",
+        "index": 1
     },
     {
         "names": { "en": "Jellclops", "cs": "Medúzok" },
@@ -19,7 +20,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet2.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet2.jpg",
+        "index": 2
     },
     {
         "names": { "en": "Tinck", "cs": "Zvonil" },
@@ -30,7 +32,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet3.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet3.jpg",
+        "index": 3
     },
     {
         "names": { "en": "Cloudning", "cs": "Mrakotřesk" },
@@ -41,7 +44,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet4.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet4.jpg",
+        "index": 4
     },
     {
         "names": { "en": "Nevorfull", "cs": "Nervočerv" },
@@ -52,7 +56,8 @@
         "season": "spring",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet5.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet5.jpg",
+        "index": 5
     },
     {
         "names": { "en": "Plutoid", "cs": "Plutoid" },
@@ -63,7 +68,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet6.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet6.jpg",
+        "index": 6
     },
     {
         "names": { "en": "Djinntonic", "cs": "Džintonik" },
@@ -74,7 +80,8 @@
         "season": "summer",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet7.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet7.jpg",
+        "index": 7
     },
     {
         "names": { "en": "Blaxta", "cs": "Hvězdoděr" },
@@ -85,7 +92,8 @@
         "season": "fall",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet8.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet8.jpg",
+        "index": 8
     },
     {
         "names": { "en": "Lampcess", "cs": "Lampcezna" },
@@ -96,7 +104,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet9.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet9.jpg",
+        "index": 9
     },
     {
         "names": { "en": "Teslarr", "cs": "Teslar" },
@@ -107,7 +116,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet10.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet10.jpg",
+        "index": 10
     },
     {
         "names": { "en": "Sunnya", "cs": "Sluňouch" },
@@ -118,7 +128,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet11.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet11.jpg",
+        "index": 11
     },
     {
         "names": { "en": "Buckfoxion", "cs": "Hrdozvěř" },
@@ -129,7 +140,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet12.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet12.jpg",
+        "index": 12
     },
     {
         "names": { "en": "Birdychirp", "cs": "Ptakopísk" },
@@ -140,7 +152,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet13.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet13.jpg",
+        "index": 13
     },
     {
         "names": { "en": "Eyeorwhat", "cs": "Vševiděl" },
@@ -151,7 +164,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet14.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet14.jpg",
+        "index": 14
     },
     {
         "names": { "en": "Mesmerit", "cs": "Třetiok" },
@@ -162,7 +176,8 @@
         "season": null,
         "hof": { "type": "guild", "top": 100, "honor": 2500 },
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet15.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet15.jpg",
+        "index": 15
     },
     {
         "names": { "en": "Antlar", "cs": "Parohosvit" },
@@ -173,7 +188,8 @@
         "season": "december",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet16.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet16.jpg",
+        "index": 16
     },
     {
         "names": { "en": "Liphant", "cs": "Světlon" },
@@ -184,7 +200,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet17.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet17.jpg",
+        "index": 17
     },
     {
         "names": { "en": "Knilight", "cs": "Ryťozář" },
@@ -195,7 +212,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet18.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet18.jpg",
+        "index": 18
     },
     {
         "names": { "en": "Heraldon", "cs": "Přilboskvost" },
@@ -209,7 +227,8 @@
             "cs": "Je nutné vyčištění věže.",
             "en": "Tower needs to be cleared."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet19.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet19.jpg",
+        "index": 19
     },
     {
         "names": { "en": "Unikor", "cs": "Jednorožeň" },
@@ -220,6 +239,7 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/light-pet20.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/light-pet20.jpg",
+        "index": 20
     }
 ]

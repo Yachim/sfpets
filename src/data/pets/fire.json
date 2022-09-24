@@ -8,7 +8,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet1.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet1.jpg",
+        "index": 1
     },
     {
         "names": { "en": "Gullps", "cs": "Tydýt" },
@@ -19,7 +20,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet2.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet2.jpg",
+        "index": 2
     },
     {
         "names": { "en": "Pyrophibus", "cs": "Žabopal" },
@@ -30,7 +32,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet3.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet3.jpg",
+        "index": 3
     },
     {
         "names": { "en": "Flamechirr", "cs": "Ohňolet" },
@@ -41,7 +44,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet4.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet4.jpg",
+        "index": 4
     },
     {
         "names": { "en": "Tectospit", "cs": "Škrtopliv" },
@@ -52,7 +56,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet5.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet5.jpg",
+        "index": 5
     },
     {
         "names": { "en": "Pyroplant", "cs": "Pyrozel" },
@@ -63,7 +68,8 @@
         "season": "fall",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet6.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet6.jpg",
+        "index": 6
     },
     {
         "names": { "en": "Kokofire", "cs": "Kokoheň" },
@@ -74,7 +80,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet7.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet7.jpg",
+        "index": 7
     },
     {
         "names": { "en": "Peppryon", "cs": "Pulcožár" },
@@ -85,7 +92,8 @@
         "season": "spring",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet8.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet8.jpg",
+        "index": 8
     },
     {
         "names": { "en": "Boomywoomy", "cs": "Bombin" },
@@ -96,7 +104,8 @@
         "season": "winter",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet9.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet9.jpg",
+        "index": 9
     },
     {
         "names": { "en": "Tikiricky", "cs": "Kmenožár" },
@@ -107,7 +116,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet10.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet10.jpg",
+        "index": 10
     },
     {
         "names": { "en": "Matchlit", "cs": "Krabkin" },
@@ -118,7 +128,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet11.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet11.jpg",
+        "index": 11
     },
     {
         "names": { "en": "Birblazey", "cs": "Ptakopal" },
@@ -129,7 +140,8 @@
         "season": "summer",
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet12.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet12.jpg",
+        "index": 12
     },
     {
         "names": { "en": "Infernox", "cs": "Ohňotřas" },
@@ -140,7 +152,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet13.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet13.jpg",
+        "index": 13
     },
     {
         "names": { "en": "Humbuzzish", "cs": "Hmyzozlat" },
@@ -151,7 +164,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet14.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet14.jpg",
+        "index": 14
     },
     {
         "names": { "en": "Dragopyr", "cs": "Drakopýr" },
@@ -165,7 +179,8 @@
             "cs": "Lze koupit ve zbrojírně.",
             "en": "Bought from the weapon shop."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet15.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet15.jpg",
+        "index": 15
     },
     {
         "names": { "en": "Mantiflame", "cs": "Kudloheň" },
@@ -176,7 +191,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet16.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet16.jpg",
+        "index": 16
     },
     {
         "names": { "en": "Finnettle", "cs": "Ryboheň" },
@@ -187,7 +203,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet17.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet17.jpg",
+        "index": 17
     },
     {
         "names": { "en": "Etrock", "cs": "Raketčík" },
@@ -198,7 +215,8 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet18.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet18.jpg",
+        "index": 18
     },
     {
         "names": { "en": "Blazingtongues", "cs": "Peklobliz" },
@@ -212,7 +230,8 @@
             "cs": "Musí být vyčištěn démonický portál v režimu pro jednoho hráče.",
             "en": "Single-player demon portal needs to be cleared."
         },
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet19.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet19.jpg",
+        "index": 19
     },
     {
         "names": { "en": "Devastator", "cs": "Devastor" },
@@ -223,6 +242,7 @@
         "season": null,
         "hof": {},
         "notes": null,
-        "img": "https://en.sfporadnik.pl/img/pets/fire-pet20.jpg"
+        "img": "https://en.sfporadnik.pl/img/pets/fire-pet20.jpg",
+        "index": 20
     }
 ]
