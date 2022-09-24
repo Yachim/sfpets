@@ -11,13 +11,19 @@ type Pet = {
     loc_index: LocIndex;
     time: Time;
     day_of_week: DayOfWeek;
-    event: null | string;
+    event: null | {
+        cs: string;
+        en: string;
+    };
     season: Season;
     hof: {
-        type: "";
+        type: {
+            cs: string;
+            en: string;
+        };
         top: number;
         honor: number;
-    };
+    } | null;
     notes: null | {
         cs: string;
         en: string;

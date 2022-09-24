@@ -2,8 +2,17 @@
     font-size: 20px;
 }
 
-.pet-container {
+main {
+    padding: 1.5rem;
+}
+
+.container {
     display: flex;
-    flex-direction: row;
-    gap: 5rem;
+    gap: 3rem;
+}
+
+.element-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }

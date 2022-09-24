@@ -6,7 +6,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet1.jpg",
         "index": 1
@@ -18,7 +18,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet2.jpg",
         "index": 2
@@ -30,7 +30,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet3.jpg",
         "index": 3
@@ -42,7 +42,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet4.jpg",
         "index": 4
@@ -54,7 +54,7 @@
         "day_of_week": 1,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet5.jpg",
         "index": 5
@@ -66,7 +66,7 @@
         "day_of_week": 2,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet6.jpg",
         "index": 6
@@ -78,7 +78,7 @@
         "day_of_week": 3,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet7.jpg",
         "index": 7
@@ -90,7 +90,7 @@
         "day_of_week": null,
         "event": null,
         "season": "winter",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet8.jpg",
         "index": 8
@@ -102,7 +102,7 @@
         "day_of_week": 4,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet9.jpg",
         "index": 9
@@ -114,7 +114,7 @@
         "day_of_week": 5,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet10.jpg",
         "index": 10
@@ -126,7 +126,7 @@
         "day_of_week": 6,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet11.jpg",
         "index": 11
@@ -138,7 +138,7 @@
         "day_of_week": null,
         "event": null,
         "season": "fall",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet12.jpg",
         "index": 12
@@ -150,7 +150,7 @@
         "day_of_week": null,
         "event": null,
         "season": "summer",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet13.jpg",
         "index": 13
@@ -162,7 +162,7 @@
         "day_of_week": 7,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet14.jpg",
         "index": 14
@@ -174,7 +174,14 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": { "type": "pets", "top": 100, "honor": 4000 },
+        "hof": {
+            "type": {
+                "cs": "Mazliček",
+                "en": "Pet"
+            },
+            "top": 100,
+            "honor": 4000
+        },
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet15.jpg",
         "index": 15
@@ -186,7 +193,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Lze koupit v čaroobchodě.",
             "en": "Can be bought from the magic shop."
@@ -199,9 +206,12 @@
         "loc_index": 15,
         "time": null,
         "day_of_week": null,
-        "event": "birthday",
+        "event": {
+            "cs": "Narozeninová událost",
+            "en": "Birthday event"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet17.jpg",
         "index": 17
@@ -213,7 +223,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Nalezen v Tajemné toaletě.",
             "en": "Found in the Sacred toilet."
@@ -228,7 +238,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Po vyčištění 14. podzemí.",
             "en": "Easteros needs to be cleared."
@@ -243,7 +253,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/water-pet20.jpg",
         "index": 20

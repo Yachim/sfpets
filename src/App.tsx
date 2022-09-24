@@ -196,95 +196,97 @@ function App() {
     return (
         <LangContext.Provider value={lang}>
             <div className="App">
-                <h1>{mainHeading[lang]}</h1>
-                <h2>{timeExHeading[lang]}</h2>
-                <div className="pet-container">
-                    <div>
-                        {shadowTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {lightTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {earthTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {fireTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {waterTimeExcluxive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                </div>
-
-                <h2>{eventExHeading[lang]}</h2>
-                <div className="pet-container">
-                    <div>
-                        {shadowEventExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {lightEventExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {earthEventExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {fireEventExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {waterEventExcluxive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                </div>
-
-                <h2>{timenotExHeading[lang]}</h2>
-                <div className="pet-container">
-                    <div>
-                        {shadowNotTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {lightNotTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {earthNotTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {fireNotTimeExclusive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                    <div>
-                        {waterNotTimeExcluxive.map((pet, i) => (
-                            <Pet key={i} {...pet} />
-                        ))}
-                    </div>
-                </div>
-
                 <LangSelect />
+
+                <main>
+                    <h1>{mainHeading[lang]}</h1>
+                    <h2>{timeExHeading[lang]}</h2>
+                    <div className="container">
+                        <div className="element-container">
+                            {shadowTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {lightTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {earthTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {fireTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {waterTimeExcluxive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                    </div>
+
+                    <h2>{eventExHeading[lang]}</h2>
+                    <div className="container">
+                        <div className="element-container">
+                            {shadowEventExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {lightEventExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {earthEventExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {fireEventExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {waterEventExcluxive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                    </div>
+
+                    <h2>{timenotExHeading[lang]}</h2>
+                    <div className="container">
+                        <div className="element-container">
+                            {shadowNotTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {lightNotTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {earthNotTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {fireNotTimeExclusive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                        <div className="element-container">
+                            {waterNotTimeExcluxive.map((pet, i) => (
+                                <Pet key={i} {...pet} />
+                            ))}
+                        </div>
+                    </div>
+                </main>
             </div>
         </LangContext.Provider>
     );

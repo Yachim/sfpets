@@ -4,7 +4,17 @@ import "../scss/Pet.scss";
 import { LangContext } from "../LangContext";
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMap, faNoteSticky } from "@fortawesome/free-solid-svg-icons";
+import {
+    faAward,
+    faCalendar,
+    faMap,
+    faNoteSticky
+} from "@fortawesome/free-solid-svg-icons";
+
+const honorTranslation = {
+    cs: "věhlas",
+    en: "honor"
+};
 
 export function Pet(props: PetType) {
     const lang = useContext(LangContext);
@@ -13,7 +23,7 @@ export function Pet(props: PetType) {
     if (props.loc_index) location = locs[props.loc_index][lang];
 
     return (
-        <div>
+        <div className="pet-card">
             <h3>
                 {props.names[lang]} ({props.index}.)
             </h3>
@@ -22,6 +32,19 @@ export function Pet(props: PetType) {
                 <p>
                     <FontAwesomeIcon icon={faMap} />
                     &nbsp;&nbsp;{location}
+                </p>
+            )}
+            {props.event && (
+                <p>
+                    <FontAwesomeIcon icon={faCalendar} />
+                    &nbsp;&nbsp;{props.event[lang]}
+                </p>
+            )}
+            {props.hof && (
+                <p>
+                    <FontAwesomeIcon icon={faAward} />
+                    &nbsp;&nbsp;{props.hof.type[lang]} top {props.hof.top}/
+                    {honorTranslation[lang]} {props.hof.honor}
                 </p>
             )}
             {props.notes && (

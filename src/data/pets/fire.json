@@ -6,7 +6,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet1.jpg",
         "index": 1
@@ -18,7 +18,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet2.jpg",
         "index": 2
@@ -30,7 +30,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet3.jpg",
         "index": 3
@@ -42,7 +42,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet4.jpg",
         "index": 4
@@ -54,7 +54,7 @@
         "day_of_week": 2,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet5.jpg",
         "index": 5
@@ -66,7 +66,7 @@
         "day_of_week": null,
         "event": null,
         "season": "fall",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet6.jpg",
         "index": 6
@@ -78,7 +78,7 @@
         "day_of_week": 1,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet7.jpg",
         "index": 7
@@ -90,7 +90,7 @@
         "day_of_week": null,
         "event": null,
         "season": "spring",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet8.jpg",
         "index": 8
@@ -102,7 +102,7 @@
         "day_of_week": null,
         "event": null,
         "season": "winter",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet9.jpg",
         "index": 9
@@ -114,7 +114,7 @@
         "day_of_week": 3,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet10.jpg",
         "index": 10
@@ -126,7 +126,7 @@
         "day_of_week": 4,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet11.jpg",
         "index": 11
@@ -138,7 +138,7 @@
         "day_of_week": null,
         "event": null,
         "season": "summer",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet12.jpg",
         "index": 12
@@ -150,7 +150,7 @@
         "day_of_week": 5,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet13.jpg",
         "index": 13
@@ -162,7 +162,7 @@
         "day_of_week": 6,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet14.jpg",
         "index": 14
@@ -174,7 +174,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Lze koupit ve zbrojírně.",
             "en": "Bought from the weapon shop."
@@ -187,9 +187,12 @@
         "loc_index": 7,
         "time": null,
         "day_of_week": null,
-        "event": "tidy toilet time",
+        "event": {
+            "cs": "Zametání před vlastním prahem",
+            "en": "Tidy Toilet Time"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet16.jpg",
         "index": 16
@@ -199,9 +202,12 @@
         "loc_index": 5,
         "time": null,
         "day_of_week": null,
-        "event": "valentine's day",
+        "event": {
+            "cs": "Valentýn",
+            "en": "Valentine's day"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet17.jpg",
         "index": 17
@@ -211,9 +217,12 @@
         "loc_index": 4,
         "time": null,
         "day_of_week": null,
-        "event": "new year's eve & day",
+        "event": {
+            "cs": "Silvestr a Nový rok",
+            "en": "New Year's Eve & Day"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet18.jpg",
         "index": 18
@@ -225,7 +234,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Musí být vyčištěn démonický portál v režimu pro jednoho hráče.",
             "en": "Single-player demon portal needs to be cleared."
@@ -240,7 +249,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/fire-pet20.jpg",
         "index": 20

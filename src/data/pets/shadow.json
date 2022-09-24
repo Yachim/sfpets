@@ -6,7 +6,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet1.jpg",
         "index": 1
@@ -18,7 +18,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet2.jpg",
         "index": 2
@@ -30,7 +30,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet3.jpg",
         "index": 3
@@ -42,7 +42,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet4.jpg",
         "index": 4
@@ -54,7 +54,7 @@
         "day_of_week": 1,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet5.jpg",
         "index": 5
@@ -66,7 +66,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet6.jpg",
         "index": 6
@@ -78,7 +78,7 @@
         "day_of_week": null,
         "event": null,
         "season": "summer",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet7.jpg",
         "index": 7
@@ -90,7 +90,7 @@
         "day_of_week": null,
         "event": null,
         "season": "winter",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet8.jpg",
         "index": 8
@@ -102,7 +102,7 @@
         "day_of_week": 5,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet9.jpg",
         "index": 9
@@ -114,7 +114,7 @@
         "day_of_week": null,
         "event": null,
         "season": "fall",
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet10.jpg",
         "index": 10
@@ -126,7 +126,7 @@
         "day_of_week": 1,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet11.jpg",
         "index": 11
@@ -138,7 +138,7 @@
         "day_of_week": 2,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet12.jpg",
         "index": 12
@@ -150,7 +150,7 @@
         "day_of_week": 3,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet13.jpg",
         "index": 13
@@ -162,7 +162,7 @@
         "day_of_week": 4,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet14.jpg",
         "index": 14
@@ -172,9 +172,12 @@
         "loc_index": 0,
         "time": null,
         "day_of_week": null,
-        "event": "crazy mushroom harvest",
-        "season": "halloween",
-        "hof": {},
+        "event": {
+            "cs": "Bláznivá sklizeň houbiček na Halloweenu",
+            "en": "Crazy mushroom harvest on Halloween"
+        },
+        "season": null,
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet15.jpg",
         "index": 15
@@ -186,7 +189,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": { "type": "player", "top": 1000, "honor": 50000 },
+        "hof": { "type": { "cs": "", "en": "" }, "top": 1000, "honor": 50000 },
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet16.jpg",
         "index": 16
@@ -196,9 +199,12 @@
         "loc_index": 2,
         "time": null,
         "day_of_week": null,
-        "event": "exceptional xp",
+        "event": {
+            "cs": "Událost nehorázných zkušeností",
+            "en": "Exceptional xp"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet17.jpg",
         "index": 17
@@ -208,9 +214,12 @@
         "loc_index": 13,
         "time": null,
         "day_of_week": null,
-        "event": "friday the 13th",
+        "event": {
+            "cs": "Pátek 13.",
+            "en": "Friday the 13th"
+        },
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet18.jpg",
         "index": 18
@@ -222,7 +231,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": {
             "cs": "Odměna za vyčištění 10. podlaží 13. podzemí ve stinném světě.",
             "en": "Rewarded for clearing 10th floor of the 13th dungeon of the Shadow World."
@@ -237,7 +246,7 @@
         "day_of_week": null,
         "event": null,
         "season": null,
-        "hof": {},
+        "hof": null,
         "notes": null,
         "img": "https://en.sfporadnik.pl/img/pets/dark-pet20.jpg",
         "index": 20
