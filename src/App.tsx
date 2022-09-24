@@ -109,6 +109,16 @@ const timenotExHeading = {
     en: "Not bound to a time or event (usualy with extra requirements)"
 };
 
+const title = {
+    cs: "SfGame dnešní mazlíčci",
+    en: "SfGame today's pets"
+};
+
+const desc = {
+    cs: "Dnešní mazlíčci na Shakes and Fidget",
+    en: "Today's pets on Shakes and Fidget"
+};
+
 function App() {
     const [date] = useState(new Date());
     const [dayOfWeek] = useState<DayOfWeek>(date.getDay() as DayOfWeek);
@@ -186,6 +196,11 @@ function App() {
     const params = useParams();
 
     const lang = params.lang as "en" | "cs";
+
+    document.title = title[lang];
+    document
+        .querySelector("meta[name='description']")
+        ?.setAttribute("content", desc[lang]);
 
     return (
         <LangContext.Provider value={lang}>

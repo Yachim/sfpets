@@ -21,4 +21,13 @@
         transition: border-radius 200ms ease-in-out;
         width: 100%;
     }
+
+    p {
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 0.75rem;
+        }
+    }
 }

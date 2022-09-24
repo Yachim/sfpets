@@ -31,26 +31,26 @@ export function Pet(props: PetType) {
             {location && (
                 <p>
                     <FontAwesomeIcon icon={faMap} />
-                    &nbsp;&nbsp;{location}
+                    {location}
                 </p>
             )}
             {props.event && (
                 <p>
                     <FontAwesomeIcon icon={faCalendar} />
-                    &nbsp;&nbsp;{props.event[lang]}
+                    {props.event[lang]}
                 </p>
             )}
             {props.hof && (
                 <p>
                     <FontAwesomeIcon icon={faAward} />
-                    &nbsp;&nbsp;{props.hof.type[lang]} top {props.hof.top}/
+                    {props.hof.type[lang]} top {props.hof.top}/
                     {honorTranslation[lang]} {props.hof.honor}
                 </p>
             )}
             {props.notes && (
                 <p>
                     <FontAwesomeIcon icon={faNoteSticky} />
-                    &nbsp;&nbsp;
+
                     {props.notes[lang]}
                 </p>
             )}
