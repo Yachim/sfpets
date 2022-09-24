@@ -1,5 +1,5 @@
 import { Pet as PetType } from "../types";
-import locs from "../data/locs.json";
+import locs from "../data/locs";
 import "../scss/Pet.scss";
 import { LangContext } from "../LangContext";
 import { useContext } from "react";

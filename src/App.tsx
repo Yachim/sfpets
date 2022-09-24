@@ -1,21 +1,15 @@
 import { useState } from "react";
 import { DayOfWeek, Pet as PetType, Season, Time } from "./types";
-import ePets from "./data/pets/earth.json";
-import fPets from "./data/pets/fire.json";
-import lPets from "./data/pets/light.json";
-import sPets from "./data/pets/shadow.json";
-import wPets from "./data/pets/water.json";
+import earthPets from "./data/pets/earth";
+import firePets from "./data/pets/fire";
+import lightPets from "./data/pets/light";
+import shadowPets from "./data/pets/shadow";
+import waterPets from "./data/pets/water";
 import { Pet } from "./components";
 import "./scss/App.scss";
 import { LangContext } from "./LangContext";
 import { LangSelect } from "./components/LangSelect";
 import { useParams } from "react-router-dom";
-
-const earthPets: PetType[] = ePets as PetType[];
-const firePets: PetType[] = fPets as PetType[];
-const lightPets: PetType[] = lPets as PetType[];
-const shadowPets: PetType[] = sPets as PetType[];
-const waterPets: PetType[] = wPets as PetType[];
 
 function filterTimeExclusivePets(
     pets: PetType[],

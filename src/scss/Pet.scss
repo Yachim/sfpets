@@ -4,8 +4,21 @@
     border-radius: 1rem;
     transition: border-radius 200ms ease-in-out;
     border: 0.1rem solid black;
+    flex-basis: auto;
+    justify-content: space-between;
+    width: 100%;
 
     &:hover {
         border-radius: 0;
+
+        img {
+            border-radius: 0;
+        }
+    }
+
+    img {
+        border-radius: 1rem;
+        transition: border-radius 200ms ease-in-out;
+        width: 100%;
     }
 }
