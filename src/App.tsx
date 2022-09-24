@@ -8,6 +8,15 @@ import wPets from "./data/pets/water.json";
 import { Pet } from "./components";
 import "./scss/App.scss";
 import { LangContext } from "./LangContext";
+import { LangSelect } from "./components/LangSelect";
+import {
+    Router,
+    useParams,
+    Route,
+    BrowserRouter,
+    Routes,
+    Navigate
+} from "react-router-dom";
 
 const earthPets: PetType[] = ePets as PetType[];
 const firePets: PetType[] = fPets as PetType[];
@@ -102,7 +111,9 @@ function App() {
     const [shadowTimeAvailable] = useState(filterPets(shadowPets, ...args));
     const [waterTimeAvailable] = useState(filterPets(waterPets, ...args));
 
-    const [lang, setLang] = useState<"en" | "cs">("en");
+    const params = useParams();
+
+    const lang = params.lang as "en" | "cs";
 
     return (
         <LangContext.Provider value={lang}>
@@ -135,6 +146,8 @@ function App() {
                         ))}
                     </div>
                 </div>
+
+                <LangSelect />
             </div>
         </LangContext.Provider>
     );
