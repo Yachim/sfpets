@@ -2,7 +2,7 @@ import { Pet as PetType } from "../types";
 import locs from "../data/locs";
 import "../scss/Pet.scss";
 import { LangContext } from "../LangContext";
-import { useContext } from "react";
+import { Dispatch, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faAward,
@@ -20,7 +20,23 @@ const honorTranslation = {
     en: "honor"
 };
 
-export function Pet(props: PetType) {
+const removeTranslation = {
+    cs: "Kliknutím přidáte do nalezených",
+    en: "Click to add to found"
+};
+
+const addTranslation = {
+    cs: "Kliknutím přidáte do nenalezených",
+    en: "Click to add to not found"
+};
+
+export function Pet(
+    props: PetType & {
+        status: 1 | 2 | 3 | 4 | 5;
+        element: string;
+        setState: Dispatch<React.SetStateAction<PetType[]>>;
+    }
+) {
     const lang = useContext(LangContext);
 
     let location: string | null = null;
@@ -31,8 +47,20 @@ export function Pet(props: PetType) {
     else if (props.time === "night") icon = faMoon;
     else if (props.time === "day") icon = faSun;
 
+    const classes = `pet-card pet-${props.status}`;
+
+    function changeCompletion() {
+        let completion = "1";
+        if (props.status === 5) {
+            completion = "0";
+        }
+
+        localStorage.setItem(`${props.element}-${props.index}`, completion);
+        props.setState((state) => [...state]);
+    }
+
     return (
-        <div className="pet-card">
+        <div className={classes} onClick={changeCompletion}>
             <h3>
                 {props.names[lang]} ({props.index}.)
             </h3>
@@ -65,6 +93,12 @@ export function Pet(props: PetType) {
 
                     {props.notes[lang]}
                 </p>
+            )}
+
+            {props.status === 5 ? (
+                <p className="remove-add">{addTranslation[lang]}</p>
+            ) : (
+                <p className="remove-add">{removeTranslation[lang]}</p>
             )}
         </div>
     );

@@ -20,20 +20,14 @@ main {
 }
 
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 3rem;
 }
 
 .element-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 3rem;
 
-    flex-basis: 0;
-    flex-shrink: 1;
-    flex-grow: 1;
-}
-
-h2:not(:first-of-type) {
-    margin-top: 5rem;
+    grid-auto-rows: 1fr;
 }

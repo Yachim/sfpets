@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { DayOfWeek, Pet as PetType, Season, Time } from "./types";
-import earthPets from "./data/pets/earth";
-import firePets from "./data/pets/fire";
-import lightPets from "./data/pets/light";
-import shadowPets from "./data/pets/shadow";
-import waterPets from "./data/pets/water";
+import ePets from "./data/pets/earth";
+import fPets from "./data/pets/fire";
+import lPets from "./data/pets/light";
+import sPets from "./data/pets/shadow";
+import wPets from "./data/pets/water";
 import { Pet, LangSelect } from "./components";
 import "./scss/App.scss";
 import { LangContext } from "./LangContext";
@@ -78,72 +78,6 @@ const filterableEvents: {
     // }
 };
 
-function filterTimeExclusivePets(
-    pets: PetType[],
-    day_of_week: DayOfWeek,
-    day_or_night: Time,
-    isWHour: boolean,
-    season: Season,
-    month: number
-) {
-    return pets.filter((pet: PetType) => {
-        if (pet.event) {
-            if (!(pet.event.en in filterableEvents)) return false;
-            if (!filterableEvents[pet.event.en]()) return false;
-        }
-
-        if (!(!pet.day_of_week || pet.day_of_week === day_of_week))
-            return false;
-        if (
-            !(
-                !pet.time ||
-                pet.time === day_or_night ||
-                (pet.time === "w_hour" && isWHour)
-            )
-        )
-            return false;
-        if (
-            !(
-                !pet.season ||
-                pet.season === season ||
-                (pet.season === "december" && month === 11)
-            )
-        )
-            return false;
-        if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
-            return false;
-
-        return true;
-    });
-}
-
-function filterNotTimeExclusivePets(
-    pets: PetType[],
-    day_of_week: DayOfWeek,
-    day_or_night: Time,
-    isWHour: boolean,
-    season: Season,
-    month: number
-) {
-    return pets.filter(
-        (pet: PetType) =>
-            !pet.day_of_week && !pet.time && !pet.season && !pet.event
-    );
-}
-
-function filterEventExclusivePets(
-    pets: PetType[],
-    day_of_week: DayOfWeek,
-    day_or_night: Time,
-    isWHour: boolean,
-    season: Season,
-    month: number
-) {
-    return pets.filter(
-        (pet: PetType) => pet.event && !(pet.event.en in filterableEvents)
-    );
-}
-
 function getSeason(date: Date): Season {
     const year = date.getFullYear();
 
@@ -165,21 +99,6 @@ function getSeason(date: Date): Season {
 const mainHeading = {
     cs: "Dnešní mazlíčci",
     en: "Today's pets"
-};
-
-const timeExHeading = {
-    cs: "Vázané na dnešek",
-    en: "Bound to today"
-};
-
-const eventExHeading = {
-    cs: "Vázané na event",
-    en: "Bound to an event"
-};
-
-const timenotExHeading = {
-    cs: "Nevázané ani na čas, ani event (většinou s extra požadavky)",
-    en: "Not bound to a time or event (usually with extra requirements)"
 };
 
 const title = {
@@ -211,61 +130,6 @@ function App() {
 
     const [season] = useState<Season>(getSeason(date));
 
-    const args: [DayOfWeek, Time, boolean, Season, number] = [
-        dayOfWeek,
-        dayOrNight,
-        isWHour,
-        season,
-        month
-    ];
-    const [earthTimeExclusive] = useState(
-        filterTimeExclusivePets(earthPets, ...args)
-    );
-    const [fireTimeExclusive] = useState(
-        filterTimeExclusivePets(firePets, ...args)
-    );
-    const [lightTimeExclusive] = useState(
-        filterTimeExclusivePets(lightPets, ...args)
-    );
-    const [shadowTimeExclusive] = useState(
-        filterTimeExclusivePets(shadowPets, ...args)
-    );
-    const [waterTimeExcluxive] = useState(
-        filterTimeExclusivePets(waterPets, ...args)
-    );
-
-    const [earthEventExclusive] = useState(
-        filterEventExclusivePets(earthPets, ...args)
-    );
-    const [fireEventExclusive] = useState(
-        filterEventExclusivePets(firePets, ...args)
-    );
-    const [lightEventExclusive] = useState(
-        filterEventExclusivePets(lightPets, ...args)
-    );
-    const [shadowEventExclusive] = useState(
-        filterEventExclusivePets(shadowPets, ...args)
-    );
-    const [waterEventExcluxive] = useState(
-        filterEventExclusivePets(waterPets, ...args)
-    );
-
-    const [earthNotTimeExclusive] = useState(
-        filterNotTimeExclusivePets(earthPets, ...args)
-    );
-    const [fireNotTimeExclusive] = useState(
-        filterNotTimeExclusivePets(firePets, ...args)
-    );
-    const [lightNotTimeExclusive] = useState(
-        filterNotTimeExclusivePets(lightPets, ...args)
-    );
-    const [shadowNotTimeExclusive] = useState(
-        filterNotTimeExclusivePets(shadowPets, ...args)
-    );
-    const [waterNotTimeExcluxive] = useState(
-        filterNotTimeExclusivePets(waterPets, ...args)
-    );
-
     const params = useParams();
 
     const lang = params.lang as "en" | "cs";
@@ -275,6 +139,66 @@ function App() {
         .querySelector("meta[name='description']")
         ?.setAttribute("content", desc[lang]);
 
+    // 1 = only now, 2 = always, 3 = event, 4 = not available
+    function getPetStatus(pet: PetType, element: string): 1 | 2 | 3 | 4 | 5 {
+        const data = localStorage.getItem(`${element}-${pet.index}`);
+        if (data === "1") {
+            return 5;
+        }
+
+        if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
+            return 2;
+        if (pet.event && !(pet.event.en in filterableEvents)) return 3;
+
+        if (pet.event) {
+            if (!(pet.event.en in filterableEvents)) return 4;
+            if (!filterableEvents[pet.event.en]()) return 4;
+        }
+
+        if (!(!pet.day_of_week || pet.day_of_week === dayOfWeek)) return 4;
+        if (
+            !(
+                !pet.time ||
+                pet.time === dayOrNight ||
+                (pet.time === "w_hour" && isWHour)
+            )
+        )
+            return 4;
+        if (
+            !(
+                !pet.season ||
+                pet.season === season ||
+                (pet.season === "december" && month === 11)
+            )
+        )
+            return 4;
+        if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
+            return 4;
+
+        return 1;
+    }
+
+    function sortPets(pets: PetType[], element: string) {
+        return pets
+            .map((pet) => ({
+                pet: pet,
+                status: getPetStatus(pet, element)
+            }))
+            .sort((a, b) => a.status - b.status);
+    }
+
+    const [shadowPets, setShadowPets] = useState(sPets);
+    const [lightPets, setLightPets] = useState(lPets);
+    const [earthPets, setEarthPets] = useState(ePets);
+    const [firePets, setFirePets] = useState(fPets);
+    const [waterPets, setWaterPets] = useState(wPets);
+
+    const shadowPetsStatus = sortPets(shadowPets, "shadow");
+    const lightPetsStatus = sortPets(lightPets, "light");
+    const earthPetsStatus = sortPets(earthPets, "earth");
+    const firePetsStatus = sortPets(firePets, "fire");
+    const waterPetsStatus = sortPets(waterPets, "water");
+
     return (
         <LangContext.Provider value={lang}>
             <div className="App">
@@ -282,89 +206,60 @@ function App() {
 
                 <main>
                     <h1>{mainHeading[lang]}</h1>
-                    <h2>{timeExHeading[lang]}</h2>
                     <div className="container">
                         <div className="element-container">
-                            {shadowTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
+                            {shadowPetsStatus.map((pet, i) => (
+                                <Pet
+                                    key={i}
+                                    {...pet.pet}
+                                    status={pet.status}
+                                    element="shadow"
+                                    setState={setShadowPets}
+                                />
                             ))}
                         </div>
                         <div className="element-container">
-                            {lightTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
+                            {lightPetsStatus.map((pet, i) => (
+                                <Pet
+                                    key={i}
+                                    {...pet.pet}
+                                    status={pet.status}
+                                    element="light"
+                                    setState={setLightPets}
+                                />
                             ))}
                         </div>
                         <div className="element-container">
-                            {earthTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
+                            {earthPetsStatus.map((pet, i) => (
+                                <Pet
+                                    key={i}
+                                    {...pet.pet}
+                                    status={pet.status}
+                                    element="earth"
+                                    setState={setEarthPets}
+                                />
                             ))}
                         </div>
                         <div className="element-container">
-                            {fireTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
+                            {firePetsStatus.map((pet, i) => (
+                                <Pet
+                                    key={i}
+                                    {...pet.pet}
+                                    status={pet.status}
+                                    element="fire"
+                                    setState={setFirePets}
+                                />
                             ))}
                         </div>
                         <div className="element-container">
-                            {waterTimeExcluxive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                    </div>
-
-                    <h2>{eventExHeading[lang]}</h2>
-                    <div className="container">
-                        <div className="element-container">
-                            {shadowEventExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {lightEventExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {earthEventExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {fireEventExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {waterEventExcluxive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                    </div>
-
-                    <h2>{timenotExHeading[lang]}</h2>
-                    <div className="container">
-                        <div className="element-container">
-                            {shadowNotTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {lightNotTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {earthNotTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {fireNotTimeExclusive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
-                            ))}
-                        </div>
-                        <div className="element-container">
-                            {waterNotTimeExcluxive.map((pet, i) => (
-                                <Pet key={i} {...pet} />
+                            {waterPetsStatus.map((pet, i) => (
+                                <Pet
+                                    key={i}
+                                    {...pet.pet}
+                                    status={pet.status}
+                                    element="water"
+                                    setState={setWaterPets}
+                                />
                             ))}
                         </div>
                     </div>
