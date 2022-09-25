@@ -6,7 +6,13 @@ import {
     faMap,
     faCalendar,
     faAward,
-    faNoteSticky
+    faNoteSticky,
+    faLeaf,
+    faSeedling,
+    faSleigh,
+    faSnowflake,
+    faUmbrellaBeach,
+    faClock
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
@@ -14,7 +20,8 @@ import locs from "../data/locs";
 import {
     honorTranslation,
     addTranslation,
-    removeTranslation
+    removeTranslation,
+    daysOfWeek
 } from "../data/translation";
 import { LangContext } from "../LangContext";
 import { Pet as PetType } from "../types";
@@ -29,10 +36,17 @@ export function PetMock(
     let location: string | null = null;
     if (props.loc_index !== null) location = locs[props.loc_index][lang];
 
-    let icon: IconDefinition | null = null;
-    if (props.time === "w_hour") icon = faBroom;
-    else if (props.time === "night") icon = faMoon;
-    else if (props.time === "day") icon = faSun;
+    let timeIcon: IconDefinition | null = null;
+    if (props.time === "w_hour") timeIcon = faBroom;
+    else if (props.time === "night") timeIcon = faMoon;
+    else if (props.time === "day") timeIcon = faSun;
+
+    let seasonIcon: IconDefinition | null = null;
+    if (props.season === "spring") seasonIcon = faSeedling;
+    else if (props.season === "summer") seasonIcon = faUmbrellaBeach;
+    else if (props.season === "fall") seasonIcon = faLeaf;
+    else if (props.season === "winter") seasonIcon = faSnowflake;
+    else if (props.season === "december") seasonIcon = faSleigh;
 
     const classes = `pet-mock pet-card pet-${props.status}`;
 
@@ -41,14 +55,25 @@ export function PetMock(
             <h3>
                 {props.names[lang]} ({props.index}.)
             </h3>
-            {props.time && (
-                <FontAwesomeIcon className="time-icon" icon={icon!} />
+
+            {timeIcon && (
+                <FontAwesomeIcon className="time-icon" icon={timeIcon} />
             )}
+            {seasonIcon && (
+                <FontAwesomeIcon className="season-icon" icon={seasonIcon} />
+            )}
+
             <img alt="" src={props.img}></img>
             {location && (
                 <p>
                     <FontAwesomeIcon icon={faMap} />
                     {location}
+                </p>
+            )}
+            {props.day_of_week && (
+                <p>
+                    <FontAwesomeIcon icon={faClock} />
+                    {daysOfWeek[props.day_of_week - 1][lang]}
                 </p>
             )}
             {props.event && (

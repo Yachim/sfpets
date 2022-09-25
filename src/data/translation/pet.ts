@@ -4,11 +4,11 @@ export const honorTranslation = {
 };
 
 export const removeTranslation = {
-    cs: "Kliknutím přidáte do nalezených",
+    cs: "Kliknutím odebrat z nalezených",
     en: "Click to add to found"
 };
 
 export const addTranslation = {
-    cs: "Kliknutím přidáte do nenalezených",
+    cs: "Kliknutím přidat do nenalezených",
     en: "Click to add to not found"
 };

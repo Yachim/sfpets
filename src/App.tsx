@@ -108,7 +108,7 @@ function App() {
         }, 60000);
 
         return () => clearInterval(id);
-    }, [setDate]);
+    }, []);
 
     const [dayOfWeek] = useState<DayOfWeek>(date.getDay() as DayOfWeek);
     const [day] = useState(date.getDate());
@@ -204,8 +204,11 @@ function App() {
                 {helpVisible && <Help />}
 
                 <h1>
-                    {mainHeading[lang]} - {date.getDate()}. {date.getMonth()}.{" "}
-                    {date.getFullYear()} {date.getHours()}:{date.getMinutes()}
+                    {mainHeading[lang]} - {date.toLocaleDateString()}{" "}
+                    {date.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    })}
                 </h1>
 
                 <nav>
