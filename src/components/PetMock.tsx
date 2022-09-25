@@ -1,30 +1,27 @@
-import { Pet as PetType } from "../types";
-import locs from "../data/locs";
-import "../scss/Pet.scss";
-import { LangContext } from "../LangContext";
-import { Dispatch, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import {
-    faAward,
     faBroom,
-    faCalendar,
-    faMap,
     faMoon,
-    faNoteSticky,
     faSun,
-    IconDefinition
+    faMap,
+    faCalendar,
+    faAward,
+    faNoteSticky
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import locs from "../data/locs";
 import {
-    addTranslation,
     honorTranslation,
+    addTranslation,
     removeTranslation
 } from "../data/translation";
+import { LangContext } from "../LangContext";
+import { Pet as PetType } from "../types";
 
-export function Pet(
+export function PetMock(
     props: PetType & {
         status: 1 | 2 | 3 | 4 | 5;
-        element: string;
-        setState: Dispatch<React.SetStateAction<PetType[]>>;
     }
 ) {
     const lang = useContext(LangContext);
@@ -37,20 +34,10 @@ export function Pet(
     else if (props.time === "night") icon = faMoon;
     else if (props.time === "day") icon = faSun;
 
-    const classes = `pet-card pet-${props.status}`;
-
-    function changeCompletion() {
-        let completion = "1";
-        if (props.status === 5) {
-            completion = "0";
-        }
-
-        localStorage.setItem(`${props.element}-${props.index}`, completion);
-        props.setState((state) => [...state]);
-    }
+    const classes = `pet-mock pet-card pet-${props.status}`;
 
     return (
-        <div className={classes} onClick={changeCompletion}>
+        <div className={classes}>
             <h3>
                 {props.names[lang]} ({props.index}.)
             </h3>

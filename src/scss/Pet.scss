@@ -14,7 +14,7 @@
         transition: filter 200ms ease-in-out;
     }
 
-    &:hover {
+    &:hover:not(.pet-mock) {
         border-radius: 0;
 
         img {
@@ -87,7 +87,7 @@ $l: 88%;
     opacity: 0.2;
     transition: opacity 200ms ease-in-out;
 
-    &:hover {
+    &:hover:not(.pet-mock) {
         opacity: 1;
     }
 }

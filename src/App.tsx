@@ -1,14 +1,17 @@
-import { useState } from "react";
-import { DayOfWeek, Pet as PetType, Season, Time } from "./types";
+import { useState, useEffect } from "react";
+import { DayOfWeek, Pet as PetType, Season } from "./types";
 import ePets from "./data/pets/earth";
 import fPets from "./data/pets/fire";
 import lPets from "./data/pets/light";
 import sPets from "./data/pets/shadow";
 import wPets from "./data/pets/water";
-import { Pet, LangSelect } from "./components";
+import { Pet, LangSelect, Help } from "./components";
 import "./scss/App.scss";
 import { LangContext } from "./LangContext";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { title, desc, mainHeading } from "./data/translation";
 
 function Easter(Y: number) {
     var C = Math.floor(Y / 100);
@@ -96,23 +99,17 @@ function getSeason(date: Date): Season {
     else return "winter";
 }
 
-const mainHeading = {
-    cs: "Dnešní mazlíčci",
-    en: "Today's pets"
-};
-
-const title = {
-    cs: "SfGame dnešní mazlíčci",
-    en: "SfGame today's pets"
-};
-
-const desc = {
-    cs: "Dnešní mazlíčci na Shakes and Fidget",
-    en: "Today's pets on Shakes and Fidget"
-};
-
 function App() {
-    const [date] = useState(new Date());
+    const [date, setDate] = useState(new Date());
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setDate(new Date());
+        }, 60000);
+
+        return () => clearInterval(id);
+    }, [setDate]);
+
     const [dayOfWeek] = useState<DayOfWeek>(date.getDay() as DayOfWeek);
     const [day] = useState(date.getDate());
     const [month] = useState(date.getMonth());
@@ -199,13 +196,26 @@ function App() {
     const firePetsStatus = sortPets(firePets, "fire");
     const waterPetsStatus = sortPets(waterPets, "water");
 
+    const [helpVisible, setHelpVisible] = useState(false);
+
     return (
         <LangContext.Provider value={lang}>
             <div className="App">
-                <LangSelect />
+                {helpVisible && <Help />}
+
+                <h1>
+                    {mainHeading[lang]} - {date.getDate()}. {date.getMonth()}.{" "}
+                    {date.getFullYear()} {date.getHours()}:{date.getMinutes()}
+                </h1>
+
+                <nav>
+                    <LangSelect />
+                    <button onClick={() => setHelpVisible((prev) => !prev)}>
+                        <FontAwesomeIcon icon={faQuestion} />
+                    </button>
+                </nav>
 
                 <main>
-                    <h1>{mainHeading[lang]}</h1>
                     <div className="container">
                         <div className="element-container">
                             {shadowPetsStatus.map((pet, i) => (

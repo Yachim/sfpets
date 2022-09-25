@@ -15,8 +15,16 @@ html {
     width: 100%;
 }
 
+.App {
+    display: grid;
+    grid-template-areas:
+        "heading navbar"
+        "content content";
+}
+
 main {
     padding: 1.5rem;
+    grid-area: content;
 }
 
 .container {
@@ -30,4 +38,32 @@ main {
     gap: 3rem;
 
     grid-auto-rows: 1fr;
+}
+
+h1 {
+    grid-area: heading;
+    padding-left: 1rem;
+}
+
+nav {
+    grid-area: navbar;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
+
+    button {
+        height: 100%;
+        aspect-ratio: 1/1;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        transition: font-size 200ms ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            font-size: 1.75rem;
+        }
+    }
 }
