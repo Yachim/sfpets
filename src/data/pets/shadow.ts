@@ -175,7 +175,7 @@ const shadowPets: Pet[] = [
         time: null,
         day_of_week: null,
         event: {
-            cs: "Bláznivá sklizeň houbiček na Halloweenu",
+            cs: "Bláznivá sklizeň houbiček na Halloween",
             en: "Crazy mushroom harvest on Halloween"
         },
         season: null,

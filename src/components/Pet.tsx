@@ -6,9 +6,13 @@ import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faAward,
+    faBroom,
     faCalendar,
     faMap,
-    faNoteSticky
+    faMoon,
+    faNoteSticky,
+    faSun,
+    IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
 
 const honorTranslation = {
@@ -20,13 +24,21 @@ export function Pet(props: PetType) {
     const lang = useContext(LangContext);
 
     let location: string | null = null;
-    if (props.loc_index) location = locs[props.loc_index][lang];
+    if (props.loc_index !== null) location = locs[props.loc_index][lang];
+
+    let icon: IconDefinition | null = null;
+    if (props.time === "w_hour") icon = faBroom;
+    else if (props.time === "night") icon = faMoon;
+    else if (props.time === "day") icon = faSun;
 
     return (
         <div className="pet-card">
             <h3>
                 {props.names[lang]} ({props.index}.)
             </h3>
+            {props.time && (
+                <FontAwesomeIcon className="time-icon" icon={icon!} />
+            )}
             <img alt="" src={props.img}></img>
             {location && (
                 <p>

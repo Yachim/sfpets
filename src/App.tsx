@@ -5,11 +5,78 @@ import firePets from "./data/pets/fire";
 import lightPets from "./data/pets/light";
 import shadowPets from "./data/pets/shadow";
 import waterPets from "./data/pets/water";
-import { Pet } from "./components";
+import { Pet, LangSelect } from "./components";
 import "./scss/App.scss";
 import { LangContext } from "./LangContext";
-import { LangSelect } from "./components/LangSelect";
 import { useParams } from "react-router-dom";
+
+function Easter(Y: number) {
+    var C = Math.floor(Y / 100);
+    var N = Y - 19 * Math.floor(Y / 19);
+    var K = Math.floor((C - 17) / 25);
+    var I = C - Math.floor(C / 4) - Math.floor((C - K) / 3) + 19 * N + 15;
+    I -= 30 * Math.floor(I / 30);
+    I -=
+        Math.floor(I / 28) *
+        (1 -
+            Math.floor(I / 28) *
+                Math.floor(29 / (I + 1)) *
+                Math.floor((21 - N) / 11));
+    var J = Y + Math.floor(Y / 4) + I + 2 - C + Math.floor(C / 4);
+    J -= 7 * Math.floor(J / 7);
+    var L = I - J;
+    var M = 3 + Math.floor((L + 40) / 44);
+    var D = L + 28 - 31 * Math.floor(M / 4);
+
+    return [M, D];
+}
+
+// events with fixed date/time
+const filterableEvents: {
+    [key: string]: () => boolean;
+} = {
+    "April Fools' Day": () => {
+        const dt = new Date();
+        return dt.getDate() === 1 && dt.getMonth() === 3;
+    },
+    "Birthday event": () => {
+        const dt = new Date();
+        return dt.getDate() === 22 && dt.getMonth() === 5;
+    },
+    "Valentine's day": () => {
+        const dt = new Date();
+        return dt.getDate() === 14 && dt.getMonth() === 1;
+    },
+    "New Year's Eve & Day": () => {
+        const dt = new Date();
+        return (
+            (dt.getMonth() === 0 && dt.getDate() === 1) ||
+            (dt.getMonth() === 11 && dt.getDate() === 31)
+        );
+    },
+    "Friday the 13th": () => {
+        const dt = new Date();
+        return dt.getDay() === 5 && dt.getDate() === 13;
+    },
+    Easter: () => {
+        const dt = new Date();
+        const [M, D] = Easter(dt.getFullYear());
+
+        return dt.getDate() === D && dt.getMonth() + 1 === M;
+    }
+    // "Pentecost/Whitsun": () => {
+    //     const dt = new Date();
+    //     const year = dt.getFullYear();
+    //     const [M, D] = Easter(year);
+
+    //     const whitsunDate = new Date(year, M, D + 49);
+
+    //     return (
+    //         dt.getDate() === whitsunDate.getDate() &&
+    //         dt.getMonth() === whitsunDate.getMonth()
+    //     );
+    // }
+};
 
 function filterTimeExclusivePets(
     pets: PetType[],
@@ -20,7 +87,10 @@ function filterTimeExclusivePets(
     month: number
 ) {
     return pets.filter((pet: PetType) => {
-        if (pet.event) return false;
+        if (pet.event) {
+            if (!(pet.event.en in filterableEvents)) return false;
+            if (!filterableEvents[pet.event.en]()) return false;
+        }
 
         if (!(!pet.day_of_week || pet.day_of_week === day_of_week))
             return false;
@@ -40,7 +110,8 @@ function filterTimeExclusivePets(
             )
         )
             return false;
-        if (!pet.day_of_week && !pet.time && !pet.season) return false;
+        if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
+            return false;
 
         return true;
     });
@@ -68,7 +139,9 @@ function filterEventExclusivePets(
     season: Season,
     month: number
 ) {
-    return pets.filter((pet: PetType) => pet.event);
+    return pets.filter(
+        (pet: PetType) => pet.event && !(pet.event.en in filterableEvents)
+    );
 }
 
 function getSeason(date: Date): Season {
@@ -106,7 +179,7 @@ const eventExHeading = {
 
 const timenotExHeading = {
     cs: "Nevázané ani na čas, ani event (většinou s extra požadavky)",
-    en: "Not bound to a time or event (usualy with extra requirements)"
+    en: "Not bound to a time or event (usually with extra requirements)"
 };
 
 const title = {

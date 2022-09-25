@@ -1,3 +1,4 @@
+import { LangSelect } from "./LangSelect";
 import { Pet } from "./Pet";
 
-export { Pet };
+export { Pet, LangSelect };

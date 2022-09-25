@@ -4,8 +4,8 @@ import { LangContext } from "../LangContext";
 import "../scss/LangSelect.scss";
 
 const langIcons = {
-    cs: "🇨🇿",
-    en: "🇺🇸"
+    en: "🇨🇿",
+    cs: "🇺🇸"
 };
 
 export function LangSelect() {
