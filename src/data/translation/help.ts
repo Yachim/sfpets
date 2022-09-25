@@ -14,7 +14,7 @@ export const state3 = {
 };
 
 export const state4 = {
-    cs: "Tento mazlíček momentálně není k nalezení dostupný",
+    cs: "Tento mazlíček momentálně není k nalezení",
     en: "This pet cannot be currently found"
 };
 
