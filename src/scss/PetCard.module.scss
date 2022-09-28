@@ -1,0 +1,163 @@
+@use "./vars/colors.scss";
+
+$border-radius: 0.75rem;
+
+@keyframes card-load {
+    from {
+        opacity: 0;
+        scale: 1.05;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.pet-card {
+    aspect-ratio: 1/1;
+    min-width: 0;
+    flex: 1 1 auto;
+
+    position: relative;
+
+    img {
+        width: 100%;
+        border-radius: $border-radius;
+    }
+
+    &:hover {
+        .icons {
+            translate: 0;
+        }
+
+        .remove-icon {
+            scale: 1;
+        }
+    }
+
+    animation: card-load 700ms ease-in-out;
+    animation-fill-mode: backwards;
+}
+
+.pet-data {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    aspect-ratio: 1/1;
+
+    padding: 1rem;
+    display: flex;
+    flex-direction: column-reverse;
+
+    max-height: 50%;
+
+    background: linear-gradient(
+        0deg,
+        rgba($color: colors.$color1, $alpha: 0.8) 0%,
+        rgba($color: colors.$color1, $alpha: 0) 90%
+    );
+
+    p {
+        margin: 0;
+
+        max-width: 75%;
+
+        &:first-child {
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+    }
+}
+
+.pet-index {
+    position: absolute;
+    bottom: -5%;
+    right: 5%;
+
+    margin: 0;
+    padding: 0.5rem;
+    background-color: colors.$accent;
+
+    box-sizing: content-box;
+    width: 2.5ch;
+    text-align: center;
+
+    border: 0.4rem solid colors.$color1;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+
+    display: grid;
+    place-items: center;
+}
+
+.pet-info__wrapper {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    overflow: hidden;
+    border-radius: $border-radius;
+}
+
+.icons {
+    position: absolute;
+    top: 7.5%;
+    left: 0;
+    margin: 0;
+    padding: 1rem;
+
+    display: flex;
+    gap: 0.75rem;
+
+    background-color: rgba($color: colors.$accent, $alpha: 0.9);
+    border-radius: 0 $border-radius $border-radius 0;
+
+    translate: -100%;
+    transition: translate 300ms ease-in-out;
+}
+
+.remove-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.5rem;
+
+    transition: scale 300ms ease-in-out, rotate 300ms ease-out;
+
+    background-color: rgba($color: colors.$accent, $alpha: 0.75);
+
+    scale: 0;
+
+    border: 0;
+    border-radius: 0 $border-radius;
+
+    aspect-ratio: 1/1;
+    font-size: 1.16rem;
+
+    display: grid;
+    place-items: center;
+
+    transition: scale 300 ease-out;
+    transform-origin: top right;
+
+    * {
+        transition: fill 300ms ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+
+        .x-icon * {
+            fill: red;
+        }
+
+        .check-icon * {
+            fill: limegreen;
+        }
+    }
+}

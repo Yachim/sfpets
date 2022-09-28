@@ -135,7 +135,7 @@ const firePets: Pet[] = [
     },
     {
         names: { en: "Birblazey", cs: "Ptakopal" },
-        loc_index: 0,
+        loc_index: null,
         time: "day",
         day_of_week: null,
         event: null,

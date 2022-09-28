@@ -51,7 +51,7 @@ const shadowPets: Pet[] = [
     },
     {
         names: { en: "Spidor", cs: "Pavukin" },
-        loc_index: 0,
+        loc_index: null,
         time: "night",
         day_of_week: 1,
         event: null,
@@ -171,7 +171,7 @@ const shadowPets: Pet[] = [
     },
     {
         names: { en: "Pharamumm", cs: "Faramum" },
-        loc_index: 0,
+        loc_index: null,
         time: null,
         day_of_week: null,
         event: {

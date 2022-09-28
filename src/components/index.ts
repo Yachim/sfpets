@@ -1,6 +1,6 @@
-import { Help } from "./Help";
-import { LangSelect } from "./LangSelect";
-import { Pet } from "./Pet";
-import { PetMock } from "./PetMock";
+import { Root } from "./pages/Root";
+import { Page } from "./pages/Page";
+import { Pets } from "./pages/Pets";
+import { PetCard } from "./PetCard";
 
-export { Pet, LangSelect, Help, PetMock };
+export { Root, Page, Pets, PetCard };

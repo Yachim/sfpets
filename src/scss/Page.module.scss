@@ -1,0 +1,67 @@
+@use "../scss/vars/colors.scss";
+
+.app {
+    display: grid;
+    grid-template-areas:
+        "heading heading"
+        "nav content";
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content auto;
+    width: 100%;
+    min-height: 100%;
+}
+
+.top-bar {
+    grid-area: heading;
+    background-color: rgba($color: colors.$color2, $alpha: 0.075);
+
+    h1 {
+        padding-left: 1rem;
+        color: colors.$accent;
+    }
+}
+
+.nav-bar {
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    background-color: rgba($color: colors.$color2, $alpha: 0.05);
+
+    a {
+        aspect-ratio: 1/1;
+        width: 5rem;
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+
+        * {
+            transition: fill 300ms ease-in-out;
+        }
+    }
+
+    a[data-active="true"] * {
+        fill: rgba($color: colors.$accent, $alpha: 0.8);
+    }
+}
+
+.shadow-icon:hover * {
+    fill: gray;
+}
+
+.light-icon:hover * {
+    fill: yellow;
+}
+
+.earth-icon:hover * {
+    fill: green;
+}
+
+.fire-icon:hover * {
+    fill: orangered;
+}
+
+.water-icon:hover * {
+    fill: lightskyblue;
+}

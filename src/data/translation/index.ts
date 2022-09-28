@@ -1,19 +1,18 @@
 import { daysOfWeek } from "./daysOfWeek";
-import { state1, state2, state3, state4, state5 } from "./help";
+import { langList, Langs } from "./langList";
 import { mainHeading, title, desc } from "./page";
 import { honorTranslation, removeTranslation, addTranslation } from "./pet";
+import * as elements from "./elements";
 
 export {
     honorTranslation,
     removeTranslation,
     addTranslation,
-    state1,
-    state2,
-    state3,
-    state4,
-    state5,
     mainHeading,
     title,
     desc,
-    daysOfWeek
+    daysOfWeek,
+    langList,
+    elements,
+    type Langs
 };

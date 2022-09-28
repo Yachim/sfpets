@@ -39,7 +39,7 @@ const earthPets: Pet[] = [
     },
     {
         names: { en: "Bittnutz", cs: "Kruťovevruch" },
-        loc_index: 0,
+        loc_index: null,
         time: "day",
         day_of_week: null,
         event: null,
