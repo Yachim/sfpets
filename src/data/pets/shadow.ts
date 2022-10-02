@@ -10,8 +10,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet1.jpg",
-        index: 1
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet1.jpg"
     },
     {
         names: { en: "Digmol", cs: "Čmuchyč" },
@@ -22,8 +21,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet2.jpg",
-        index: 2
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet2.jpg"
     },
     {
         names: { en: "Toothey", cs: "Zublen" },
@@ -34,8 +32,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet3.jpg",
-        index: 3
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet3.jpg"
     },
     {
         names: { en: "Okultacle", cs: "Okotnice" },
@@ -46,8 +43,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet4.jpg",
-        index: 4
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet4.jpg"
     },
     {
         names: { en: "Spidor", cs: "Pavukin" },
@@ -58,8 +54,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet5.jpg",
-        index: 5
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet5.jpg"
     },
     {
         names: { en: "Jackobu", cs: "Dýňoch" },
@@ -70,8 +65,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet6.jpg",
-        index: 6
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet6.jpg"
     },
     {
         names: { en: "Shrimpfly", cs: "Much" },
@@ -82,8 +76,7 @@ const shadowPets: Pet[] = [
         season: "summer",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet7.jpg",
-        index: 7
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet7.jpg"
     },
     {
         names: { en: "Reaprim", cs: "Smrtkin" },
@@ -94,8 +87,7 @@ const shadowPets: Pet[] = [
         season: "winter",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet8.jpg",
-        index: 8
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet8.jpg"
     },
     {
         names: { en: "Petdacat", cs: "Kočkodráp" },
@@ -106,8 +98,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet9.jpg",
-        index: 9
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet9.jpg"
     },
     {
         names: { en: "Mykon", cs: "Hublen" },
@@ -118,8 +109,7 @@ const shadowPets: Pet[] = [
         season: "fall",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet10.jpg",
-        index: 10
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet10.jpg"
     },
     {
         names: { en: "Fishorr", cs: "Rybokul" },
@@ -130,8 +120,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet11.jpg",
-        index: 11
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet11.jpg"
     },
     {
         names: { en: "Cuckooly", cs: "Kulolet" },
@@ -142,8 +131,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet12.jpg",
-        index: 12
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet12.jpg"
     },
     {
         names: { en: "Battlutter", cs: "Vampýrouch" },
@@ -154,8 +142,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet13.jpg",
-        index: 13
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet13.jpg"
     },
     {
         names: { en: "Pinklynx", cs: "Rysoděs" },
@@ -166,8 +153,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet14.jpg",
-        index: 14
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet14.jpg"
     },
     {
         names: { en: "Pharamumm", cs: "Faramum" },
@@ -181,8 +167,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet15.jpg",
-        index: 15
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet15.jpg"
     },
     {
         names: { en: "Ninstarr", cs: "Ninstar" },
@@ -193,8 +178,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: { type: { cs: "", en: "" }, top: 1000, honor: 50000 },
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet16.jpg",
-        index: 16
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet16.jpg"
     },
     {
         names: { en: "Luchtablong", cs: "Hlavyč" },
@@ -208,8 +192,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet17.jpg",
-        index: 17
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet17.jpg"
     },
     {
         names: { en: "Angrack", cs: "Těžkotur" },
@@ -223,8 +206,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet18.jpg",
-        index: 18
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet18.jpg"
     },
     {
         names: { en: "Devilsatt", cs: "Pekloškleb" },
@@ -238,8 +220,7 @@ const shadowPets: Pet[] = [
             cs: "Odměna za vyčištění 10. podlaží 13. podzemí ve stinném světě.",
             en: "Rewarded for clearing 10th floor of the 13th dungeon of the Shadow World."
         },
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet19.jpg",
-        index: 19
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet19.jpg"
     },
     {
         names: { en: "Poisnake", cs: "Jeduhad" },
@@ -250,8 +231,7 @@ const shadowPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/dark-pet20.jpg",
-        index: 20
+        img: "https://en.sfporadnik.pl/img/pets/dark-pet20.jpg"
     }
 ];
 

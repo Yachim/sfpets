@@ -10,8 +10,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet1.jpg",
-        index: 1
+        img: "https://en.sfporadnik.pl/img/pets/light-pet1.jpg"
     },
     {
         names: { en: "Jellclops", cs: "Medúzok" },
@@ -22,8 +21,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet2.jpg",
-        index: 2
+        img: "https://en.sfporadnik.pl/img/pets/light-pet2.jpg"
     },
     {
         names: { en: "Tinck", cs: "Zvonil" },
@@ -34,8 +32,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet3.jpg",
-        index: 3
+        img: "https://en.sfporadnik.pl/img/pets/light-pet3.jpg"
     },
     {
         names: { en: "Cloudning", cs: "Mrakotřesk" },
@@ -46,8 +43,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet4.jpg",
-        index: 4
+        img: "https://en.sfporadnik.pl/img/pets/light-pet4.jpg"
     },
     {
         names: { en: "Nevorfull", cs: "Nervočerv" },
@@ -58,8 +54,7 @@ const lightPets: Pet[] = [
         season: "spring",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet5.jpg",
-        index: 5
+        img: "https://en.sfporadnik.pl/img/pets/light-pet5.jpg"
     },
     {
         names: { en: "Plutoid", cs: "Plutoid" },
@@ -70,8 +65,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet6.jpg",
-        index: 6
+        img: "https://en.sfporadnik.pl/img/pets/light-pet6.jpg"
     },
     {
         names: { en: "Djinntonic", cs: "Džintonik" },
@@ -82,8 +76,7 @@ const lightPets: Pet[] = [
         season: "summer",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet7.jpg",
-        index: 7
+        img: "https://en.sfporadnik.pl/img/pets/light-pet7.jpg"
     },
     {
         names: { en: "Blaxta", cs: "Hvězdoděr" },
@@ -94,8 +87,7 @@ const lightPets: Pet[] = [
         season: "fall",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet8.jpg",
-        index: 8
+        img: "https://en.sfporadnik.pl/img/pets/light-pet8.jpg"
     },
     {
         names: { en: "Lampcess", cs: "Lampcezna" },
@@ -106,8 +98,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet9.jpg",
-        index: 9
+        img: "https://en.sfporadnik.pl/img/pets/light-pet9.jpg"
     },
     {
         names: { en: "Teslarr", cs: "Teslar" },
@@ -118,8 +109,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet10.jpg",
-        index: 10
+        img: "https://en.sfporadnik.pl/img/pets/light-pet10.jpg"
     },
     {
         names: { en: "Sunnya", cs: "Sluňouch" },
@@ -130,8 +120,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet11.jpg",
-        index: 11
+        img: "https://en.sfporadnik.pl/img/pets/light-pet11.jpg"
     },
     {
         names: { en: "Buckfoxion", cs: "Hrdozvěř" },
@@ -142,8 +131,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet12.jpg",
-        index: 12
+        img: "https://en.sfporadnik.pl/img/pets/light-pet12.jpg"
     },
     {
         names: { en: "Birdychirp", cs: "Ptakopísk" },
@@ -154,8 +142,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet13.jpg",
-        index: 13
+        img: "https://en.sfporadnik.pl/img/pets/light-pet13.jpg"
     },
     {
         names: { en: "Eyeorwhat", cs: "Vševiděl" },
@@ -166,8 +153,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet14.jpg",
-        index: 14
+        img: "https://en.sfporadnik.pl/img/pets/light-pet14.jpg"
     },
     {
         names: { en: "Mesmerit", cs: "Třetiok" },
@@ -182,8 +168,7 @@ const lightPets: Pet[] = [
             honor: 2500
         },
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet15.jpg",
-        index: 15
+        img: "https://en.sfporadnik.pl/img/pets/light-pet15.jpg"
     },
     {
         names: { en: "Antlar", cs: "Parohosvit" },
@@ -194,8 +179,7 @@ const lightPets: Pet[] = [
         season: "december",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet16.jpg",
-        index: 16
+        img: "https://en.sfporadnik.pl/img/pets/light-pet16.jpg"
     },
     {
         names: { en: "Liphant", cs: "Světlon" },
@@ -209,8 +193,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet17.jpg",
-        index: 17
+        img: "https://en.sfporadnik.pl/img/pets/light-pet17.jpg"
     },
     {
         names: { en: "Knilight", cs: "Ryťozář" },
@@ -224,8 +207,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet18.jpg",
-        index: 18
+        img: "https://en.sfporadnik.pl/img/pets/light-pet18.jpg"
     },
     {
         names: { en: "Heraldon", cs: "Přilboskvost" },
@@ -239,8 +221,7 @@ const lightPets: Pet[] = [
             cs: "Je nutné vyčištění věže.",
             en: "Tower needs to be cleared."
         },
-        img: "https://en.sfporadnik.pl/img/pets/light-pet19.jpg",
-        index: 19
+        img: "https://en.sfporadnik.pl/img/pets/light-pet19.jpg"
     },
     {
         names: { en: "Unikor", cs: "Jednorožeň" },
@@ -251,8 +232,7 @@ const lightPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/light-pet20.jpg",
-        index: 20
+        img: "https://en.sfporadnik.pl/img/pets/light-pet20.jpg"
     }
 ];
 

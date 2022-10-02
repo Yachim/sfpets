@@ -10,8 +10,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet1.jpg",
-        index: 1
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet1.jpg"
     },
     {
         names: { en: "Monkorrage", cs: "Opopěst" },
@@ -22,8 +21,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet2.jpg",
-        index: 2
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet2.jpg"
     },
     {
         names: { en: "Smaponyck", cs: "Pyskoník" },
@@ -34,8 +32,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet3.jpg",
-        index: 3
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet3.jpg"
     },
     {
         names: { en: "Bittnutz", cs: "Kruťovevruch" },
@@ -46,8 +43,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet4.jpg",
-        index: 4
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet4.jpg"
     },
     {
         names: { en: "Roarear", cs: "Řevoval" },
@@ -58,8 +54,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet5.jpg",
-        index: 5
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet5.jpg"
     },
     {
         names: { en: "Muscudon", cs: "Krutokel" },
@@ -70,8 +65,7 @@ const earthPets: Pet[] = [
         season: "summer",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet6.jpg",
-        index: 6
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet6.jpg"
     },
     {
         names: { en: "Apstick", cs: "Klackopice" },
@@ -82,8 +76,7 @@ const earthPets: Pet[] = [
         season: "fall",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet7.jpg",
-        index: 7
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet7.jpg"
     },
     {
         names: { en: "Horrnington", cs: "Kozobuch" },
@@ -94,8 +87,7 @@ const earthPets: Pet[] = [
         season: "winter",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet8.jpg",
-        index: 8
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet8.jpg"
     },
     {
         names: { en: "Boaringg", cs: "Vepřokul" },
@@ -106,8 +98,7 @@ const earthPets: Pet[] = [
         season: "spring",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet9.jpg",
-        index: 9
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet9.jpg"
     },
     {
         names: { en: "Mameloth", cs: "Kulokam" },
@@ -118,8 +109,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet10.jpg",
-        index: 10
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet10.jpg"
     },
     {
         names: { en: "Rheynooh", cs: "Nosorohub" },
@@ -130,8 +120,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet11.jpg",
-        index: 11
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet11.jpg"
     },
     {
         names: { en: "Rockastonn", cs: "Kamenolam" },
@@ -142,8 +131,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet12.jpg",
-        index: 12
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet12.jpg"
     },
     {
         names: { en: "Redwoofox", cs: "Rudoliška" },
@@ -154,8 +142,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet13.jpg",
-        index: 13
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet13.jpg"
     },
     {
         names: { en: "Lilbeatzup", cs: "Osinečka" },
@@ -166,8 +153,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet14.jpg",
-        index: 14
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet14.jpg"
     },
     {
         names: { en: "Forror", cs: "Stromochod" },
@@ -181,8 +167,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet15.jpg",
-        index: 15
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet15.jpg"
     },
     {
         names: { en: "Nipprabs", cs: "Krabokul" },
@@ -196,8 +181,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet16.jpg",
-        index: 16
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet16.jpg"
     },
     {
         names: { en: "Armoruck", cs: "Obrňouch" },
@@ -211,8 +195,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet17.jpg",
-        index: 17
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet17.jpg"
     },
     {
         names: { en: "Canocle", cs: "Zlatozub" },
@@ -230,8 +213,7 @@ const earthPets: Pet[] = [
             honor: 2500
         },
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet18.jpg",
-        index: 18
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet18.jpg"
     },
     {
         names: { en: "Tricerawood", cs: "Kořenomlat" },
@@ -245,8 +227,7 @@ const earthPets: Pet[] = [
             cs: "Lze nalézt v dolu na drahokamy.",
             en: "Found in the gem mine."
         },
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet19.jpg",
-        index: 19
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet19.jpg"
     },
     {
         names: { en: "Mouthrexor", cs: "Obrotlam" },
@@ -257,8 +238,7 @@ const earthPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/earth-pet20.jpg",
-        index: 20
+        img: "https://en.sfporadnik.pl/img/pets/earth-pet20.jpg"
     }
 ];
 

@@ -29,7 +29,6 @@ type Pet = {
         en: string;
     };
     img: string;
-    index: number;
 };
 
 export default Pet;

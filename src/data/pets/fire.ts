@@ -10,8 +10,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet1.jpg",
-        index: 1
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet1.jpg"
     },
     {
         names: { en: "Gullps", cs: "Tydýt" },
@@ -22,8 +21,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet2.jpg",
-        index: 2
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet2.jpg"
     },
     {
         names: { en: "Pyrophibus", cs: "Žabopal" },
@@ -34,8 +32,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet3.jpg",
-        index: 3
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet3.jpg"
     },
     {
         names: { en: "Flamechirr", cs: "Ohňolet" },
@@ -46,8 +43,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet4.jpg",
-        index: 4
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet4.jpg"
     },
     {
         names: { en: "Tectospit", cs: "Škrtopliv" },
@@ -58,8 +54,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet5.jpg",
-        index: 5
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet5.jpg"
     },
     {
         names: { en: "Pyroplant", cs: "Pyrozel" },
@@ -70,8 +65,7 @@ const firePets: Pet[] = [
         season: "fall",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet6.jpg",
-        index: 6
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet6.jpg"
     },
     {
         names: { en: "Kokofire", cs: "Kokoheň" },
@@ -82,8 +76,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet7.jpg",
-        index: 7
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet7.jpg"
     },
     {
         names: { en: "Peppryon", cs: "Pulcožár" },
@@ -94,8 +87,7 @@ const firePets: Pet[] = [
         season: "spring",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet8.jpg",
-        index: 8
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet8.jpg"
     },
     {
         names: { en: "Boomywoomy", cs: "Bombin" },
@@ -106,8 +98,7 @@ const firePets: Pet[] = [
         season: "winter",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet9.jpg",
-        index: 9
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet9.jpg"
     },
     {
         names: { en: "Tikiricky", cs: "Kmenožár" },
@@ -118,8 +109,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet10.jpg",
-        index: 10
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet10.jpg"
     },
     {
         names: { en: "Matchlit", cs: "Krabkin" },
@@ -130,8 +120,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet11.jpg",
-        index: 11
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet11.jpg"
     },
     {
         names: { en: "Birblazey", cs: "Ptakopal" },
@@ -142,8 +131,7 @@ const firePets: Pet[] = [
         season: "summer",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet12.jpg",
-        index: 12
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet12.jpg"
     },
     {
         names: { en: "Infernox", cs: "Ohňotřas" },
@@ -154,8 +142,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet13.jpg",
-        index: 13
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet13.jpg"
     },
     {
         names: { en: "Humbuzzish", cs: "Hmyzozlat" },
@@ -166,8 +153,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet14.jpg",
-        index: 14
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet14.jpg"
     },
     {
         names: { en: "Dragopyr", cs: "Drakopýr" },
@@ -181,8 +167,7 @@ const firePets: Pet[] = [
             cs: "Lze koupit ve zbrojírně.",
             en: "Bought from the weapon shop."
         },
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet15.jpg",
-        index: 15
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet15.jpg"
     },
     {
         names: { en: "Mantiflame", cs: "Kudloheň" },
@@ -196,8 +181,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet16.jpg",
-        index: 16
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet16.jpg"
     },
     {
         names: { en: "Finnettle", cs: "Ryboheň" },
@@ -211,8 +195,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet17.jpg",
-        index: 17
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet17.jpg"
     },
     {
         names: { en: "Etrock", cs: "Raketčík" },
@@ -226,8 +209,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet18.jpg",
-        index: 18
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet18.jpg"
     },
     {
         names: { en: "Blazingtongues", cs: "Peklobliz" },
@@ -241,8 +223,7 @@ const firePets: Pet[] = [
             cs: "Musí být vyčištěn démonický portál v režimu pro jednoho hráče.",
             en: "Single-player demon portal needs to be cleared."
         },
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet19.jpg",
-        index: 19
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet19.jpg"
     },
     {
         names: { en: "Devastator", cs: "Devastor" },
@@ -253,8 +234,7 @@ const firePets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/fire-pet20.jpg",
-        index: 20
+        img: "https://en.sfporadnik.pl/img/pets/fire-pet20.jpg"
     }
 ];
 

@@ -10,8 +10,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet1.jpg",
-        index: 1
+        img: "https://en.sfporadnik.pl/img/pets/water-pet1.jpg"
     },
     {
         names: { en: "Orcahle", cs: "Kosatkin" },
@@ -22,8 +21,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet2.jpg",
-        index: 2
+        img: "https://en.sfporadnik.pl/img/pets/water-pet2.jpg"
     },
     {
         names: { en: "Ocodile", cs: "Okodýl" },
@@ -34,8 +32,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet3.jpg",
-        index: 3
+        img: "https://en.sfporadnik.pl/img/pets/water-pet3.jpg"
     },
     {
         names: { en: "Penguwater", cs: "Tučňoplav" },
@@ -46,8 +43,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet4.jpg",
-        index: 4
+        img: "https://en.sfporadnik.pl/img/pets/water-pet4.jpg"
     },
     {
         names: { en: "Walrophin", cs: "Mrožoun" },
@@ -58,8 +54,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet5.jpg",
-        index: 5
+        img: "https://en.sfporadnik.pl/img/pets/water-pet5.jpg"
     },
     {
         names: { en: "Colsnail", cs: "Šnekomlat" },
@@ -70,8 +65,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet6.jpg",
-        index: 6
+        img: "https://en.sfporadnik.pl/img/pets/water-pet6.jpg"
     },
     {
         names: { en: "Aquaphant", cs: "Slonovod" },
@@ -82,8 +76,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet7.jpg",
-        index: 7
+        img: "https://en.sfporadnik.pl/img/pets/water-pet7.jpg"
     },
     {
         names: { en: "Naar", cs: "Jednobodec" },
@@ -94,8 +87,7 @@ const waterPets: Pet[] = [
         season: "winter",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet8.jpg",
-        index: 8
+        img: "https://en.sfporadnik.pl/img/pets/water-pet8.jpg"
     },
     {
         names: { en: "Octoboss", cs: "Chobošéf" },
@@ -106,8 +98,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet9.jpg",
-        index: 9
+        img: "https://en.sfporadnik.pl/img/pets/water-pet9.jpg"
     },
     {
         names: { en: "Ewilgryn", cs: "Zlatožral" },
@@ -118,8 +109,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet10.jpg",
-        index: 10
+        img: "https://en.sfporadnik.pl/img/pets/water-pet10.jpg"
     },
     {
         names: { en: "Seapard", cs: "Koňovod" },
@@ -130,8 +120,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet11.jpg",
-        index: 11
+        img: "https://en.sfporadnik.pl/img/pets/water-pet11.jpg"
     },
     {
         names: { en: "Shellzy", cs: "Mušlin" },
@@ -142,8 +131,7 @@ const waterPets: Pet[] = [
         season: "fall",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet12.jpg",
-        index: 12
+        img: "https://en.sfporadnik.pl/img/pets/water-pet12.jpg"
     },
     {
         names: { en: "Mingho", cs: "Zobovod" },
@@ -154,8 +142,7 @@ const waterPets: Pet[] = [
         season: "summer",
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet13.jpg",
-        index: 13
+        img: "https://en.sfporadnik.pl/img/pets/water-pet13.jpg"
     },
     {
         names: { en: "Angbite", cs: "Hryzoplav" },
@@ -166,8 +153,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet14.jpg",
-        index: 14
+        img: "https://en.sfporadnik.pl/img/pets/water-pet14.jpg"
     },
     {
         names: { en: "Mermoid", cs: "Víloděs" },
@@ -185,8 +171,7 @@ const waterPets: Pet[] = [
             honor: 4000
         },
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet15.jpg",
-        index: 15
+        img: "https://en.sfporadnik.pl/img/pets/water-pet15.jpg"
     },
     {
         names: { en: "Watnake", cs: "Peřejohad" },
@@ -200,8 +185,7 @@ const waterPets: Pet[] = [
             cs: "Lze koupit v čaroobchodě.",
             en: "Can be bought from the magic shop."
         },
-        img: "https://en.sfporadnik.pl/img/pets/water-pet16.jpg",
-        index: 16
+        img: "https://en.sfporadnik.pl/img/pets/water-pet16.jpg"
     },
     {
         names: { en: "Cannoturtle", cs: "Děloželva" },
@@ -215,8 +199,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet17.jpg",
-        index: 17
+        img: "https://en.sfporadnik.pl/img/pets/water-pet17.jpg"
     },
     {
         names: { en: "Unhere", cs: "Antivod" },
@@ -230,8 +213,7 @@ const waterPets: Pet[] = [
             cs: "Nalezen v Tajemné toaletě.",
             en: "Found in the Sacred toilet."
         },
-        img: "https://en.sfporadnik.pl/img/pets/water-pet18.jpg",
-        index: 18
+        img: "https://en.sfporadnik.pl/img/pets/water-pet18.jpg"
     },
     {
         names: { en: "Tritosting", cs: "Tritonec" },
@@ -245,8 +227,7 @@ const waterPets: Pet[] = [
             cs: "Po vyčištění 14. podzemí.",
             en: "Easteros needs to be cleared."
         },
-        img: "https://en.sfporadnik.pl/img/pets/water-pet19.jpg",
-        index: 19
+        img: "https://en.sfporadnik.pl/img/pets/water-pet19.jpg"
     },
     {
         names: { en: "Hydrospir", cs: "Hydroděs" },
@@ -257,8 +238,7 @@ const waterPets: Pet[] = [
         season: null,
         hof: null,
         notes: null,
-        img: "https://en.sfporadnik.pl/img/pets/water-pet20.jpg",
-        index: 20
+        img: "https://en.sfporadnik.pl/img/pets/water-pet20.jpg"
     }
 ];
 
