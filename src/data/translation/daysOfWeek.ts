@@ -1,5 +1,9 @@
 export const daysOfWeek = [
     {
+        en: "Sunday",
+        cs: "Neděle"
+    },
+    {
         en: "Monday",
         cs: "Pondělí"
     },
@@ -22,9 +26,5 @@ export const daysOfWeek = [
     {
         en: "Saturday",
         cs: "Sobota"
-    },
-    {
-        en: "Sunday",
-        cs: "Neděle"
     }
 ];

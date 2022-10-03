@@ -139,7 +139,7 @@ export {};
 //             return 5;
 //         }
 
-//         if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
+//         if (!pet.dayOfWeek && !pet.time && !pet.season && !pet.event)
 //             return 2;
 //         if (pet.event && !(pet.event.en in filterableEvents)) return 3;
 
@@ -148,7 +148,7 @@ export {};
 //             if (!filterableEvents[pet.event.en]()) return 4;
 //         }
 
-//         if (!(!pet.day_of_week || pet.day_of_week === dayOfWeek)) return 4;
+//         if (!(!pet.dayOfWeek || pet.dayOfWeek === dayOfWeek)) return 4;
 //         if (
 //             !(
 //                 !pet.time ||
@@ -165,7 +165,7 @@ export {};
 //             )
 //         )
 //             return 4;
-//         if (!pet.day_of_week && !pet.time && !pet.season && !pet.event)
+//         if (!pet.dayOfWeek && !pet.time && !pet.season && !pet.event)
 //             return 4;
 
 //         return 1;

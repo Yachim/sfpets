@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Params } from "../../types";
 import styles from "../../scss/Page.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,16 +11,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
 
+// TODO: implement hidden link
 export function Page(props: { children?: React.ReactNode }) {
     const params = useParams<Params>();
     const lang = params.lang!;
-    let element = "";
-    if (params.element) element = params.element;
+    const element = params.element;
+
+    const [searchParams] = useSearchParams();
 
     document.title = title[lang];
     document
         .querySelector("meta[name='description']")
         ?.setAttribute("content", desc[lang]);
+
+    function generateUrl(
+        element: "shadow" | "light" | "earth" | "fire" | "water"
+    ) {
+        return `../${lang}/${element}?${searchParams.toString()}`;
+    }
 
     return (
         <div className={styles.app}>
@@ -31,35 +39,35 @@ export function Page(props: { children?: React.ReactNode }) {
             </div>
             <nav className={styles["nav-bar"]}>
                 <Link
-                    to={`../${lang}/shadow`}
+                    to={generateUrl("shadow")}
                     data-active={element === "shadow"}
                     className={styles["shadow-icon"]}
                 >
                     <FontAwesomeIcon icon={faMoon} />
                 </Link>
                 <Link
-                    to={`../${lang}/light`}
+                    to={generateUrl("light")}
                     data-active={element === "light"}
                     className={styles["light-icon"]}
                 >
                     <FontAwesomeIcon icon={faSun} />
                 </Link>
                 <Link
-                    to={`../${lang}/earth`}
+                    to={generateUrl("earth")}
                     data-active={element === "earth"}
                     className={styles["earth-icon"]}
                 >
                     <FontAwesomeIcon icon={faSeedling} />
                 </Link>
                 <Link
-                    to={`../${lang}/fire`}
+                    to={generateUrl("fire")}
                     data-active={element === "fire"}
                     className={styles["fire-icon"]}
                 >
                     <FontAwesomeIcon icon={faFire} />
                 </Link>
                 <Link
-                    to={`../${lang}/water`}
+                    to={generateUrl("water")}
                     data-active={element === "water"}
                     className={styles["water-icon"]}
                 >

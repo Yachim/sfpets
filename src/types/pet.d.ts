@@ -1,6 +1,6 @@
 type Time = "day" | "night" | "w_hour" | null;
 type LocIndex = number | null;
-type DayOfWeek = 1 | 2 | 3 | 4 | 5 | 6 | 7 | null;
+type DayOfWeek = 1 | 2 | 3 | 4 | 5 | 6 | 0 | null;
 type Season = null | "spring" | "summer" | "fall" | "winter" | "december";
 
 type Pet = {
@@ -10,7 +10,7 @@ type Pet = {
     };
     loc_index: LocIndex;
     time: Time;
-    day_of_week: DayOfWeek;
+    dayOfWeek: DayOfWeek;
     event: null | {
         cs: string;
         en: string;

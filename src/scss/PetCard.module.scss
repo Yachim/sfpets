@@ -23,6 +23,8 @@ $border-radius: 0.75rem;
     img {
         width: 100%;
         border-radius: $border-radius;
+
+        transition: filter 300ms ease-in-out;
     }
 
     &:hover,
@@ -38,6 +40,10 @@ $border-radius: 0.75rem;
 
     animation: card-load 700ms ease-in-out;
     animation-fill-mode: backwards;
+}
+
+.pet-card[data-found="false"] img {
+    filter: grayscale(0.9);
 }
 
 .pet-data {

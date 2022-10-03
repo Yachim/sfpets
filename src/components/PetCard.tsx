@@ -40,7 +40,7 @@ export type PetTimeProps = {
 export type PetProps = PetTimeProps & {
     name: string;
     location: string | null;
-    status: "available" | "unavailable";
+    status: "available" | "unknown" | "unavailable";
     img: string;
     found: boolean;
     index: number;
@@ -48,7 +48,6 @@ export type PetProps = PetTimeProps & {
 
 export function PetCard(
     props: PetProps & { toggleFound: (index: number, newVal: boolean) => void }
-    // props: Pet & { status: "available" | "unavailable"; found: boolean }
 ) {
     const params = useParams<Params>();
     const element = params.element!;
@@ -105,28 +104,20 @@ export function PetCard(
     }
 
     return (
-        <div className={styles["pet-card"]}>
+        <div className={styles["pet-card"]} data-found={props.found}>
             <img src={props.img} alt={props.name} />
 
             <div className={styles["pet-data"]}>
                 <p>{data.join(" •\u00A0")}</p>
-                <p>
-                    {props.name}
-                    {props.found && (
-                        <>
-                            {" "}
-                            <FontAwesomeIcon icon={faCheck} />
-                        </>
-                    )}
-                </p>
+                <p>{props.name}</p>
             </div>
 
             <div className={styles["pet-info__wrapper"]}>
                 {(props.time || props.season) && (
-                    <p className={styles.icons}>
+                    <div className={styles.icons}>
                         <TimeIcon />
                         <SeasonIcon />
-                    </p>
+                    </div>
                 )}
                 <button onClick={toggleFound} className={styles["remove-icon"]}>
                     {props.found ? (

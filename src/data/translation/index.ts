@@ -4,6 +4,7 @@ import { mainHeading, title, desc } from "./page";
 import { honorTranslation, removeTranslation, addTranslation } from "./pet";
 import * as elements from "./elements";
 import { season, time } from "./infoIcons";
+import { filterLabel } from "./filters";
 
 export {
     honorTranslation,
@@ -17,5 +18,6 @@ export {
     elements,
     season,
     time,
+    filterLabel,
     type Langs
 };
