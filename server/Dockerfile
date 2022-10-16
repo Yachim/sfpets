@@ -16,8 +16,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build /app ./
 
-# should these be here?
-RUN dotnet ef migrations add "init"
+# should this be here?
 RUN dotnet ef database update
 
 ENTRYPOINT ["dotnet", "server.dll"]
