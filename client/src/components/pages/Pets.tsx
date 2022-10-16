@@ -129,7 +129,7 @@ export function Pets() {
     const [date, setDate] = useState<Date>(new Date());
 
     useEffect(() => {
-        const interval = setInterval(() => setDate(new Date()), 1_000_000);
+        const interval = setInterval(() => setDate(new Date()), 60_000);
 
         return () => clearInterval(interval);
         // TODO: set state (setDate) only in certain time periods (6:00, 18:00, 00:00, 1:00)
