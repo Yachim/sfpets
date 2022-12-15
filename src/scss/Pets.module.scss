@@ -1,12 +1,11 @@
 @use "../scss/vars/colors.scss";
 
 .pets-grid {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    display: grid;
+	grid-template-columns: 1fr;
 
-    gap: 2.5rem;
-    padding: 2.5rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
 
     width: 100%;
 
@@ -17,9 +16,39 @@
     }
 }
 
+@media (min-width: 640px) {
+	.pets-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 768px) {
+	.pets-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.pets-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (min-width: 1280px) {
+	.pets-grid {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+@media (min-width: 1536px) {
+	.pets-grid {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
 .filters {
+	grid-column: 1 / -1;
     flex: 1 1 100%;
-    padding: 0.75rem;
 }
 
 .filter-settings {
