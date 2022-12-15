@@ -53,8 +53,8 @@ class Character(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="character_user")
     world = models.CharField(max_length=8)
 
-    shadow_found = ArrayField(models.IntegerField(), blank=True)
-    light_found = ArrayField(models.IntegerField(), blank=True)
-    earth_found = ArrayField(models.IntegerField(), blank=True)
-    fire_found = ArrayField(models.IntegerField(), blank=True)
-    water_found = ArrayField(models.IntegerField(), blank=True)
+    shadow_found = ArrayField(models.IntegerField(blank=True), blank=True)
+    light_found = ArrayField(models.IntegerField(blank=True), blank=True)
+    earth_found = ArrayField(models.IntegerField(blank=True), blank=True)
+    fire_found = ArrayField(models.IntegerField(blank=True), blank=True)
+    water_found = ArrayField(models.IntegerField(blank=True), blank=True)
