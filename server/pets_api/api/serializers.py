@@ -7,6 +7,8 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = [
+            "id",
+            "user",
             "world",
             "shadow_found",
             "light_found",
@@ -14,14 +16,25 @@ class CharacterSerializer(serializers.ModelSerializer):
             "fire_found",
             "water_found"
         ]
+        read_only_fields = ["id"]
 
 
 class UserSerializer(serializers.ModelSerializer):
-    user_character = CharacterSerializer(many=True)
-
     class Meta:
         model = User
-        fields = ["email", "user_character"]
+        fields = ["id", "email", "password"]
+        read_only_fields = ["id"]
+        extra_kwargs = {
+            "password": {"write_only": True}
+        }
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            email=validated_data["email"],
+            password=validated_data["password"]
+        )
+
+        return user
 
 
 # https://www.guguweb.com/2022/01/23/django-rest-framework-authentication-the-easy-way/
