@@ -1,8 +1,25 @@
 version: "3.8"
 services:
+  backend:
+    container_name: pets_backend
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DB_USR=${DB_USR}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+    build: "./server"
+    entrypoint: "./entrypoint_docker.sh"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    #restart: always
   db:
     container_name: pets_db
-    image: postgres:14.1-alpine
+    image: postgres:15-bullseye
     restart: always
     environment:
       - POSTGRES_USER=${DB_USR}
@@ -12,3 +29,8 @@ services:
       - "5432:5432"
     volumes:
       - "$PWD/postgres"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USR} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

@@ -10,7 +10,7 @@ from .views import (
 
 urlpatterns = [
     path('characters/', CharactersAllApiView.as_view()),
-    path('characters/<int:character_id>', CharacterDetailsApiView.as_view()),
+    path('characters/<int:character_id>/', CharacterDetailsApiView.as_view()),
     path("login/", LoginApiView.as_view()),
     path("logout/", LogoutApiView.as_view()),
     path("account/", UserApiView.as_view()),

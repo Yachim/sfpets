@@ -67,7 +67,8 @@ class CharacterDetailsApiView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        request.data.pop("user")
+        if "user" in request.data:
+            request.data.pop("user")
         serializer = CharacterSerializer(character, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()

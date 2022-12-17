@@ -11,8 +11,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv, find_dotenv
 from os import getenv
+
+db_host = "db"
+if not bool(int(getenv("DOCKER", "0"))):
+    from dotenv import load_dotenv, find_dotenv
+    env_file = find_dotenv("../.env")
+    load_dotenv(env_file)
+    db_host = "localhost"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wn7w3onliev_dq@n+iekdb%zk@kfk1_a$$ubx3!5w(&##3#w2h'
+SECRET_KEY = getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(getenv("DEBUG")))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = getenv("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -46,9 +52,6 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
     ],
 }
 
@@ -83,10 +86,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pets_api.wsgi.application'
 
 
-env_file = find_dotenv("../.env")
-load_dotenv(env_file)
-
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
@@ -95,7 +94,7 @@ DATABASES = {
         "NAME": getenv("DB_NAME"),
         "USER": getenv("DB_USR"),
         "PASSWORD": getenv("DB_PASS"),
-        'HOST': '127.0.0.1',
+        'HOST': db_host,
         'PORT': '5432',
     }
 }
