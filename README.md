@@ -6,8 +6,9 @@ The env file should contain following fields:
  - `DB_PASS` - password for database user
  - `DB_NAME` - database name
  - `SECRET_KEY` - [secret key](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SECRET_KEY) for signining
+ - `SERVER_NAME` - the host nginx will listen to
  - `DEBUG` - 0/1
- - `ALLOWED_HOSTS` - list of IPs separated by spaces
+ - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
  - `API_HOST`- tells the frontend the address the api is on
 
 ## Contributing
@@ -25,6 +26,7 @@ DB_PASS=test_pass
 DB_NAME=test_db
 SECRET_KEY=secret
 DEBUG=1
+SERVER_NAME=example.com
 ALLOWED_HOSTS=localhost
 API_HOST=localhost
 ```
