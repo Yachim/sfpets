@@ -10,6 +10,7 @@ The env file should contain following fields:
  - `DEBUG` - 0/1
  - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
  - `API_HOST`- tells the frontend the address the api is on
+ - `BIND_ADDRESS` - address to bind the wsgi server on
 
 ## Contributing
 ### Requirements
@@ -27,8 +28,9 @@ DB_NAME=test_db
 SECRET_KEY=secret
 DEBUG=1
 SERVER_NAME=example.com
-ALLOWED_HOSTS=localhost
-API_HOST=localhost
+ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+API_HOST=localhost:8000
+BIND_ADDRESS=localhost
 ```
 
 ### Backend development server

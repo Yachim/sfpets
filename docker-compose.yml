@@ -6,7 +6,7 @@ services:
     volumes:
       - ./templates:/etc/nginx/templates
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
       - SERVER_NAME=${SERVER_NAME}
     depends_on:
@@ -21,6 +21,7 @@ services:
       - DB_USR=${DB_USR}
       - DB_PASS=${DB_PASS}
       - DB_NAME=${DB_NAME}
+      - BIND_ADDRESS=${BIND_ADDRESS}
     build: "./server"
     entrypoint: "./entrypoint_docker.sh"
     depends_on:
@@ -45,4 +46,4 @@ services:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USR} -d ${DB_NAME}"]
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
