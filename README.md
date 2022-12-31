@@ -28,7 +28,7 @@ DB_NAME=test_db
 SECRET_KEY=secret
 DEBUG=1
 SERVER_NAME=example.com
-ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+ALLOWED_HOSTS=localhost 127.0.0.1 example.com
 API_HOST=localhost:8000
 BIND_ADDRESS=localhost
 ```
