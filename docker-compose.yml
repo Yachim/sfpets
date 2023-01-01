@@ -1,19 +1,30 @@
+# https://realpython.com/django-nginx-gunicorn/#making-your-site-production-ready-with-https
+# https://mindsers.blog/post/https-using-nginx-certbot-docker/
+
 version: "3.8"
 services:
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot
+      - ./certbot/conf/:/etc/letsencrypt
+
   web:
     container_name: pets_webserver
     image: nginx
     volumes:
       - ./templates:/etc/nginx/templates
+      - ./certbot/www:/var/www/certbot/:ro
     ports:
       - "80:80"
+      - "443:443"
     environment:
-      - SERVER_NAME=${SERVER_NAME}
+      - SERVER_NAME=${ALLOWED_HOSTS}
     depends_on:
-      - backend
-    #restart: always
+      - wsgi
+    restart: always
 
-  backend:
+  wsgi:
     container_name: pets_backend
     environment:
       - SECRET_KEY=${SECRET_KEY}
@@ -30,7 +41,7 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
-    #restart: always
+    restart: always
     
   db:
     container_name: pets_db

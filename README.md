@@ -6,11 +6,10 @@ The env file should contain following fields:
  - `DB_PASS` - password for database user
  - `DB_NAME` - database name
  - `SECRET_KEY` - [secret key](https://docs.djangoproject.com/en/4.1/ref/settings/#std-setting-SECRET_KEY) for signining
- - `SERVER_NAME` - the host nginx will listen to
  - `DEBUG` - 0/1
  - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
- - `API_HOST`- tells the frontend the address the api is on
  - `BIND_ADDRESS` - address to bind the wsgi server on
+ - `API_HOST`- tells the frontend the address the api is on
 
 ## Contributing
 ### Requirements
@@ -25,12 +24,14 @@ Refer to [the previous chapter](#env-file), here is an example:
 DB_USR=test_usr
 DB_PASS=test_pass
 DB_NAME=test_db
+
 SECRET_KEY=secret
 DEBUG=1
-SERVER_NAME=example.com
+
 ALLOWED_HOSTS=localhost 127.0.0.1 example.com
+BIND_ADDRESS=0.0.0.0
+
 API_HOST=localhost:8000
-BIND_ADDRESS=localhost
 ```
 
 ### Backend development server
