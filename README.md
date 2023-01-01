@@ -17,6 +17,7 @@ The env file should contain following fields:
  - [Poetry](https://python-poetry.org/docs/#installation) - the python package manager
    - this project uses version 1.2.2
    - `pip install "poetry==1.2.2"`
+ - Node and npm
 
 ### Set your environment
 Refer to [the previous chapter](#env-file), here is an example:
@@ -51,4 +52,6 @@ The database must be started manually. Run `docker compose up db`.
 Run `poetry run python manage.py runserver` inside the server directory.
 
 ### Frontend
-TODO
+ 1. cd into the client directory
+ 2. Install dependencies by running `npm install`
+ 3. Start the development server by running `npm start`
