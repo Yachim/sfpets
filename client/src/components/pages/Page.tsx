@@ -10,6 +10,7 @@ import {
     faWater
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
+import { CSSProperties } from "react";
 
 // TODO: implement hidden link
 export function Page(props: { children?: React.ReactNode }) {
@@ -41,35 +42,40 @@ export function Page(props: { children?: React.ReactNode }) {
                 <Link
                     to={generateUrl("shadow")}
                     data-active={element === "shadow"}
-                    className={styles["shadow-icon"]}
+                    className={styles.icon}
+					style={{"--hover-color": "gray"} as CSSProperties}
                 >
                     <FontAwesomeIcon icon={faMoon} />
                 </Link>
                 <Link
                     to={generateUrl("light")}
                     data-active={element === "light"}
-                    className={styles["light-icon"]}
+                    className={styles.icon}
+					style={{"--hover-color": "yellow"} as CSSProperties}
                 >
                     <FontAwesomeIcon icon={faSun} />
                 </Link>
                 <Link
                     to={generateUrl("earth")}
                     data-active={element === "earth"}
-                    className={styles["earth-icon"]}
+                    className={styles.icon}
+					style={{"--hover-color": "green"} as CSSProperties}
                 >
                     <FontAwesomeIcon icon={faSeedling} />
                 </Link>
                 <Link
                     to={generateUrl("fire")}
                     data-active={element === "fire"}
-                    className={styles["fire-icon"]}
+                    className={styles.icon}
+					style={{"--hover-color": "orangered"} as CSSProperties}
                 >
                     <FontAwesomeIcon icon={faFire} />
                 </Link>
                 <Link
                     to={generateUrl("water")}
                     data-active={element === "water"}
-                    className={styles["water-icon"]}
+                    className={styles.icon}
+					style={{"--hover-color": "lightskyblue"} as CSSProperties}
                 >
                     <FontAwesomeIcon icon={faWater} />
                 </Link>

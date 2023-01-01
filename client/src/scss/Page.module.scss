@@ -48,22 +48,6 @@
     }
 }
 
-.shadow-icon:hover * {
-    fill: gray;
-}
-
-.light-icon:hover * {
-    fill: yellow;
-}
-
-.earth-icon:hover * {
-    fill: green;
-}
-
-.fire-icon:hover * {
-    fill: orangered;
-}
-
-.water-icon:hover * {
-    fill: lightskyblue;
+.icon:hover * {
+	fill: var(--hover-color)
 }
