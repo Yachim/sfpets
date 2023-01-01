@@ -16,7 +16,9 @@
     background-color: rgba($color: colors.$color2, $alpha: 0.075);
 
     h1 {
-        padding-left: 1rem;
+		font-size: 2rem;
+		font-weight: bold;
+		padding: 1.25rem;
         color: colors.$accent;
     }
 }
