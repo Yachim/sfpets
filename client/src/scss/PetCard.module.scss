@@ -33,7 +33,7 @@ $border-radius: 0.75rem;
             translate: 0;
         }
 
-        .remove-icon {
+        .change-status-icon {
             translate: 0;
         }
     }
@@ -59,8 +59,8 @@ $border-radius: 0.75rem;
 
     background: linear-gradient(
         0deg,
-        rgba($color: colors.$color1, $alpha: 0.8) 0%,
-        rgba($color: colors.$color1, $alpha: 0) 90%
+        rgba($color: colors.$site-bg, $alpha: 0.8) 0%,
+        rgba($color: colors.$site-bg, $alpha: 0) 90%
     );
 
     p {
@@ -89,7 +89,7 @@ $border-radius: 0.75rem;
     width: 2.5ch;
     text-align: center;
 
-    border: 0.4rem solid colors.$color1;
+    border: 0.4rem solid colors.$site-bg;
     border-radius: 50%;
     aspect-ratio: 1/1;
 
@@ -98,11 +98,11 @@ $border-radius: 0.75rem;
 }
 
 .pet-index--available {
-    background-color: #48b826;
+    background-color: colors.$pet-available;
 }
 
 .pet-index--unavailable {
-    background-color: red;
+    background-color: colors.$pet-unavailable;
 }
 
 .pet-info__wrapper {
@@ -145,7 +145,7 @@ $border-radius: 0.75rem;
     }
 }
 
-.remove-icon {
+.change-status-icon {
     position: absolute;
     top: 0;
     right: 0;
@@ -155,7 +155,6 @@ $border-radius: 0.75rem;
 
     background-color: rgba($color: colors.$accent, $alpha: 0.75);
 
-    border: 0;
     border-radius: 0 $border-radius;
 
     aspect-ratio: 1/1;
@@ -172,8 +171,6 @@ $border-radius: 0.75rem;
     }
 
     &:hover {
-        cursor: pointer;
-
         .x-icon * {
             fill: red;
         }

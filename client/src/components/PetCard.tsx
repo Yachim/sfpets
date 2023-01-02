@@ -119,7 +119,7 @@ export function PetCard(
                         <SeasonIcon />
                     </div>
                 )}
-                <button onClick={toggleFound} className={styles["remove-icon"]}>
+                <button onClick={toggleFound} className={styles["change-status-icon"]}>
                     {props.found ? (
                         <FontAwesomeIcon
                             className={styles["x-icon"]}

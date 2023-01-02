@@ -19,15 +19,41 @@ html,
 }
 
 body {
-    background-color: colors.$color1;
-    color: colors.$color2;
+    background-color: colors.$site-bg;
+    color: colors.$text;
 }
 
 svg,
 svg * {
-    fill: colors.$color2;
+    fill: colors.$text;
 }
 
 a {
     text-decoration: none;
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+    color: colors.$text;
+	font-size: 1rem;
+	
+	transition: color 300ms ease-in-out;
+	&:hover {
+		color: colors.$accent;
+	}
+}
+
+input, select, option {
+	font-size: 1rem;
+    color: colors.$text;
+	background-color: rgba($color: colors.$accent, $alpha: 0.05);
+	border: 2px solid rgba($color: colors.$accent, $alpha: 0.2);
+	border-radius: 0.25rem;
+
+	&:focus { 
+		outline: none;
+		background-color: rgba($color: colors.$accent, $alpha: 0.15);	
+	}
 }

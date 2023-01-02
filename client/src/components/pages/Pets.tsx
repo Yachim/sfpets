@@ -303,7 +303,7 @@ export function Pets() {
     }
 
     return (
-        <div className={styles["pets-grid"]}>
+        <main className={styles["pets-grid"]}>
             <div className={styles.filters}>
                 <div className={styles["filter-settings"]}>
                     <button className={styles["filters-select"]}>
@@ -350,6 +350,6 @@ export function Pets() {
             {petsData.map((pet) => (
                 <PetCard key={pet.name} {...pet} toggleFound={toggleFound} />
             ))}
-        </div>
+        </main>
     );
 }

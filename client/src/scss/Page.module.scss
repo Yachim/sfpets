@@ -1,4 +1,4 @@
-@use "../scss/vars/colors.scss";
+@use "./vars/colors.scss";
 
 .app {
     display: grid;
@@ -9,16 +9,26 @@
     grid-template-rows: min-content auto;
     width: 100%;
     min-height: 100%;
+
+	&[data-login-open="true"] > main {
+		filter: blur(10px);
+	}
 }
 
 .top-bar {
     grid-area: heading;
-    background-color: rgba($color: colors.$color2, $alpha: 0.075);
+    background-color: colors.$topbar;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+
+	padding: 1.25rem;
 
     h1 {
 		font-size: 2rem;
 		font-weight: bold;
-		padding: 1.25rem;
         color: colors.$accent;
     }
 }
@@ -29,7 +39,7 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-    background-color: rgba($color: colors.$color2, $alpha: 0.05);
+    background-color: colors.$navbar;
 
     a {
         aspect-ratio: 1/1;
@@ -44,10 +54,29 @@
     }
 
     a[data-active="true"] * {
-        fill: rgba($color: colors.$accent, $alpha: 0.8);
+		fill: colors.$accent;
     }
 }
 
 .icon:hover * {
 	fill: var(--hover-color)
+}
+
+.user-button {
+	font-size: 2rem;
+
+	* {
+		transition: fill 300ms ease-in-out;
+	}
+
+	&:hover * {
+		fill: colors.$accent;
+	}
+}
+
+label {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
 }

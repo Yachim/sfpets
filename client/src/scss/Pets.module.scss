@@ -1,6 +1,8 @@
 @use "../scss/vars/colors.scss";
 
 .pets-grid {
+	transition: filter 300ms ease-in-out;
+
     display: grid;
 	grid-template-columns: 1fr;
 
@@ -63,8 +65,6 @@
 .sort select,
 .sort button {
     border: none;
-    background: none;
-    color: colors.$color2;
     font-family: sans-serif;
     font-size: 1rem;
 

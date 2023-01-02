@@ -3,6 +3,7 @@ import { Params } from "../../types";
 import styles from "../../scss/Page.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+    faCircleUser,
     faFire,
     faMoon,
     faSeedling,
@@ -10,7 +11,8 @@ import {
     faWater
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
+import { LoginMenu } from "..";
 
 // TODO: implement hidden link
 export function Page(props: { children?: React.ReactNode }) {
@@ -31,13 +33,26 @@ export function Page(props: { children?: React.ReactNode }) {
         return `../${lang}/${element}?${searchParams.toString()}`;
     }
 
+	const [loginShown, setLoginShown] = useState(false);
+
     return (
-        <div className={styles.app}>
-            <div className={styles["top-bar"]}>
+        <div className={styles.app} data-login-open={loginShown}>
+			<LoginMenu shown={loginShown} closeFunc={setLoginShown}/>
+
+            <header className={styles["top-bar"]}>
                 <Link to="../">
                     <h1>{mainHeading[lang]}</h1>
                 </Link>
-            </div>
+				<div className={styles["user-settings"]}>
+					<button
+						onClick={() => setLoginShown((prev) => !prev)}
+						className={styles["user-button"]}
+					>
+						<FontAwesomeIcon icon={faCircleUser} />
+					</button>
+				</div>
+            </header>
+
             <nav className={styles["nav-bar"]}>
                 <Link
                     to={generateUrl("shadow")}
