@@ -5,13 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleUser,
     faFire,
+    faLanguage,
     faMoon,
     faSeedling,
     faSun,
     faWater
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { LoginMenu } from "..";
 
 // TODO: implement hidden link
@@ -34,9 +35,23 @@ export function Page(props: { children?: React.ReactNode }) {
     }
 
 	const [loginShown, setLoginShown] = useState(false);
+	const [darkTheme, setDarkTheme] = useState(true);
+
+	const themeIcon = darkTheme ? faSun : faMoon;
+	const themeClass = `${darkTheme ? "dark" : "light"}-theme`;
+
+	useEffect(() => {
+		document.documentElement.classList.remove("dark-theme");
+		document.documentElement.classList.remove("light-theme");
+
+		document.documentElement.classList.add(themeClass);
+	}, [themeClass]);
 
     return (
-        <div className={styles.app} data-login-open={loginShown}>
+        <div
+			className={styles.app}
+			data-login-open={loginShown}
+		>
 			<LoginMenu shown={loginShown} closeFunc={setLoginShown}/>
 
             <header className={styles["top-bar"]}>
@@ -45,8 +60,19 @@ export function Page(props: { children?: React.ReactNode }) {
                 </Link>
 				<div className={styles["user-settings"]}>
 					<button
+						className={styles["user-settings-button"]}
+						onClick={() => setDarkTheme((prev) => !prev)}
+					>
+						<FontAwesomeIcon icon={themeIcon} />
+					</button>
+					<button
+						className={styles["user-settings-button"]}
+					>
+						<FontAwesomeIcon icon={faLanguage} />
+					</button>
+					<button
 						onClick={() => setLoginShown((prev) => !prev)}
-						className={styles["user-button"]}
+						className={styles["user-settings-button"]}
 					>
 						<FontAwesomeIcon icon={faCircleUser} />
 					</button>

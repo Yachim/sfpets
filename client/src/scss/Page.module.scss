@@ -1,5 +1,3 @@
-@use "./vars/colors.scss";
-
 .app {
     display: grid;
     grid-template-areas:
@@ -17,7 +15,7 @@
 
 .top-bar {
     grid-area: heading;
-    background-color: colors.$topbar;
+    background-color: var(--topbar-color);
 
 	display: flex;
 	justify-content: space-between;
@@ -29,7 +27,7 @@
     h1 {
 		font-size: 2rem;
 		font-weight: bold;
-        color: colors.$accent;
+        color: var(--accent-color);
     }
 }
 
@@ -39,7 +37,7 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-    background-color: colors.$navbar;
+    background-color: var(--navbar-color);
 
     a {
         aspect-ratio: 1/1;
@@ -54,7 +52,7 @@
     }
 
     a[data-active="true"] * {
-		fill: colors.$accent;
+		fill: var(--accent-color);
     }
 }
 
@@ -62,7 +60,12 @@
 	fill: var(--hover-color)
 }
 
-.user-button {
+.user-settings {
+	display: flex;
+	gap: 1.25rem;
+}
+
+.user-settings-button {
 	font-size: 2rem;
 
 	* {
@@ -70,7 +73,7 @@
 	}
 
 	&:hover * {
-		fill: colors.$accent;
+		fill: var(--accent-color);
 	}
 }
 
