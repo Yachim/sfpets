@@ -12,6 +12,7 @@ import {
     faCaretUp,
     faFilter
 } from "@fortawesome/free-solid-svg-icons";
+import { isAprilFools, isBDay, isDecember, isEaster, isFall, isFriday13, isNewYears, isSpring, isSummer, isValentine, isWinter } from "../../utils/timeUtils";
 
 type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
 type SortingDirection = "ascending" | "descending";
@@ -23,61 +24,17 @@ const availabilityValues = {
     unavailable: 2
 };
 
-function Easter(Y: number) {
-    var C = Math.floor(Y / 100);
-    var N = Y - 19 * Math.floor(Y / 19);
-    var K = Math.floor((C - 17) / 25);
-    var I = C - Math.floor(C / 4) - Math.floor((C - K) / 3) + 19 * N + 15;
-    I -= 30 * Math.floor(I / 30);
-    I -=
-        Math.floor(I / 28) *
-        (1 -
-            Math.floor(I / 28) *
-                Math.floor(29 / (I + 1)) *
-                Math.floor((21 - N) / 11));
-    var J = Y + Math.floor(Y / 4) + I + 2 - C + Math.floor(C / 4);
-    J -= 7 * Math.floor(J / 7);
-    var L = I - J;
-    var M = 3 + Math.floor((L + 40) / 44);
-    var D = L + 28 - 31 * Math.floor(M / 4);
-
-    return [M, D];
-}
-
 // events with fixed date/time
 const filterableEvents: {
-    [key: string]: () => boolean;
+	[key: string]: (date: Date) => boolean;
 } = {
-    "April Fools' Day": () => {
-        const dt = new Date();
-        return dt.getDate() === 1 && dt.getMonth() === 3;
-    },
-    "Birthday event": () => {
-        const dt = new Date();
-        return dt.getDate() === 22 && dt.getMonth() === 5;
-    },
-    "Valentine's day": () => {
-        const dt = new Date();
-        return dt.getDate() === 14 && dt.getMonth() === 1;
-    },
-    "New Year's Eve & Day": () => {
-        const dt = new Date();
-        return (
-            (dt.getMonth() === 0 && dt.getDate() === 1) ||
-            (dt.getMonth() === 11 && dt.getDate() === 31)
-        );
-    },
-    "Friday the 13th": () => {
-        const dt = new Date();
-        return dt.getDay() === 5 && dt.getDate() === 13;
-    },
-    Easter: () => {
-        const dt = new Date();
-        const [M, D] = Easter(dt.getFullYear());
-
-        return dt.getDate() === D && dt.getMonth() + 1 === M;
-    }
-    // "Pentecost/Whitsun": () => {
+    "April Fools' Day": isAprilFools,
+    "Birthday event": isBDay,
+    "Valentine's day": isValentine,
+    "New Year's Eve & Day": isNewYears,
+    "Friday the 13th": isFriday13,
+    Easter: isEaster
+	// "Pentecost/Whitsun": () => {
     //     const dt = new Date();
     //     const year = dt.getFullYear();
     //     const [M, D] = Easter(year);
@@ -91,23 +48,15 @@ const filterableEvents: {
     // }
 };
 
-function getSeason(date: Date): Season {
-    const year = date.getFullYear();
-
-    const springFrom = new Date(year, 2, 1);
-    const springTo = new Date(year, 5, 0);
-
-    const summerFrom = new Date(year, 5, 1);
-    const summerTo = new Date(year, 8, 0);
-
-    const fallFrom = new Date(year, 8, 1);
-    const fallTo = new Date(year, 11, 0);
-
-    if (springFrom <= date && date <= springTo) return "spring";
-    if (summerFrom <= date && date <= summerTo) return "summer";
-    if (fallFrom <= date && date <= fallTo) return "fall";
-    else return "winter";
-}
+const isSeason: {
+	[key: string]: (date: Date) => boolean;
+} = {
+	spring: isSpring,
+	summer: isSummer,
+	fall: isFall,
+	winter: isWinter,
+	december: isDecember
+} 
 
 export function Pets() {
     const params = useParams<Params>();
@@ -139,7 +88,7 @@ export function Pets() {
         if (pet.event) {
             if (
                 pet.event.en in filterableEvents &&
-                !filterableEvents[pet.event.en]()
+                !filterableEvents[pet.event.en](date)
             ) {
                 return "unavailable";
             } else if (!(pet.event.en in filterableEvents)) {
@@ -153,7 +102,9 @@ export function Pets() {
             }
         }
         if (pet.season) {
-            if (getSeason(date) !== pet.season) {
+			console.log(pet.season)
+			console.log(isSeason)
+            if (isSeason[pet.season](date)) {
                 return "unavailable";
             }
         }

@@ -74,3 +74,7 @@ export function isWinter(date: Date) {
 	const month = date.getMonth();
 	return winterBeginMonth <= month && month <= winterEndMonth;
 }
+
+export function isDecember(date: Date) {
+	return date.getMonth() === 11;
+}
