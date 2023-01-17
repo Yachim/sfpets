@@ -1,6 +1,6 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { pets } from "../../data/pets";
-import { Params, Pet, Season } from "../../types";
+import { Params, Pet } from "../../types";
 import styles from "../../scss/Pets.module.scss";
 import { PetCard, PetProps } from "../PetCard";
 import locs from "../../data/locs";
@@ -12,7 +12,7 @@ import {
     faCaretUp,
     faFilter
 } from "@fortawesome/free-solid-svg-icons";
-import { isAprilFools, isBDay, isDecember, isEaster, isFall, isFriday13, isNewYears, isSpring, isSummer, isValentine, isWinter } from "../../utils/timeUtils";
+import { isAvailable } from "../../utils/utils";
 
 type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
 type SortingDirection = "ascending" | "descending";
@@ -23,40 +23,6 @@ const availabilityValues = {
     unknown: 1,
     unavailable: 2
 };
-
-// events with fixed date/time
-const filterableEvents: {
-	[key: string]: (date: Date) => boolean;
-} = {
-    "April Fools' Day": isAprilFools,
-    "Birthday event": isBDay,
-    "Valentine's day": isValentine,
-    "New Year's Eve & Day": isNewYears,
-    "Friday the 13th": isFriday13,
-    Easter: isEaster
-	// "Pentecost/Whitsun": () => {
-    //     const dt = new Date();
-    //     const year = dt.getFullYear();
-    //     const [M, D] = Easter(year);
-
-    //     const whitsunDate = new Date(year, M, D + 49);
-
-    //     return (
-    //         dt.getDate() === whitsunDate.getDate() &&
-    //         dt.getMonth() === whitsunDate.getMonth()
-    //     );
-    // }
-};
-
-const isSeason: {
-	[key: string]: (date: Date) => boolean;
-} = {
-	spring: isSpring,
-	summer: isSummer,
-	fall: isFall,
-	winter: isWinter,
-	december: isDecember
-} 
 
 export function Pets() {
     const params = useParams<Params>();
@@ -81,86 +47,7 @@ export function Pets() {
         const interval = setInterval(() => setDate(new Date()), 60_000);
 
         return () => clearInterval(interval);
-        // TODO: set state (setDate) only in certain time periods (6:00, 18:00, 00:00, 1:00)
     }, []);
-
-    function isAvailable(pet: Pet): "available" | "unknown" | "unavailable" {
-        if (pet.event) {
-            if (
-                pet.event.en in filterableEvents &&
-                !filterableEvents[pet.event.en](date)
-            ) {
-                return "unavailable";
-            } else if (!(pet.event.en in filterableEvents)) {
-                return "unknown";
-            }
-        }
-
-        if (pet.dayOfWeek !== null) {
-            if (date.getDay() !== pet.dayOfWeek) {
-                return "unavailable";
-            }
-        }
-        if (pet.season) {
-			console.log(pet.season)
-			console.log(isSeason)
-            if (isSeason[pet.season](date)) {
-                return "unavailable";
-            }
-        }
-        if (pet.time) {
-            const dayBeginning = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate(),
-                6
-            );
-            const dayNight = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate(),
-                18
-            );
-            const nightEnd = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate() + 1,
-                6
-            );
-
-            if (
-                pet.time === "day" &&
-                !(dayBeginning < date && date < dayNight)
-            ) {
-                return "unavailable";
-            }
-
-            if (pet.time === "night" && !(dayNight < date && date < nightEnd)) {
-                return "unavailable";
-            }
-
-            const wHourBeginning = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate(),
-                0
-            );
-            const wHourEnd = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate(),
-                1
-            );
-            if (
-                pet.time === "w_hour" &&
-                !(wHourBeginning < date && date < wHourEnd)
-            ) {
-                return "unavailable";
-            }
-        }
-
-        return "available";
-    }
 
     useEffect(() => {
         let editedPets: PetProps[] = pets[element].map((pet, i) => {
@@ -184,7 +71,7 @@ export function Pets() {
                 event: event,
                 time: pet.time,
                 season: pet.season,
-                status: isAvailable(pet),
+                status: isAvailable(pet, date),
                 img: pet.img,
                 found: found,
                 index: i

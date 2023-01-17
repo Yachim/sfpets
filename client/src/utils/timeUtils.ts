@@ -1,5 +1,3 @@
-import { Season } from "../types";
-
 export function isEaster(date: Date) {
 	const Y = date.getFullYear();
 
@@ -77,4 +75,25 @@ export function isWinter(date: Date) {
 
 export function isDecember(date: Date) {
 	return date.getMonth() === 11;
+}
+
+const dayBeginHour = 6;
+const dayEndHour = 18;
+export function isDay(date: Date) {
+	const hour = date.getHours();
+	return dayBeginHour <= hour && hour <= dayEndHour;
+}
+
+const nightBeginHour = 18;
+const nightEndHour = 6;
+export function isNight(date: Date) {
+	const hour = date.getHours();
+	return nightBeginHour <= hour && hour <= nightEndHour;
+}
+
+const wHourBeginHour = 0;
+const wHourEndHour = 1;
+export function isWHour(date: Date) {
+	const hour = date.getHours();
+	return wHourBeginHour <= hour && hour <= wHourEndHour;
 }
