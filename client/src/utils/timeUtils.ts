@@ -88,7 +88,7 @@ const nightBeginHour = 18;
 const nightEndHour = 6;
 export function isNight(date: Date) {
 	const hour = date.getHours();
-	return nightBeginHour <= hour && hour <= nightEndHour;
+	return nightBeginHour <= hour || hour <= nightEndHour;
 }
 
 const wHourBeginHour = 0;

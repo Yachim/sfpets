@@ -68,18 +68,18 @@ export function isAvailable(pet: Pet, date: Date): "available" | "unknown" | "un
 		}
 	}
 	if (pet.season) {
-		if (isSeason[pet.season](date)) {
+		if (!isSeason[pet.season](date)) {
 			return "unavailable";
 		}
 	}
 	if (pet.time) {
-		if (pet.time === "day" && isDay(date)) {
+		if (pet.time === "day" && !isDay(date)) {
 			return "unavailable";
 		}
-		if (pet.time === "night" && isNight(date)) {
+		if (pet.time === "night" && !isNight(date)) {
 			return "unavailable";
 		}
-		if (pet.time === "w_hour" && isWHour(date)) {
+		if (pet.time === "w_hour" && !isWHour(date)) {
 			return "unavailable";
 		}
 	}
