@@ -1,0 +1,33 @@
+.filters-wrapper {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.filter {
+	--bg-opacity: 0.4;
+	--color: hsl(var(--h), var(--s), var(--l));
+	--bg-color: hsla(var(--h), var(--s), var(--l), var(--bg-opacity));
+
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+
+	border: 2px solid var(--color);
+	border-radius: 9999px;
+
+	transition-property: color, background-color, opacity;
+	transition-duration: 300ms;
+	transition-timing-function: ease-in-out;
+
+	background-color: var(--bg-color);
+
+	&:hover {
+		--bg-opacity: 0.6;
+		color: var(--text-color);
+	}
+}
+
+.--not-selected {
+	opacity: 0.3;
+}

@@ -1,20 +1,20 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { pets } from "../../data/pets";
-import { Params, Pet } from "../../types";
+import { Params } from "../../types";
 import styles from "../../scss/Pets.module.scss";
-import { PetCard, PetProps } from "../PetCard";
 import locs from "../../data/locs";
-import { daysOfWeek, filterLabel } from "../../data/translation";
+import { daysOfWeek } from "../../data/translation";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCaretDown,
     faCaretUp,
-    faFilter
 } from "@fortawesome/free-solid-svg-icons";
 import { isAvailable } from "../../utils/utils";
+import { PetCard, Filters } from "../.";
+import { PetProps } from "../PetCard";
 
-type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
+export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
 type SortingDirection = "ascending" | "descending";
 type Sort = "index" | "availability";
 
@@ -141,53 +141,51 @@ export function Pets() {
     }
 
     return (
-        <main className={styles["pets-grid"]}>
+        <main className={styles["pets-main"]}>
             <div className={styles.filters}>
-                <div className={styles["filter-settings"]}>
-                    <button className={styles["filters-select"]}>
-                        {filterLabel[lang]} <FontAwesomeIcon icon={faFilter} />
-                    </button>
+				<Filters />
 
-                    <div className={styles["sort"]}>
-                        <button
-                            onClick={() => {
-                                if (sortingDirection === "ascending") {
-                                    searchParams.set(
-                                        "sortingDirection",
-                                        "descending"
-                                    );
-                                } else {
-                                    searchParams.set(
-                                        "sortingDirection",
-                                        "ascending"
-                                    );
-                                }
+				<div className={styles["sort"]}>
+					<button
+						onClick={() => {
+							if (sortingDirection === "ascending") {
+								searchParams.set(
+									"sortingDirection",
+									"descending"
+								);
+							} else {
+								searchParams.set(
+									"sortingDirection",
+									"ascending"
+								);
+							}
 
-                                setSearchParams(searchParams);
-                            }}
-                        >
-                            {sortingDirection === "ascending" ? (
-                                <FontAwesomeIcon icon={faCaretUp} />
-                            ) : (
-                                <FontAwesomeIcon icon={faCaretDown} />
-                            )}
-                        </button>
-                        <select
-                            onChange={(e) => {
-                                searchParams.set("sort", e.target.value);
-                                setSearchParams(searchParams);
-                            }}
-                        >
-                            <option value="index">Index</option>
-                            <option value="availability">Availability</option>
-                        </select>
-                    </div>
-                </div>
+							setSearchParams(searchParams);
+						}}
+					>
+						{sortingDirection === "ascending" ? (
+							<FontAwesomeIcon icon={faCaretUp} />
+						) : (
+							<FontAwesomeIcon icon={faCaretDown} />
+						)}
+					</button>
+					<select
+						onChange={(e) => {
+							searchParams.set("sort", e.target.value);
+							setSearchParams(searchParams);
+						}}
+					>
+						<option value="index">Index</option>
+						<option value="availability">Availability</option>
+					</select>
+				</div>
             </div>
 
-            {petsData.map((pet) => (
-                <PetCard key={pet.name} {...pet} toggleFound={toggleFound} />
-            ))}
+			<div className={styles["pets-grid"]}>
+				{petsData.map((pet) => (
+					<PetCard key={pet.name} {...pet} toggleFound={toggleFound} />
+				))}
+			</div>
         </main>
     );
 }
