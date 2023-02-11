@@ -1,140 +1,91 @@
 import { useParams } from "react-router-dom";
 import { Params } from "../types";
 import styles from "../scss/PetCard.module.scss";
-import { season, time } from "../data/translation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBroom,
-    faCheck,
-    faLeaf,
-    faMoon,
-    faSeedling,
-    faSleigh,
-    faSnowflake,
-    faSun,
-    faUmbrellaBeach,
-    faXmark
+	faCircleInfo,
+	faMagnifyingGlass,
+	faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const timeIcons = {
-    w_hour: faBroom,
-    night: faMoon,
-    day: faSun
-};
-
-const seasonIcons = {
-    spring: faSeedling,
-    summer: faUmbrellaBeach,
-    fall: faLeaf,
-    winter: faSnowflake,
-    december: faSleigh
-};
-
 export type PetTimeProps = {
-    dayOfWeek: string | null;
-    event: string | null;
-    time: "w_hour" | "night" | "day" | null;
-    season: "spring" | "summer" | "fall" | "winter" | "december" | null;
+	dayOfWeek: string | null;
+	event: string | null;
+	time: "w_hour" | "night" | "day" | null;
+	season: "spring" | "summer" | "fall" | "winter" | "december" | null;
 };
 
 export type PetProps = PetTimeProps & {
-    name: string;
-    location: string | null;
-    status: "available" | "unknown" | "unavailable";
-    img: string;
-    found: boolean;
-    index: number;
+	name: string;
+	location: string | null;
+	status: "available" | "unknown" | "unavailable";
+	img: string;
+	found: boolean;
+	index: number;
 };
 
 export function PetCard(
-    props: PetProps & { toggleFound: (index: number, newVal: boolean) => void }
+	props: PetProps & { toggleFound: (index: number, newVal: boolean) => void }
 ) {
-    const params = useParams<Params>();
-    const element = params.element!;
-    const lang = params.lang!;
+	const params = useParams<Params>();
+	const element = params.element!;
 
-    let data: string[] = [];
 
-    if (props.location) {
-        data.push(props.location);
-    }
-    if (props.dayOfWeek) {
-        data.push(props.dayOfWeek);
-    }
-    if (props.event) {
-        data.push(props.event);
-    }
+	let indexClassList = [
+		styles["pet-index"],
+		styles[`pet-index--${props.status}`]
+	];
 
-    function TimeIcon() {
-        if (props.time)
-            return (
-                <div>
-                    <FontAwesomeIcon icon={timeIcons[props.time]} />
-                    <span>{time[lang]}</span>
-                </div>
-            );
-        return <></>;
-    }
+	function toggleFound() {
+		const newStatus: boolean = !props.found;
 
-    function SeasonIcon() {
-        if (props.season)
-            return (
-                <div>
-                    <FontAwesomeIcon icon={seasonIcons[props.season]} />
-                    <span>{season[lang]}</span>
-                </div>
-            );
-        return <></>;
-    }
+		localStorage.setItem(
+			`${element}-${props.index}`,
+			JSON.stringify(newStatus)
+		);
 
-    let indexClassList = [
-        styles["pet-index"],
-        styles[`pet-index--${props.status}`]
-    ];
+		props.toggleFound(props.index, newStatus);
+	}
 
-    function toggleFound() {
-        const newStatus: boolean = !props.found;
+	return (
+		<div className={styles["pet-card"]} data-found={props.found}>
+			<img src={props.img} alt={props.name} />
 
-        localStorage.setItem(
-            `${element}-${props.index}`,
-            JSON.stringify(newStatus)
-        );
+			<div className={styles["pet-data"]}>
+				{props.location && <p className={styles["pet-loc"]}>{props.location}</p>}
+				<p>{props.name}</p>
+			</div>
 
-        props.toggleFound(props.index, newStatus);
-    }
+			<div className={styles["pet-info__wrapper"]}>
+				<button onClick={toggleFound} className={styles["overlay-button"]}>
+					{props.found ? (
+						<>
+							<FontAwesomeIcon
+								className={styles["not-found-icon"]}
+								icon={faMagnifyingGlassMinus}
+							/>
+							Not<br />Found
+						</>
+					) : (
+						<>
+							<FontAwesomeIcon
+								className={styles["found-icon"]}
+								icon={faMagnifyingGlass}
+							/>
+							Found
+						</>
+					)}
+				</button>
+				<button onClick={toggleFound} className={styles["overlay-button"]}>
+					<FontAwesomeIcon
+						className={styles["info-icon"]}
+						icon={faCircleInfo}
+					/>
+					Info
+				</button>
+			</div>
 
-    return (
-        <div className={styles["pet-card"]} data-found={props.found}>
-            <img src={props.img} alt={props.name} />
-
-            <div className={styles["pet-data"]}>
-                <p>{data.join(" •\u00A0")}</p>
-                <p>{props.name}</p>
-            </div>
-
-            <div className={styles["pet-info__wrapper"]}>
-                {(props.time || props.season) && (
-                    <div className={styles.icons}>
-                        <TimeIcon />
-                        <SeasonIcon />
-                    </div>
-                )}
-                <button onClick={toggleFound} className={styles["change-status-icon"]}>
-                    {props.found ? (
-                        <FontAwesomeIcon
-                            className={styles["x-icon"]}
-                            icon={faXmark}
-                        />
-                    ) : (
-                        <FontAwesomeIcon
-                            className={styles["check-icon"]}
-                            icon={faCheck}
-                        />
-                    )}
-                </button>
-            </div>
-
-            <p className={indexClassList.join(" ")}>{props.index + 1}</p>
-        </div>
-    );
+			<p className={indexClassList.join(" ")}>{props.index + 1}</p>
+		</div>
+	);
 }
