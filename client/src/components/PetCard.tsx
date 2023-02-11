@@ -76,7 +76,7 @@ export function PetCard(
 						</>
 					)}
 				</button>
-				<button onClick={toggleFound} className={styles["overlay-button"]}>
+				<button className={styles["overlay-button"]}>
 					<FontAwesomeIcon
 						className={styles["info-icon"]}
 						icon={faCircleInfo}
