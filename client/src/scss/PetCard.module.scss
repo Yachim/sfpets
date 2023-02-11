@@ -27,6 +27,10 @@ $border-radius: 0.75rem;
 
     animation: card-load 700ms ease-in-out;
     animation-fill-mode: backwards;
+
+	&:hover > .pet-info__wrapper {
+		visibility: visible;
+	}
 }
 
 .pet-card[data-found="false"] img {
@@ -113,9 +117,12 @@ $border-radius: 0.75rem;
 
 	background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.75);
 
+	visibility: hidden;
 	opacity: 0;
 
-	transition: opacity, 300ms ease-in-out;
+	transition-property: opacity, visibility;
+	transition-duration: 300ms;
+	transition-timing-function: ease-in-out;
 
 	&:hover {
 		opacity: 1;
