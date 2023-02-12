@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { isAvailable } from "../../utils/utils";
 import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
-import { info } from "console";
 
 export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
 
@@ -107,15 +106,7 @@ export function Pets() {
 			</div>
 
 			<div className={styles["pets-grid"]}>
-				{petsData.map((pet, petIndex) => {
-					const nextIndex = petIndex === petsData.length ? 0 : petIndex + 1;
-					const prevIndex = petIndex === 0 ? petsData.length - 1 : petIndex - 1;
-
-					return (<PetCard key={pet.name} petInfo={pet} toggleFound={toggleFound} infoCard={{
-						next: petsData[nextIndex],
-						prev: petsData[prevIndex]
-					}} />);
-				})}
+				{petsData.map((pet) => <PetCard key={pet.name} petInfo={pet} toggleFound={toggleFound} />)}
 			</div>
 		</main>
 	);

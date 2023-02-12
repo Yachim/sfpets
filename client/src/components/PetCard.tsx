@@ -26,13 +26,8 @@ export type PetProps = PetTimeProps & {
 	index: number;
 };
 
-export type CardInfo = {
-	next: PetProps,
-	prev: PetProps
-};
-
 export function PetCard(
-	props: { petInfo: PetProps, toggleFound: (index: number, newVal: boolean) => void, infoCard: CardInfo }
+	props: { petInfo: PetProps, toggleFound: (index: number, newVal: boolean) => void }
 ) {
 	const params = useParams<Params>();
 	const element = params.element!;
@@ -87,7 +82,7 @@ export function PetCard(
 				</button>
 				<button
 					className={styles["overlay-button"]}
-					onClick={() => context.setValue(props.infoCard.prev, props.petInfo, props.infoCard.prev)}
+					onClick={() => context.setValue(props.petInfo)}
 				>
 					<FontAwesomeIcon
 						className={styles["info-icon"]}
