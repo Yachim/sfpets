@@ -41,14 +41,15 @@
 
 	z-index: 9999;
 
-	opacity: 0;
-	visibility: hidden;
+	animation: show 300ms ease-in-out both;
+}
 
-	transition-property: opacity, visibility;
-	transition-duration: 300ms;
-	transition-timing-function: ease-in-out;
-
-	&[data-shown="true"] {
+@keyframes show {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
 		opacity: 1;
 		visibility: visible;
 	}

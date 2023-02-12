@@ -7,6 +7,8 @@ import {
 	faMagnifyingGlass,
 	faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { PetInfoCardContext } from "./pages/Page";
 
 export type PetTimeProps = {
 	dayOfWeek: string | null;
@@ -24,8 +26,13 @@ export type PetProps = PetTimeProps & {
 	index: number;
 };
 
+export type CardInfo = {
+	next: PetProps,
+	prev: PetProps
+};
+
 export function PetCard(
-	props: PetProps & { toggleFound: (index: number, newVal: boolean) => void }
+	props: { petInfo: PetProps, toggleFound: (index: number, newVal: boolean) => void, infoCard: CardInfo }
 ) {
 	const params = useParams<Params>();
 	const element = params.element!;
@@ -33,32 +40,34 @@ export function PetCard(
 
 	let indexClassList = [
 		styles["pet-index"],
-		styles[`pet-index--${props.status}`]
+		styles[`pet-index--${props.petInfo.status}`]
 	];
 
 	function toggleFound() {
-		const newStatus: boolean = !props.found;
+		const newStatus: boolean = !props.petInfo.found;
 
 		localStorage.setItem(
-			`${element}-${props.index}`,
+			`${element}-${props.petInfo.index}`,
 			JSON.stringify(newStatus)
 		);
 
-		props.toggleFound(props.index, newStatus);
+		props.toggleFound(props.petInfo.index, newStatus);
 	}
 
+	const context = useContext(PetInfoCardContext);
+
 	return (
-		<div className={styles["pet-card"]} data-found={props.found}>
-			<img src={props.img} alt={props.name} />
+		<div className={styles["pet-card"]} data-found={props.petInfo.found}>
+			<img src={props.petInfo.img} alt={props.petInfo.name} />
 
 			<div className={styles["pet-data"]}>
-				{props.location && <p className={styles["pet-loc"]}>{props.location}</p>}
-				<p>{props.name}</p>
+				{props.petInfo.location && <p className={styles["pet-loc"]}>{props.petInfo.location}</p>}
+				<p>{props.petInfo.name}</p>
 			</div>
 
 			<div className={styles["pet-info__wrapper"]}>
 				<button onClick={toggleFound} className={styles["overlay-button"]}>
-					{props.found ? (
+					{props.petInfo.found ? (
 						<>
 							<FontAwesomeIcon
 								className={styles["not-found-icon"]}
@@ -76,7 +85,10 @@ export function PetCard(
 						</>
 					)}
 				</button>
-				<button className={styles["overlay-button"]}>
+				<button
+					className={styles["overlay-button"]}
+					onClick={() => context.setValue(props.infoCard.prev, props.petInfo, props.infoCard.prev)}
+				>
 					<FontAwesomeIcon
 						className={styles["info-icon"]}
 						icon={faCircleInfo}
@@ -85,7 +97,7 @@ export function PetCard(
 				</button>
 			</div>
 
-			<p className={indexClassList.join(" ")}>{props.index + 1}</p>
-		</div>
+			<p className={indexClassList.join(" ")}>{props.petInfo.index + 1}</p>
+		</div >
 	);
 }

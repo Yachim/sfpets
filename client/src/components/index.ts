@@ -4,5 +4,6 @@ import { Pets } from "./pages/Pets";
 import { PetCard } from "./PetCard";
 import { LoginMenu } from "./LoginMenu";
 import { Filters } from "./Filters";
+import { PetInfoCard } from "./PetInfoCard";
 
-export { Root, Page, Pets, PetCard, LoginMenu, Filters };
+export { Root, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard };
