@@ -6,13 +6,22 @@
 
 	border-radius: 0.75rem;
 
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
 	z-index: 9999;
 
 	animation: show 300ms ease-in-out forwards;
+
+	padding: 1rem;
+
+	display: grid;
+	grid-template-areas: 
+		"heading heading"
+		"data img";
+	grid-row-gap: 0.875rem;
+	grid-column-gap: 1.5rem;
 }
 
 @keyframes show {
@@ -24,4 +33,57 @@
 		opacity: 1;
 		visibility: visible;
 	}
+}
+
+.pet-name {
+	font-size: 2rem;
+
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+
+	grid-area: heading;
+}
+
+.pet-data {
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+
+	opacity: 0.65;
+	grid-area: data;
+
+	max-width: 30ch;
+}
+
+.pet-simple-info {
+	opacity: 0.7;
+	font-size: 1.25rem;
+	display: flex;
+	gap: 0.75rem;
+}
+
+.close-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 1rem;
+
+	* {
+		transition: fill 300ms ease-in-out;
+	}
+
+	&:hover * {
+		fill: var(--close-color);
+	}
+}
+
+.img {
+	grid-area: img;
+	border-radius: 0.5rem;
+}
+
+.pet-attr {
+	display: flex;
+	gap: 0.625rem;
 }
