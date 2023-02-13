@@ -19,12 +19,12 @@ export function LoginMenu(props: {
 						className={styles["sign-in"]}
 						data-selected={menuType === "login"}
 						onClick={() => setMenuType("login")}
-					>Sign in</button>
+					>Log in</button>
 					<button
 						className={styles["sign-up"]}
 						data-selected={menuType === "register"}
 						onClick={() => setMenuType("register")}
-					>Sign up</button>
+					>Register</button>
 				</div>
 				<button
 					className={styles["close-icon"]}
@@ -42,7 +42,7 @@ export function LoginMenu(props: {
 						<label>Password:
 							<input type={"password"} />
 						</label>
-						<button>Sign in</button>
+						<button>Log in</button>
 					</> :
 					<>
 						<label>Email:
@@ -54,7 +54,7 @@ export function LoginMenu(props: {
 						<label>Repeat password:
 							<input type={"password"} />
 						</label>
-						<button>Sign up</button>
+						<button>Register</button>
 					</>}
 			</form>
 		</div>
