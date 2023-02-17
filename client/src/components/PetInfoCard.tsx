@@ -57,12 +57,12 @@ export function PetInfoCard(props: PetProps & { closeFunc: () => void }) {
 			<p className={styles["pet-name"]}>
 				{props.index + 1}. {props.name}
 				{(props.time || props.season || props.found || props.status !== "unknown") &&
-					<div className={styles["pet-simple-info"]}>
+					<span className={styles["pet-simple-info"]}>
 						{props.time && <FontAwesomeIcon title={props.time} icon={timeIcons[props.time]} />}
 						{props.season && <FontAwesomeIcon title={props.season} icon={seasonIcons[props.season]} />}
 						{props.found && <FontAwesomeIcon title="Found" icon={faMagnifyingGlass} />}
 						{props.status !== "unknown" && <FontAwesomeIcon title={props.status} icon={statusIcons[props.status]} />}
-					</div>
+					</span>
 				}
 			</p>
 			<button onClick={props.closeFunc} className={styles["close-button"]}>
