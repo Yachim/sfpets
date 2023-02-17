@@ -16,6 +16,7 @@ import {
 	faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCallback, useEffect } from "react";
 import styles from "../scss/PetInfoCard.module.scss";
 import { PetProps } from "./PetCard";
 
@@ -39,6 +40,18 @@ const statusIcons = {
 }
 
 export function PetInfoCard(props: PetProps & { closeFunc: () => void }) {
+	const handleKeyPress = useCallback((e: KeyboardEvent) => {
+		if (e.key === "Escape") {
+			props.closeFunc()
+		}
+	}, [])
+
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyPress);
+
+		return () => document.removeEventListener("keydown", handleKeyPress);
+	}, [handleKeyPress]);
+
 	return (
 		<div className={styles["pet-info-card"]}>
 			<p className={styles["pet-name"]}>

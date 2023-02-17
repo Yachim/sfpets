@@ -1,11 +1,23 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "../scss/LoginMenu.module.scss";
 
 export function LoginMenu(props: {
 	closeFunc: () => void;
 }) {
+	const handleKeyPress = useCallback((e: KeyboardEvent) => {
+		if (e.key === "Escape") {
+			props.closeFunc()
+		}
+	}, [])
+
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyPress);
+
+		return () => document.removeEventListener("keydown", handleKeyPress);
+	}, [handleKeyPress]);
+
 	const [menuType, setMenuType] = useState<"login" | "register">("login");
 
 	// FIXME: hover still working on pet cards
