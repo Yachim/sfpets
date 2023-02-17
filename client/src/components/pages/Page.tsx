@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
 import { CSSProperties, useEffect, useState, createContext } from "react";
-import { LoginMenu, PetInfoCard } from "..";
+import { LoginMenu, PetInfoCard, Pets } from "..";
 import { PetProps } from "../PetCard";
 
 export type PetInfoCardContextValueType = {
@@ -26,7 +26,6 @@ export const PetInfoCardContext = createContext<PetInfoCardContextValueType>({
 	setValue: (_) => { }
 });
 
-// TODO: implement hidden link
 export function Page(props: { children?: React.ReactNode }) {
 	const params = useParams<Params>();
 	const lang = params.lang!;
@@ -148,7 +147,7 @@ export function Page(props: { children?: React.ReactNode }) {
 						<FontAwesomeIcon icon={faWater} />
 					</Link>
 				</nav>
-				{props.children}
+				<Pets />
 			</div>
 		</PetInfoCardContext.Provider>
 	);

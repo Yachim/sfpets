@@ -5,22 +5,21 @@ import { Pets } from "./components/pages/Pets";
 import "./scss/App.scss";
 
 function App() {
-    return (
-        <HashRouter>
-            <Routes>
-                <Route path="/" element={<Root />} />
-                <Route path="/:lang" element={<Page />} />
-                <Route
-                    path="/:lang/:element"
-                    element={
-                        <Page>
-                            <Pets />
-                        </Page>
-                    }
-                />
-            </Routes>
-        </HashRouter>
-    );
+	return (
+		<HashRouter>
+			<Routes>
+				<Route path="/" element={<Root />} />
+				<Route
+					path="/:lang"
+					element={<Page />}
+				/>
+				<Route
+					path="/:lang/:element"
+					element={<Page />}
+				/>
+			</Routes>
+		</HashRouter>
+	);
 }
 
 export default App;

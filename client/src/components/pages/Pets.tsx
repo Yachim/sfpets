@@ -14,7 +14,7 @@ export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFou
 export function Pets() {
 	const params = useParams<Params>();
 	const lang = params.lang!;
-	const element = params.element!;
+	const element = params.element;
 
 	const [searchParams, setSearchParams] = useSearchParams();
 	const filter: Filter[] = JSON.parse(
@@ -33,7 +33,8 @@ export function Pets() {
 	}, []);
 
 	useEffect(() => {
-		let editedPets: PetProps[] = pets[element].map((pet, i) => {
+		let basePets = !element ? [...pets.shadow, ...pets.light, ...pets.earth, ...pets.fire, ...pets.water] : pets[element];
+		let editedPets: PetProps[] = basePets.map((pet, i) => {
 			let loc: string | null = null;
 			if (pet.loc_index) loc = locs[pet.loc_index][lang];
 
@@ -61,32 +62,42 @@ export function Pets() {
 			};
 		});
 
-		if (filter.length > 0) {
-			editedPets = editedPets.filter((pet) => {
-				let found = true;
-				if (filter.includes("found") && !filter.includes("notFound")) {
-					found = pet.found;
-				} else if (
-					!filter.includes("found") &&
-					filter.includes("notFound")
-				) {
-					found = !pet.found;
-				}
+		if (!element) {
+			editedPets = editedPets.filter((pet) =>
+				(pet.status === "available" || pet.status === "unknown") &&
+				!pet.found
+			)
 
-				let status = true;
-				if (
-					filter.includes("available") ||
-					filter.includes("unavailable") ||
-					filter.includes("unknown")
-				) {
-					status = filter.includes(pet.status);
-				}
-
-				return found && status;
-			});
+			setPetsData([...editedPets]);
 		}
+		else {
+			if (filter.length > 0) {
+				editedPets = editedPets.filter((pet) => {
+					let found = true;
+					if (filter.includes("found") && !filter.includes("notFound")) {
+						found = pet.found;
+					} else if (
+						!filter.includes("found") &&
+						filter.includes("notFound")
+					) {
+						found = !pet.found;
+					}
 
-		setPetsData([...editedPets]);
+					let status = true;
+					if (
+						filter.includes("available") ||
+						filter.includes("unavailable") ||
+						filter.includes("unknown")
+					) {
+						status = filter.includes(pet.status);
+					}
+
+					return found && status;
+				});
+			}
+
+			setPetsData([...editedPets]);
+		}
 	}, [
 		JSON.stringify(filter),
 		element,
@@ -101,9 +112,9 @@ export function Pets() {
 
 	return (
 		<main className={styles["pets-main"]}>
-			<div className={styles.filters}>
+			{element && <div className={styles.filters}>
 				<Filters />
-			</div>
+			</div>}
 
 			<div className={styles["pets-grid"]}>
 				{petsData.map((pet) => <PetCard key={pet.name} petInfo={pet} toggleFound={toggleFound} />)}
