@@ -17,8 +17,13 @@
 			background: none;
 			transition: color 300ms ease-in-out;
 
-			&:hover {
+			&:hover:not(:disabled) {
+				cursor: pointer;
 				color: var(--accent-color);
+			}
+
+			&:disabled {
+				opacity: 0.7;
 			}
 		}
 
@@ -45,6 +50,10 @@
 	z-index: 9999;
 
 	animation: show 300ms ease-in-out both;
+}
+
+.pass-not-matching {
+	color: red;
 }
 
 @keyframes show {

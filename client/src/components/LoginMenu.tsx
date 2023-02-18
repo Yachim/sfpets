@@ -21,6 +21,7 @@ export function LoginMenu(props: {
 	const [menuType, setMenuType] = useState<"login" | "register">("login");
 
 	function handleSubmit(e: FormEvent) {
+		if (regPass1 !== regPass2) return;
 
 
 		e.preventDefault();
@@ -80,6 +81,7 @@ export function LoginMenu(props: {
 						<input type="submit" value="Log in" />
 					</> :
 					<>
+						{(regPass1 !== regPass2) && <p className={styles["pass-not-matching"]}>Passwords do not match</p>}
 						<label>Email:
 							<input
 								value={regEmail}
@@ -107,7 +109,7 @@ export function LoginMenu(props: {
 								type={"password"}
 							/>
 						</label>
-						<input type="submit" value="Register" />
+						<input type="submit" disabled={regPass1 !== regPass2} value="Register" />
 					</>}
 			</form>
 		</div>
