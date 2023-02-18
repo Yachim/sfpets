@@ -1,6 +1,6 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import styles from "../scss/LoginMenu.module.scss";
 
 export function LoginMenu(props: {
@@ -20,7 +20,18 @@ export function LoginMenu(props: {
 
 	const [menuType, setMenuType] = useState<"login" | "register">("login");
 
-	// FIXME: hover still working on pet cards
+	function handleSubmit(e: FormEvent) {
+
+
+		e.preventDefault();
+	}
+
+	const [loginEmail, setLoginEmail] = useState("");
+	const [loginPass, setLoginPass] = useState("");
+	const [regEmail, setRegEmail] = useState("");
+	const [regPass1, setRegPass1] = useState("");
+	const [regPass2, setRegPass2] = useState("");
+
 	return (
 		<div className={styles["login-menu"]}>
 			<div
@@ -45,28 +56,58 @@ export function LoginMenu(props: {
 					<FontAwesomeIcon icon={faXmark} />
 				</button>
 			</div>
-			<form>
+			<form onSubmit={handleSubmit}>
 				{menuType === "login" ?
 					<>
 						<label>Email:
-							<input type={"email"} />
+							<input
+								value={loginEmail}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									setLoginEmail(e.currentTarget.value)
+								}
+								type={"email"}
+							/>
 						</label>
 						<label>Password:
-							<input type={"password"} />
+							<input
+								value={loginPass}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									setLoginPass(e.currentTarget.value)
+								}
+								type={"password"}
+							/>
 						</label>
-						<button>Log in</button>
+						<input type="submit" value="Log in" />
 					</> :
 					<>
 						<label>Email:
-							<input type={"email"} />
+							<input
+								value={regEmail}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									setRegEmail(e.currentTarget.value)
+								}
+								type={"email"}
+							/>
 						</label>
 						<label>Password:
-							<input type={"password"} />
+							<input
+								value={regPass1}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									setRegPass1(e.currentTarget.value)
+								}
+								type={"password"}
+							/>
 						</label>
 						<label>Repeat password:
-							<input type={"password"} />
+							<input
+								value={regPass2}
+								onChange={(e: ChangeEvent<HTMLInputElement>) =>
+									setRegPass2(e.currentTarget.value)
+								}
+								type={"password"}
+							/>
 						</label>
-						<button>Register</button>
+						<input type="submit" value="Register" />
 					</>}
 			</form>
 		</div>
