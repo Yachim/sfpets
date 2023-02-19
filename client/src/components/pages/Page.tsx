@@ -15,6 +15,8 @@ import { desc, mainHeading, title } from "../../data/translation";
 import { CSSProperties, useEffect, useState, createContext } from "react";
 import { LoginMenu, PetInfoCard, Pets } from "..";
 import { PetProps } from "../PetCard";
+import { useQuery } from "react-query";
+import { getAccountInfo } from "../../queries";
 
 export type PetInfoCardContextValueType = {
 	current: PetProps | null,
@@ -67,6 +69,8 @@ export function Page(props: { children?: React.ReactNode }) {
 		document.documentElement.classList.add(themeClass);
 	}, [themeClass]);
 
+	const accountInfoQuery = useQuery("account", getAccountInfo);
+
 	return (
 		<PetInfoCardContext.Provider value={petCard}>
 			<div
@@ -96,12 +100,16 @@ export function Page(props: { children?: React.ReactNode }) {
 						>
 							<FontAwesomeIcon icon={faLanguage} />
 						</button>
-						<button
-							onClick={() => setLoginShown((prev) => !prev)}
-							className={styles["user-settings-button"]}
-						>
-							<FontAwesomeIcon icon={faCircleUser} />
-						</button>
+
+						{accountInfoQuery.data?.status === "error" ?
+							(<button
+								onClick={() => setLoginShown((prev) => !prev)}
+								className={styles["user-settings-button"]}
+							>
+								<FontAwesomeIcon icon={faCircleUser} />
+							</button>) :
+							<p>Logged in</p>
+						}
 					</div>
 				</header>
 

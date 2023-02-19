@@ -1,6 +1,9 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
+import { useMutation } from "react-query";
+import { queryClient } from "../App";
+import { postLogin, postRegister } from "../queries";
 import styles from "../scss/LoginMenu.module.scss";
 
 export function LoginMenu(props: {
@@ -20,9 +23,31 @@ export function LoginMenu(props: {
 
 	const [menuType, setMenuType] = useState<"login" | "register">("login");
 
-	function handleSubmit(e: FormEvent) {
-		if (regPass1 !== regPass2) return;
+	const registerMutation = useMutation(postRegister, {
+		onSuccess: () => {
+			setMenuType("login");
+			setLoginEmail(regEmail);
+			setLoginPass(regPass1);
+		}
+	});
+	const loginMutation = useMutation(postLogin, {
+		onSuccess: async (data) => {
+			if (data.status === "success") {
+				await queryClient.invalidateQueries("account");
+				props.closeFunc();
+			}
+		}
+	});
 
+	function handleSubmit(e: FormEvent) {
+		if (menuType === "register") {
+			if (regPass1 !== regPass2) return;
+
+			registerMutation.mutate({ email: regEmail, password: regPass1 });
+		}
+		else {
+			loginMutation.mutate({ email: loginEmail, password: loginPass });
+		}
 
 		e.preventDefault();
 	}
@@ -60,6 +85,7 @@ export function LoginMenu(props: {
 			<form onSubmit={handleSubmit}>
 				{menuType === "login" ?
 					<>
+						{loginMutation.data?.status === "error" && <p className={styles.error}>{loginMutation.data.message}</p>}
 						<label>Email:
 							<input
 								value={loginEmail}
@@ -81,7 +107,8 @@ export function LoginMenu(props: {
 						<input type="submit" value="Log in" />
 					</> :
 					<>
-						{(regPass1 !== regPass2) && <p className={styles["pass-not-matching"]}>Passwords do not match</p>}
+						{(regPass1 !== regPass2) && <p className={styles.error}>Passwords do not match</p>}
+						{registerMutation.data?.status === "error" && <p className={styles.error}>{registerMutation.data.message}</p>}
 						<label>Email:
 							<input
 								value={regEmail}
