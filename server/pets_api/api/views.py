@@ -8,7 +8,7 @@ from .serializers import (
     LoginSerializer,
     UserSerializer
 )
-from django.contrib.auth import login, logout
+from rest_framework.authtoken.models import Token
 
 
 # https://blog.logrocket.com/django-rest-framework-create-api/
@@ -69,7 +69,8 @@ class CharacterDetailsApiView(APIView):
 
         if "user" in request.data:
             request.data.pop("user")
-        serializer = CharacterSerializer(character, data=request.data, partial=True)
+        serializer = CharacterSerializer(
+            character, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -139,13 +140,15 @@ class LoginApiView(APIView):
         )
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        login(request, user)
-        return Response(None, status=status.HTTP_202_ACCEPTED)
+
+        # https://medium.com/quick-code/token-based-authentication-for-django-rest-framework-44586a9a56fb
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({"token": token.key}, status=status.HTTP_202_ACCEPTED)
 
 
 class LogoutApiView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        logout(request)
+        request.user.auth_token.delete()
         return Response(None, status=status.HTTP_200_OK)
