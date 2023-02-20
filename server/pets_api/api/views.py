@@ -26,6 +26,7 @@ class CharactersAllApiView(APIView):
         print(request.user.id)
         data = {
             "world": request.data.get("world"),
+            "name": request.data.get("name"),
             "user": request.user.id
         }
 

@@ -50,7 +50,9 @@ class User(AbstractUser):
 
 
 class Character(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="character_user")
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="character_user")
+    name = models.CharField(max_length=50)
     world = models.CharField(max_length=8)
 
     shadow_found = ArrayField(models.IntegerField(), blank=True, default=list)
