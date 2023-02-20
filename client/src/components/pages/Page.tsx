@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, mainHeading, title } from "../../data/translation";
 import { CSSProperties, useEffect, useState, createContext } from "react";
-import { LoginMenu, PetInfoCard, Pets } from "..";
+import { LoginMenu, PetInfoCard, Pets, UserSettings } from "..";
 import { PetProps } from "../PetCard";
 import { useQuery } from "react-query";
 import { getAccountInfo } from "../../queries";
@@ -28,7 +28,7 @@ export const PetInfoCardContext = createContext<PetInfoCardContextValueType>({
 	setValue: (_) => { }
 });
 
-export function Page(props: { children?: React.ReactNode }) {
+export function Page() {
 	const params = useParams<Params>();
 	const lang = params.lang!;
 	const element = params.element;
@@ -47,6 +47,7 @@ export function Page(props: { children?: React.ReactNode }) {
 	}
 
 	const [loginShown, setLoginShown] = useState(false);
+	const [userSettingsShown, setUserSettingsShown] = useState(false);
 	const [petCard, setPetCard] = useState<PetInfoCardContextValueType>({
 		current: null,
 		setValue: (current: PetProps | null) => {
@@ -71,6 +72,12 @@ export function Page(props: { children?: React.ReactNode }) {
 
 	const accountInfoQuery = useQuery("account", getAccountInfo);
 
+	useEffect(() => {
+		if (accountInfoQuery.data?.status === "error") {
+			setUserSettingsShown(false);
+		}
+	}, [accountInfoQuery.data?.status])
+
 	return (
 		<PetInfoCardContext.Provider value={petCard}>
 			<div
@@ -78,6 +85,7 @@ export function Page(props: { children?: React.ReactNode }) {
 				data-login-open={loginShown}
 			>
 				{loginShown && <LoginMenu closeFunc={() => setLoginShown(false)} />}
+				{userSettingsShown && <UserSettings />}
 				{petCard.current && <PetInfoCard
 					{...petCard.current}
 					closeFunc={() => petCard.setValue(null)}
@@ -101,15 +109,16 @@ export function Page(props: { children?: React.ReactNode }) {
 							<FontAwesomeIcon icon={faLanguage} />
 						</button>
 
-						{accountInfoQuery.data?.status === "error" ?
-							(<button
-								onClick={() => setLoginShown((prev) => !prev)}
-								className={styles["user-settings-button"]}
-							>
-								<FontAwesomeIcon icon={faCircleUser} />
-							</button>) :
-							<p>Logged in</p>
-						}
+						<button
+							onClick={
+								accountInfoQuery.data?.status === "error" ?
+									() => setLoginShown((prev) => !prev) :
+									() => setUserSettingsShown((prev) => !prev)
+							}
+							className={styles["user-settings-button"]}
+						>
+							<FontAwesomeIcon icon={faCircleUser} />
+						</button>
 					</div>
 				</header>
 

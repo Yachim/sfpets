@@ -1,0 +1,10 @@
+.menu {
+	position: absolute;
+	top: 5.0625rem; // height of header in px / 16
+	right: 0;
+
+	button {
+		transition: color 300ms ease-in-out;
+	}
+}
+
