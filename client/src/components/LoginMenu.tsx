@@ -42,10 +42,20 @@ export function LoginMenu(props: {
 	function handleSubmit(e: FormEvent) {
 		if (menuType === "register") {
 			if (regPass1 !== regPass2) return;
+			if (
+				regEmail === "" ||
+				regPass1 === "" ||
+				regPass2 === ""
+			) return;
 
 			registerMutation.mutate({ email: regEmail, password: regPass1 });
 		}
 		else {
+			if (
+				loginEmail === "" ||
+				loginPass === ""
+			) return;
+
 			loginMutation.mutate({ email: loginEmail, password: loginPass });
 		}
 
@@ -104,7 +114,11 @@ export function LoginMenu(props: {
 								type={"password"}
 							/>
 						</label>
-						<input type="submit" value="Log in" />
+						<input
+							disabled={loginEmail === "" || loginPass === ""}
+							type="submit"
+							value="Log in"
+						/>
 					</> :
 					<>
 						{(regPass1 !== regPass2) && <p className={styles.error}>Passwords do not match</p>}
@@ -136,7 +150,16 @@ export function LoginMenu(props: {
 								type={"password"}
 							/>
 						</label>
-						<input type="submit" disabled={regPass1 !== regPass2} value="Register" />
+						<input
+							type="submit"
+							disabled={
+								regPass1 !== regPass2 ||
+								regPass1 === "" ||
+								regPass2 === "" ||
+								regEmail === ""
+							}
+							value="Register"
+						/>
 					</>}
 			</form>
 		</div>
