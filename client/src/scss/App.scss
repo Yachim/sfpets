@@ -84,14 +84,19 @@ a {
     text-decoration: none;
 }
 
-button {
+button, input[type="submit"] {
 	background: none;
 	border: none;
-	cursor: pointer;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
     color: var(--text-color);
 	font-size: 1rem;
+	transition: color 300ms ease-in-out;
 	
-	&:hover {
+	&:hover:not(:disabled) {
 		color: var(--accent-color);
 	}
 }
@@ -103,7 +108,7 @@ input, select, option {
 	border: 2px solid var(--input-border-color);
 	border-radius: 0.25rem;
 
-	&:focus { 
+	&:focus:not([type="submit"]) { 
 		outline: none;
 		background-color: var(--input-focus-bg-color);	
 	}

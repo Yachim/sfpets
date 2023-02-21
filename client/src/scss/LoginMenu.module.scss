@@ -13,9 +13,6 @@
 		input[type="submit"] {
 			margin-left: auto;
 			padding: 0.5rem;
-			border: none;
-			background: none;
-			transition: color 300ms ease-in-out;
 
 			&:hover:not(:disabled) {
 				cursor: pointer;

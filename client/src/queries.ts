@@ -57,3 +57,16 @@ export async function getAccountInfo(): Promise<AccountInfo> {
 		message: err.message
 	}));
 }
+
+type CharacterData = {
+	name: string;
+	world: string;
+}
+export async function postCharacters(data: CharacterData): Promise<PostOutput> {
+	return client.post("characters/", data).then(_ => ({
+		status: "success" as const
+	})).catch((err) => ({
+		status: "error",
+		message: err.message
+	}))
+}
