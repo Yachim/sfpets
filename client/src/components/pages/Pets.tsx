@@ -58,7 +58,7 @@ export function Pets() {
 				status: isAvailable(pet, date),
 				img: pet.img,
 				found: found,
-				index: i
+				index: i % 20
 			};
 		});
 
