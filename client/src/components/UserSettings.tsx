@@ -1,8 +1,9 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useMutation } from "react-query";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
-import { postCharacters, postLogout } from "../queries";
+import { getCharacters, postCharacters, postLogout } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
+import { SelectedCharacterContext } from "./pages/Page";
 
 export function UserSettings() {
 	const logoutMutation = useMutation(postLogout, {
@@ -12,7 +13,10 @@ export function UserSettings() {
 	const [characterName, setCharacterName] = useState("");
 	const [characterWorld, setCharacterWorld] = useState("");
 
-	const characterMutation = useMutation(postCharacters)
+	const characterMutation = useMutation(postCharacters, {
+		onSuccess: () => queryClient.invalidateQueries("characters")
+	});
+	const charactersQuery = useQuery("characters", getCharacters);
 
 	function handleSubmit(e: FormEvent) {
 		if (characterName === "" || characterWorld === "") return;
@@ -25,14 +29,37 @@ export function UserSettings() {
 		e.preventDefault();
 	}
 
+	const characterContext = useContext(SelectedCharacterContext);
+
+	function changeCharacter(e: ChangeEvent<HTMLSelectElement>) {
+		characterContext.setValue(+e.currentTarget.value);
+	}
+
 	return (
 		<div className={styles.menu}>
+			{characterMutation.isSuccess && <p>Character added</p>}
+			{characterMutation.isError && <p>Error while adding character</p>}
+
+			{charactersQuery.isSuccess && charactersQuery.data!.length > 0 && (
+				<label>
+					Character:
+					<select onChange={changeCharacter}>
+						{charactersQuery.data!.map((character, i) => (
+							<option
+								key={i}
+								value={character.id}
+							>
+								{character.world} - {character.name}
+							</option>
+						))}
+					</select>
+				</label>
+			)}
+
 			<form
 				className={styles["add-character-data"]}
 				onSubmit={handleSubmit}
 			>
-				{characterMutation.data?.status === "success" && <p>Character added</p>}
-				{characterMutation.data?.status === "error" && <p>Error while adding character</p>}
 				<label>Name:
 					<input
 						value={characterName}
@@ -63,6 +90,6 @@ export function UserSettings() {
 			>
 				Log out
 			</button>
-		</div>
+		</div >
 	)
 }

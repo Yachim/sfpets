@@ -37,7 +37,7 @@ export async function postLogin(data: Credentials): Promise<PostOutput> {
 }
 
 export async function postLogout() {
-	const res = await client.post("logout/");
+	await client.post("logout/");
 }
 
 type AccountInfo = {
@@ -62,11 +62,20 @@ type CharacterData = {
 	name: string;
 	world: string;
 }
-export async function postCharacters(data: CharacterData): Promise<PostOutput> {
-	return client.post("characters/", data).then(_ => ({
-		status: "success" as const
-	})).catch((err) => ({
-		status: "error",
-		message: err.message
-	}))
+export async function postCharacters(data: CharacterData) {
+	await client.post("characters/", data)
+}
+
+type CharacterInfo = {
+	id: number;
+	name: string;
+	world: string;
+	shadow_found: number[];
+	light_found: number[];
+	earth_found: number[];
+	fire_found: number[];
+	water_found: number[];
+}
+export async function getCharacters(): Promise<CharacterInfo[]> {
+	return (await client.get("characters/")).data;
 }

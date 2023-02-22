@@ -6,9 +6,6 @@
     font-size: 16px;
 	font-family: sans-serif;
 
-	--input-bg-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.05);
-	--input-border-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.2);
-
 	--mark-found-color: limegreen;
 	--mark-not-found-color: red;
 	--pet-available-color: #48b826;
@@ -36,7 +33,9 @@
 	--accent-s: 25%;
 	--accent-l: 65%;
 
-	--input-focus-bg-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.15);
+	--input-bg-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 0.15));
+	--input-border-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 0.4));
+	--input-focus-bg-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 0.25));
 }
 
 .light-theme {
@@ -52,7 +51,9 @@
 	--accent-s: 25%;
 	--accent-l: 55%;
 
-	--input-focus-bg-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.30);
+	--input-bg-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 1.4));
+	--input-border-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 1.25));
+	--input-focus-bg-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 1.3));
 }
 
 * {
