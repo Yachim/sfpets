@@ -1,10 +1,11 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
-import { useMutation } from "react-query";
+import { ChangeEvent, FormEvent, useCallback, useContext, useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
-import { postLogin, postRegister } from "../queries";
+import { getCharacters, isLoggedIn, postLogin, postRegister } from "../queries";
 import styles from "../scss/LoginMenu.module.scss";
+import { LoggedInContext, SelectedCharacterContext } from "./pages/Page";
 
 export function LoginMenu(props: {
 	closeFunc: () => void;
@@ -23,6 +24,8 @@ export function LoginMenu(props: {
 
 	const [menuType, setMenuType] = useState<"login" | "register">("login");
 
+	const characterContext = useContext(SelectedCharacterContext);
+
 	const registerMutation = useMutation(postRegister, {
 		onSuccess: () => {
 			setMenuType("login");
@@ -31,11 +34,19 @@ export function LoginMenu(props: {
 		}
 	});
 	const loginMutation = useMutation(postLogin, {
-		onSuccess: async (data) => {
-			if (data.status === "success") {
-				await queryClient.invalidateQueries("account");
-				props.closeFunc();
+		onSuccess: async () => {
+			await queryClient.invalidateQueries("account");
+			await queryClient.invalidateQueries("characters");
+			await queryClient.invalidateQueries("character");
+
+			const characters = await getCharacters();
+
+			// TODO: load last selected character
+			if (characters.length > 0) {
+				characterContext.setValue(characters[0].id)
 			}
+
+			props.closeFunc();
 		}
 	});
 
@@ -95,7 +106,7 @@ export function LoginMenu(props: {
 			<form onSubmit={handleSubmit}>
 				{menuType === "login" ?
 					<>
-						{loginMutation.data?.status === "error" && <p className={styles.error}>{loginMutation.data.message}</p>}
+						{loginMutation.isError && <p className={styles.error}>{loginMutation.error as string}</p>}
 						<label>Email:
 							<input
 								value={loginEmail}

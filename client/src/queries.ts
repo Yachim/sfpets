@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
+	// TODO: change to env var
 	baseURL: "http://localhost:8000/api/",
 });
 
@@ -9,53 +10,31 @@ type Credentials = {
 	password: string;
 };
 
-type PostOutput = {
-	status: "success"
-} | {
-	status: "error",
-	message: string
-};
-export async function postRegister(data: Credentials): Promise<PostOutput> {
-	return client.post("register/", data).then(() => ({
-		status: "success" as const
-	})).catch((err) => ({
-		status: "error",
-		message: err.message
-	}));
+export function isLoggedIn(): boolean {
+	return !!client.defaults.headers.Authorization && client.defaults.headers.Authorization !== "";
 }
 
-export async function postLogin(data: Credentials): Promise<PostOutput> {
-	return client.post("login/", data).then((res) => {
-		client.defaults.headers.Authorization = `Token ${res.data.token}`;
-		return {
-			status: "success" as const
-		}
-	}).catch((err) => ({
-		status: "error",
-		message: err.message
-	}));
+export async function postRegister(data: Credentials) {
+	client.post("register/", data);
+}
+
+export async function postLogin(data: Credentials) {
+	const res = await client.post("login/", data);
+	client.defaults.headers.Authorization = `Token ${res.data.token}`;
 }
 
 export async function postLogout() {
-	await client.post("logout/");
+	client.post("logout/");
+	delete client.defaults.headers.Authorization;
 }
 
 type AccountInfo = {
-	status: "logged_in";
 	id: number;
 	email: string;
-} | {
-	status: "error";
-	message: string;
 };
 export async function getAccountInfo(): Promise<AccountInfo> {
-	return client.get("account/").then((res) => ({
-		...res.data,
-		status: "logged_in"
-	})).catch((err) => ({
-		status: "error",
-		message: err.message
-	}));
+	const res = await client.get<AccountInfo>("account/");
+	return res.data;
 }
 
 type CharacterData = {
@@ -63,7 +42,7 @@ type CharacterData = {
 	world: string;
 }
 export async function postCharacters(data: CharacterData) {
-	await client.post("characters/", data)
+	client.post("characters/", data)
 }
 
 type CharacterInfo = {
@@ -77,5 +56,11 @@ type CharacterInfo = {
 	water_found: number[];
 }
 export async function getCharacters(): Promise<CharacterInfo[]> {
-	return (await client.get("characters/")).data;
+	const res = await client.get<CharacterInfo[]>("characters/");
+	return res.data;
+}
+
+export async function getCharacter(id: number): Promise<CharacterInfo> {
+	const res = await client.get<CharacterInfo>(`characters/${id}`);
+	return res.data;
 }

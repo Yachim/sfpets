@@ -15,8 +15,7 @@ import { desc, mainHeading, title } from "../../data/translation";
 import { CSSProperties, useEffect, useState, createContext } from "react";
 import { LoginMenu, PetInfoCard, Pets, UserSettings } from "..";
 import { PetProps } from "../PetCard";
-import { useQuery } from "react-query";
-import { getAccountInfo } from "../../queries";
+import { isLoggedIn } from "../../queries";
 
 export type PetInfoCardContextValueType = {
 	current: PetProps | null,
@@ -70,31 +69,24 @@ export function Page() {
 		document.documentElement.classList.add(themeClass);
 	}, [themeClass]);
 
-	const accountInfoQuery = useQuery("account", getAccountInfo);
-
-	useEffect(() => {
-		if (accountInfoQuery.data?.status === "error") {
-			setUserSettingsShown(false);
-		}
-	}, [accountInfoQuery.data?.status])
-
 	const [selectedCharacter, setSelectedCharacter] = useState(-1);
 
+
 	return (
-		<PetInfoCardContext.Provider value={{
-			current: petCard,
-			setValue: setPetCard
+		<SelectedCharacterContext.Provider value={{
+			value: selectedCharacter,
+			setValue: setSelectedCharacter
 		}}>
-			<SelectedCharacterContext.Provider value={{
-				value: selectedCharacter,
-				setValue: setSelectedCharacter
+			<PetInfoCardContext.Provider value={{
+				current: petCard,
+				setValue: setPetCard
 			}}>
 				<div
 					className={styles.app}
 					data-login-open={loginShown}
 				>
 					{loginShown && <LoginMenu closeFunc={() => setLoginShown(false)} />}
-					{userSettingsShown && <UserSettings />}
+					{userSettingsShown && <UserSettings closeFunc={() => setUserSettingsShown(false)} />}
 					{petCard && <PetInfoCard
 						{...petCard}
 						closeFunc={() => setPetCard(null)}
@@ -120,9 +112,9 @@ export function Page() {
 
 							<button
 								onClick={
-									accountInfoQuery.data?.status === "error" ?
-										() => setLoginShown((prev) => !prev) :
-										() => setUserSettingsShown((prev) => !prev)
+									isLoggedIn() ?
+										() => setUserSettingsShown((prev) => !prev) :
+										() => setLoginShown((prev) => !prev)
 								}
 								className={styles["user-settings-button"]}
 							>
@@ -175,7 +167,7 @@ export function Page() {
 					</nav>
 					<Pets />
 				</div>
-			</SelectedCharacterContext.Provider>
-		</PetInfoCardContext.Provider>
+			</PetInfoCardContext.Provider>
+		</SelectedCharacterContext.Provider>
 	);
 }

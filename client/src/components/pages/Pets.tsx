@@ -4,12 +4,17 @@ import { Params } from "../../types";
 import styles from "../../scss/Pets.module.scss";
 import locs from "../../data/locs";
 import { daysOfWeek } from "../../data/translation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { isAvailable } from "../../utils/utils";
 import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
+import { useQuery } from "react-query";
+import { getCharacter, isLoggedIn } from "../../queries";
+import { SelectedCharacterContext } from "./Page";
 
 export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
+
+const elementList: ["shadow", "light", "earth", "fire", "water"] = ["shadow", "light", "earth", "fire", "water"];
 
 export function Pets() {
 	const params = useParams<Params>();
@@ -32,6 +37,12 @@ export function Pets() {
 		return () => clearInterval(interval);
 	}, []);
 
+	const characterContext = useContext(SelectedCharacterContext);
+
+	const characterQuery = useQuery("character", () => getCharacter(characterContext.value), {
+		enabled: isLoggedIn() && characterContext.value !== -1
+	});
+
 	useEffect(() => {
 		let basePets = !element ? [...pets.shadow, ...pets.light, ...pets.earth, ...pets.fire, ...pets.water] : pets[element];
 		let editedPets: PetProps[] = basePets.map((pet, i) => {
@@ -44,9 +55,14 @@ export function Pets() {
 			let event: string | null = null;
 			if (pet.event) event = pet.event[lang];
 
-			let found: boolean = JSON.parse(
-				localStorage.getItem(`${element}-${i}`) || "false"
-			);
+			const petIndexInElement = i % 20;
+
+			// FIXME: This solution is a mess. I am sorry, at this point I am too tired.
+			// don't think it will get fixed though
+			const elementIndex = Math.floor(i / 20);
+			const petElement = elementList[elementIndex];
+			const foundForElement = characterQuery.isSuccess ? characterQuery.data[`${petElement}_found`] : [];
+			const found = foundForElement.includes(petIndexInElement);
 
 			return {
 				name: pet.names[lang],
@@ -58,7 +74,7 @@ export function Pets() {
 				status: isAvailable(pet, date),
 				img: pet.img,
 				found: found,
-				index: i % 20
+				index: petIndexInElement
 			};
 		});
 

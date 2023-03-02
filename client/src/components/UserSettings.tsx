@@ -1,13 +1,19 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
-import { getCharacters, postCharacters, postLogout } from "../queries";
+import { getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
 import { SelectedCharacterContext } from "./pages/Page";
 
-export function UserSettings() {
+export function UserSettings(props: { closeFunc: () => void }) {
 	const logoutMutation = useMutation(postLogout, {
-		onSuccess: () => queryClient.invalidateQueries("account")
+		onSuccess: () => {
+			queryClient.invalidateQueries("account");
+			queryClient.invalidateQueries("characters");
+			queryClient.invalidateQueries("character");
+			props.closeFunc();
+			characterContext.setValue(-1);
+		}
 	})
 
 	const [characterName, setCharacterName] = useState("");
@@ -16,7 +22,9 @@ export function UserSettings() {
 	const characterMutation = useMutation(postCharacters, {
 		onSuccess: () => queryClient.invalidateQueries("characters")
 	});
-	const charactersQuery = useQuery("characters", getCharacters);
+	const charactersQuery = useQuery("characters", getCharacters, {
+		enabled: isLoggedIn()
+	});
 
 	function handleSubmit(e: FormEvent) {
 		if (characterName === "" || characterWorld === "") return;
@@ -33,6 +41,7 @@ export function UserSettings() {
 
 	function changeCharacter(e: ChangeEvent<HTMLSelectElement>) {
 		characterContext.setValue(+e.currentTarget.value);
+		queryClient.invalidateQueries("character")
 	}
 
 	return (
