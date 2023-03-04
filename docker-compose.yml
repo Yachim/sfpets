@@ -35,7 +35,11 @@ services:
       - DB_NAME=${DB_NAME}
       - BIND_ADDRESS=${BIND_ADDRESS}
     build: "./server"
+
     entrypoint: "./entrypoint_docker.sh"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
     depends_on:
       db:
         condition: service_healthy

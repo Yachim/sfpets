@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { PetInfoCardContext } from "./pages/Page";
+import { PetElement } from "../types/pet";
 
 export type PetTimeProps = {
 	dayOfWeek: string | null;
@@ -24,30 +25,19 @@ export type PetProps = PetTimeProps & {
 	img: string;
 	found: boolean;
 	index: number;
+	element: PetElement;
 };
 
 export function PetCard(
-	props: { petInfo: PetProps, toggleFound: (index: number, newVal: boolean) => void }
+	props: {
+		petInfo: PetProps,
+		toggleFound: (index: number, element: PetElement, newVal: boolean) => void
+	}
 ) {
-	const params = useParams<Params>();
-	const element = params.element!;
-
-
 	let indexClassList = [
 		styles["pet-index"],
 		styles[`pet-index--${props.petInfo.status}`]
 	];
-
-	function toggleFound() {
-		const newStatus: boolean = !props.petInfo.found;
-
-		localStorage.setItem(
-			`${element}-${props.petInfo.index}`,
-			JSON.stringify(newStatus)
-		);
-
-		props.toggleFound(props.petInfo.index, newStatus);
-	}
 
 	const context = useContext(PetInfoCardContext);
 
@@ -61,7 +51,9 @@ export function PetCard(
 			</div>
 
 			<div className={styles["pet-info__wrapper"]}>
-				<button onClick={toggleFound} className={styles["overlay-button"]}>
+				<button onClick={() => {
+					props.toggleFound(props.petInfo.index, props.petInfo.element, !props.petInfo.found)
+				}} className={styles["overlay-button"]}>
 					{props.petInfo.found ? (
 						<>
 							<FontAwesomeIcon

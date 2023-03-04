@@ -5,9 +5,9 @@ import firePets from "./pets/fire";
 import waterPets from "./pets/water";
 
 export const pets = {
-    shadow: shadowPets,
-    light: lightPets,
-    earth: earthPets,
-    fire: firePets,
-    water: waterPets
+	shadow: shadowPets,
+	light: lightPets,
+	earth: earthPets,
+	fire: firePets,
+	water: waterPets
 };

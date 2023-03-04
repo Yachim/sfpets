@@ -64,3 +64,17 @@ export async function getCharacter(id: number): Promise<CharacterInfo> {
 	const res = await client.get<CharacterInfo>(`characters/${id}`);
 	return res.data;
 }
+
+type CharacterInfoPatch = {
+	id: number;
+	name?: string;
+	world?: string;
+	shadow_found?: number[];
+	light_found?: number[];
+	earth_found?: number[];
+	fire_found?: number[];
+	water_found?: number[];
+}
+export async function patchCharacter(data: CharacterInfo) {
+	client.patch(`characters/${data.id}/`, data);
+}

@@ -8,20 +8,20 @@ import { useContext, useEffect, useState } from "react";
 import { isAvailable } from "../../utils/utils";
 import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
-import { useQuery } from "react-query";
-import { getCharacter, isLoggedIn } from "../../queries";
+import { useMutation, useQuery } from "react-query";
+import { getCharacter, isLoggedIn, patchCharacter } from "../../queries";
 import { SelectedCharacterContext } from "./Page";
+import { PetElement } from "../../types/pet";
+import { queryClient } from "../../App";
 
 export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
-
-const elementList: ["shadow", "light", "earth", "fire", "water"] = ["shadow", "light", "earth", "fire", "water"];
 
 export function Pets() {
 	const params = useParams<Params>();
 	const lang = params.lang!;
 	const element = params.element;
 
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams] = useSearchParams();
 	const filter: Filter[] = JSON.parse(
 		searchParams.get("filter") ||
 		'["available", "unknown", "unavailable", "found", "notFound"]'
@@ -43,9 +43,13 @@ export function Pets() {
 		enabled: isLoggedIn() && characterContext.value !== -1
 	});
 
+	const characterMutation = useMutation(patchCharacter, {
+		onSuccess: () => queryClient.invalidateQueries("character")
+	});
+
 	useEffect(() => {
 		let basePets = !element ? [...pets.shadow, ...pets.light, ...pets.earth, ...pets.fire, ...pets.water] : pets[element];
-		let editedPets: PetProps[] = basePets.map((pet, i) => {
+		let editedPets: PetProps[] = basePets.map((pet) => {
 			let loc: string | null = null;
 			if (pet.loc_index) loc = locs[pet.loc_index][lang];
 
@@ -55,14 +59,8 @@ export function Pets() {
 			let event: string | null = null;
 			if (pet.event) event = pet.event[lang];
 
-			const petIndexInElement = i % 20;
-
-			// FIXME: This solution is a mess. I am sorry, at this point I am too tired.
-			// don't think it will get fixed though
-			const elementIndex = Math.floor(i / 20);
-			const petElement = elementList[elementIndex];
-			const foundForElement = characterQuery.isSuccess ? characterQuery.data[`${petElement}_found`] : [];
-			const found = foundForElement.includes(petIndexInElement);
+			const foundForElement = characterQuery.isSuccess ? characterQuery.data[`${pet.element}_found`] : [];
+			const found = foundForElement.includes(pet.index);
 
 			return {
 				name: pet.names[lang],
@@ -74,7 +72,8 @@ export function Pets() {
 				status: isAvailable(pet, date),
 				img: pet.img,
 				found: found,
-				index: petIndexInElement
+				index: pet.index,
+				element: pet.element,
 			};
 		});
 
@@ -116,14 +115,42 @@ export function Pets() {
 		}
 	}, [
 		JSON.stringify(filter),
+		JSON.stringify(characterQuery.data),
 		element,
 		date,
-		JSON.stringify(petsData)
+		characterQuery.status
 	]);
 
-	function toggleFound(index: number, newVal: boolean) {
-		petsData[index].found = newVal;
-		setPetsData([...petsData]);
+	function toggleFound(index: number, element: PetElement, newVal: boolean) {
+		if (characterQuery.isSuccess) {
+			console.log("mutating")
+			const key = `${element}_found` as const;
+			const el_arr = characterQuery.data[key];
+
+			if (!newVal && el_arr.includes(index)) {
+				const i = el_arr.findIndex((val) => val === index);
+				el_arr.splice(i!);
+			}
+			else {
+				el_arr.push(index);
+			}
+
+			console.log(el_arr)
+
+			characterMutation.mutate({
+				...characterQuery.data,
+				[key]: el_arr
+			});
+		}
+		else {
+			console.log("session")
+			const i = petsData.findIndex((pet) =>
+				pet.element === element && pet.index === index
+			);
+
+			petsData[i].found = newVal;
+			setPetsData([...petsData]);
+		}
 	}
 
 	return (

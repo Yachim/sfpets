@@ -49,9 +49,9 @@ export function Page() {
 		?.setAttribute("content", desc[lang]);
 
 	function generateUrl(
-		element: "shadow" | "light" | "earth" | "fire" | "water"
+		new_element: "shadow" | "light" | "earth" | "fire" | "water"
 	) {
-		return `../${lang}/${element}?${searchParams.toString()}`;
+		return `../${lang}/${new_element}?${searchParams.toString()}`;
 	}
 
 	const [loginShown, setLoginShown] = useState(false);
@@ -94,7 +94,7 @@ export function Page() {
 					<div className={styles["modal-overlay"]} data-visible={loginShown || !!petCard} />
 
 					<header className={styles["top-bar"]}>
-						<Link to="../">
+						<Link to={`../${lang}`}>
 							<h1>{mainHeading[lang]}</h1>
 						</Link>
 						<div className={styles["user-settings"]}>
