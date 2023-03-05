@@ -5,5 +5,6 @@ import { LoginMenu } from "./LoginMenu";
 import { Filters } from "./Filters";
 import { PetInfoCard } from "./PetInfoCard";
 import { UserSettings } from "./UserSettings";
+import { Header } from "./Header";
 
-export { Root, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard, UserSettings };
+export { Header, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard, UserSettings };

@@ -9,24 +9,6 @@
     min-height: 100%;
 }
 
-.top-bar {
-    grid-area: heading;
-    background-color: var(--topbar-color);
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
-
-	padding: 1.25rem;
-
-    h1 {
-		font-size: 2rem;
-		font-weight: bold;
-        color: var(--accent-color);
-    }
-}
-
 .nav-bar {
     grid-area: nav;
     display: flex;
@@ -54,23 +36,6 @@
 
 .icon:hover * {
 	fill: var(--hover-color)
-}
-
-.user-settings {
-	display: flex;
-	gap: 1.25rem;
-}
-
-.user-settings-button {
-	font-size: 2rem;
-
-	* {
-		transition: fill 300ms ease-in-out;
-	}
-
-	&:hover * {
-		fill: var(--accent-color);
-	}
 }
 
 label {

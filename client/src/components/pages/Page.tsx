@@ -3,24 +3,35 @@ import { Params } from "../../types";
 import styles from "../../scss/Page.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faCircleUser,
 	faFire,
-	faLanguage,
 	faMoon,
 	faSeedling,
 	faSun,
 	faWater
 } from "@fortawesome/free-solid-svg-icons";
-import { desc, Langs, mainHeading, title } from "../../data/translation";
-import { CSSProperties, useEffect, useState, createContext } from "react";
-import { LoginMenu, PetInfoCard, Pets, UserSettings } from "..";
+import { desc, Langs, title } from "../../data/translation";
+import { CSSProperties, useEffect, useState, createContext, Dispatch, SetStateAction } from "react";
+import { LoginMenu, PetInfoCard, Pets, UserSettings, Header } from "..";
 import { PetProps } from "../PetCard";
-import { getAccount, isLoggedIn, patchAccount } from "../../queries";
-import { useMutation, useQuery } from "react-query";
+import { getAccount, isLoggedIn } from "../../queries";
+import { useQuery } from "react-query";
 import { getLang } from "../../utils/utils";
-import { queryClient } from "../../App";
 
-export const LangContext = createContext<Langs>(getLang());
+export const LangContext = createContext<{
+	value: Langs,
+	setValue: (val: Langs) => void
+}>({
+	value: getLang(),
+	setValue: (_) => { }
+});
+
+export const DarkThemeContext = createContext<{
+	value: boolean,
+	setValue: Dispatch<SetStateAction<boolean>>
+}>({
+	value: true,
+	setValue: (_) => { }
+});
 
 export type PetInfoCardContextValueType = {
 	current: PetProps | null,
@@ -41,6 +52,22 @@ export const SelectedCharacterContext = createContext<SelectedCharacterContextTy
 	setValue: (_) => { }
 });
 
+export const UserSettingsShownContext = createContext<{
+	value: boolean,
+	setValue: Dispatch<SetStateAction<boolean>>
+}>({
+	value: false,
+	setValue: (_) => { }
+});
+
+export const LoginShownContext = createContext<{
+	value: boolean,
+	setValue: Dispatch<SetStateAction<boolean>>
+}>({
+	value: false,
+	setValue: (_) => { }
+});
+
 export function Page() {
 	const params = useParams<Params>();
 	const element = params.element;
@@ -48,6 +75,7 @@ export function Page() {
 	const [searchParams] = useSearchParams();
 
 	const [lang, setLang] = useState<Langs>(getLang());
+	const [darkTheme, setDarkTheme] = useState(true);
 
 	useQuery("account", getAccount, {
 		enabled: isLoggedIn(),
@@ -55,10 +83,6 @@ export function Page() {
 			setLang(res.lang)
 			setDarkTheme(res.dark_theme)
 		}
-	});
-
-	const accountMutation = useMutation(patchAccount, {
-		onSuccess: () => queryClient.invalidateQueries("account")
 	});
 
 	document.title = title[lang];
@@ -75,9 +99,7 @@ export function Page() {
 	const [loginShown, setLoginShown] = useState(false);
 	const [userSettingsShown, setUserSettingsShown] = useState(false);
 	const [petCard, setPetCard] = useState<PetProps | null>(null);
-	const [darkTheme, setDarkTheme] = useState(true);
 
-	const themeIcon = darkTheme ? faSun : faMoon;
 	const themeClass = `${darkTheme ? "dark" : "light"}-theme`;
 
 	useEffect(() => {
@@ -89,115 +111,94 @@ export function Page() {
 
 	const [selectedCharacter, setSelectedCharacter] = useState(-1);
 
-	function changeTheme() {
-		if (isLoggedIn()) {
-			accountMutation.mutate({
-				dark_theme: !darkTheme
-			})
-		}
-		else {
-			setDarkTheme((prev) => !prev)
-		}
-	}
-
 	return (
-		<LangContext.Provider value={lang}>
-			<SelectedCharacterContext.Provider value={{
-				value: selectedCharacter,
-				setValue: setSelectedCharacter
+		<LangContext.Provider value={{
+			value: lang,
+			setValue: setLang
+		}}>
+			<DarkThemeContext.Provider value={{
+				value: darkTheme,
+				setValue: setDarkTheme
 			}}>
-				<PetInfoCardContext.Provider value={{
-					current: petCard,
-					setValue: setPetCard
+				<LoginShownContext.Provider value={{
+					value: loginShown,
+					setValue: setLoginShown
 				}}>
-					<div
-						className={styles.app}
-						data-login-open={loginShown}
-					>
-						{loginShown && <LoginMenu closeFunc={() => setLoginShown(false)} />}
-						{userSettingsShown && <UserSettings closeFunc={() => setUserSettingsShown(false)} />}
-						{petCard && <PetInfoCard
-							{...petCard}
-							closeFunc={() => setPetCard(null)}
-						/>}
-						<div className={styles["modal-overlay"]} data-visible={loginShown || !!petCard} />
-
-						<header className={styles["top-bar"]}>
-							<Link to={`../`}>
-								<h1>{mainHeading[lang]}</h1>
-							</Link>
-							<div className={styles["user-settings"]}>
-								<button
-									className={styles["user-settings-button"]}
-									onClick={changeTheme}
+					<UserSettingsShownContext.Provider value={{
+						value: userSettingsShown,
+						setValue: setUserSettingsShown
+					}}>
+						<SelectedCharacterContext.Provider value={{
+							value: selectedCharacter,
+							setValue: setSelectedCharacter
+						}}>
+							<PetInfoCardContext.Provider value={{
+								current: petCard,
+								setValue: setPetCard
+							}}>
+								<div
+									className={styles.app}
+									data-login-open={loginShown}
 								>
-									<FontAwesomeIcon icon={themeIcon} />
-								</button>
-								<button
-									className={styles["user-settings-button"]}
-								>
-									<FontAwesomeIcon icon={faLanguage} />
-								</button>
+									{loginShown && <LoginMenu closeFunc={() => setLoginShown(false)} />}
+									{userSettingsShown && <UserSettings closeFunc={() => setUserSettingsShown(false)} />}
+									{petCard && <PetInfoCard
+										{...petCard}
+										closeFunc={() => setPetCard(null)}
+									/>}
+									<div className={styles["modal-overlay"]} data-visible={loginShown || !!petCard} />
 
-								<button
-									onClick={
-										isLoggedIn() ?
-											() => setUserSettingsShown((prev) => !prev) :
-											() => setLoginShown((prev) => !prev)
-									}
-									className={styles["user-settings-button"]}
-								>
-									<FontAwesomeIcon icon={faCircleUser} />
-								</button>
-							</div>
-						</header>
+									<Header />
 
-						<nav className={styles["nav-bar"]}>
-							<Link
-								to={generateUrl("shadow")}
-								data-active={element === "shadow"}
-								className={styles.icon}
-								style={{ "--hover-color": "gray" } as CSSProperties}
-							>
-								<FontAwesomeIcon icon={faMoon} />
-							</Link>
-							<Link
-								to={generateUrl("light")}
-								data-active={element === "light"}
-								className={styles.icon}
-								style={{ "--hover-color": "yellow" } as CSSProperties}
-							>
-								<FontAwesomeIcon icon={faSun} />
-							</Link>
-							<Link
-								to={generateUrl("earth")}
-								data-active={element === "earth"}
-								className={styles.icon}
-								style={{ "--hover-color": "green" } as CSSProperties}
-							>
-								<FontAwesomeIcon icon={faSeedling} />
-							</Link>
-							<Link
-								to={generateUrl("fire")}
-								data-active={element === "fire"}
-								className={styles.icon}
-								style={{ "--hover-color": "orangered" } as CSSProperties}
-							>
-								<FontAwesomeIcon icon={faFire} />
-							</Link>
-							<Link
-								to={generateUrl("water")}
-								data-active={element === "water"}
-								className={styles.icon}
-								style={{ "--hover-color": "lightskyblue" } as CSSProperties}
-							>
-								<FontAwesomeIcon icon={faWater} />
-							</Link>
-						</nav>
-						<Pets />
-					</div>
-				</PetInfoCardContext.Provider>
-			</SelectedCharacterContext.Provider>
-		</LangContext.Provider>
+									<nav className={styles["nav-bar"]}>
+										<Link
+											to={generateUrl("shadow")}
+											data-active={element === "shadow"}
+											className={styles.icon}
+											style={{ "--hover-color": "gray" } as CSSProperties}
+										>
+											<FontAwesomeIcon icon={faMoon} />
+										</Link>
+										<Link
+											to={generateUrl("light")}
+											data-active={element === "light"}
+											className={styles.icon}
+											style={{ "--hover-color": "yellow" } as CSSProperties}
+										>
+											<FontAwesomeIcon icon={faSun} />
+										</Link>
+										<Link
+											to={generateUrl("earth")}
+											data-active={element === "earth"}
+											className={styles.icon}
+											style={{ "--hover-color": "green" } as CSSProperties}
+										>
+											<FontAwesomeIcon icon={faSeedling} />
+										</Link>
+										<Link
+											to={generateUrl("fire")}
+											data-active={element === "fire"}
+											className={styles.icon}
+											style={{ "--hover-color": "orangered" } as CSSProperties}
+										>
+											<FontAwesomeIcon icon={faFire} />
+										</Link>
+										<Link
+											to={generateUrl("water")}
+											data-active={element === "water"}
+											className={styles.icon}
+											style={{ "--hover-color": "lightskyblue" } as CSSProperties}
+										>
+											<FontAwesomeIcon icon={faWater} />
+										</Link>
+									</nav>
+									<Pets />
+								</div>
+							</PetInfoCardContext.Provider>
+						</SelectedCharacterContext.Provider>
+					</UserSettingsShownContext.Provider >
+				</LoginShownContext.Provider >
+			</DarkThemeContext.Provider >
+		</LangContext.Provider >
 	);
 }
