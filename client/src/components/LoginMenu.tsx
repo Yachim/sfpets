@@ -37,7 +37,6 @@ export function LoginMenu(props: {
 		onSuccess: async () => {
 			await queryClient.invalidateQueries("account");
 			await queryClient.invalidateQueries("characters");
-			await queryClient.invalidateQueries("character");
 
 			const characters = await getCharacters();
 

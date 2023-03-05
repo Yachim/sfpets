@@ -39,7 +39,7 @@ export function Pets() {
 
 	const characterContext = useContext(SelectedCharacterContext);
 
-	const characterQuery = useQuery("character", () => getCharacter(characterContext.value), {
+	const characterQuery = useQuery(["character", characterContext.value], async () => getCharacter(characterContext.value), {
 		enabled: isLoggedIn() && characterContext.value !== -1
 	});
 
@@ -123,7 +123,6 @@ export function Pets() {
 
 	function toggleFound(index: number, element: PetElement, newVal: boolean) {
 		if (characterQuery.isSuccess) {
-			console.log("mutating")
 			const key = `${element}_found` as const;
 			const el_arr = characterQuery.data[key];
 
@@ -135,10 +134,9 @@ export function Pets() {
 				el_arr.push(index);
 			}
 
-			console.log(el_arr)
 
 			characterMutation.mutate({
-				...characterQuery.data,
+				id: characterQuery.data.id,
 				[key]: el_arr
 			});
 		}

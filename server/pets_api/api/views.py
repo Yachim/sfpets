@@ -88,8 +88,10 @@ class CharacterDetailsApiView(APIView):
             )
 
         character.delete()
+        characters = Character.objects.filter(user=request.user.id)
+        serializer = CharacterSerializer(characters, many=True)
         return Response(
-            {"res": "Character deleted!"},
+            serializer.data,
             status=status.HTTP_200_OK
         )
 

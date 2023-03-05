@@ -37,12 +37,14 @@ export async function getAccountInfo(): Promise<AccountInfo> {
 	return res.data;
 }
 
+export async function deleteAccount() {
+	client.delete("account/");
+	delete client.defaults.headers.Authorization;
+}
+
 type CharacterData = {
 	name: string;
 	world: string;
-}
-export async function postCharacters(data: CharacterData) {
-	client.post("characters/", data)
 }
 
 type CharacterInfo = {
@@ -55,6 +57,12 @@ type CharacterInfo = {
 	fire_found: number[];
 	water_found: number[];
 }
+
+export async function postCharacters(data: CharacterData): Promise<CharacterInfo> {
+	const res = await client.post("characters/", data);
+	return res.data;
+}
+
 export async function getCharacters(): Promise<CharacterInfo[]> {
 	const res = await client.get<CharacterInfo[]>("characters/");
 	return res.data;
@@ -75,6 +83,11 @@ type CharacterInfoPatch = {
 	fire_found?: number[];
 	water_found?: number[];
 }
-export async function patchCharacter(data: CharacterInfo) {
+export async function patchCharacter(data: CharacterInfoPatch) {
 	client.patch(`characters/${data.id}/`, data);
+}
+
+export async function deleteCharacter(data: { id: number }): Promise<CharacterInfo[]> {
+	const res = await client.delete(`characters/${data.id}/`);
+	return res.data;
 }

@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
-import { getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
+import { deleteAccount, deleteCharacter, getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
 import { SelectedCharacterContext } from "./pages/Page";
 
@@ -10,7 +10,6 @@ export function UserSettings(props: { closeFunc: () => void }) {
 		onSuccess: () => {
 			queryClient.invalidateQueries("account");
 			queryClient.invalidateQueries("characters");
-			queryClient.invalidateQueries("character");
 			props.closeFunc();
 			characterContext.setValue(-1);
 		}
@@ -20,7 +19,10 @@ export function UserSettings(props: { closeFunc: () => void }) {
 	const [characterWorld, setCharacterWorld] = useState("");
 
 	const characterMutation = useMutation(postCharacters, {
-		onSuccess: () => queryClient.invalidateQueries("characters")
+		onSuccess: (res) => {
+			queryClient.invalidateQueries("characters");
+			characterContext.setValue(res.id);
+		}
 	});
 	const charactersQuery = useQuery("characters", getCharacters, {
 		enabled: isLoggedIn()
@@ -41,8 +43,29 @@ export function UserSettings(props: { closeFunc: () => void }) {
 
 	function changeCharacter(e: ChangeEvent<HTMLSelectElement>) {
 		characterContext.setValue(+e.currentTarget.value);
-		queryClient.invalidateQueries("character")
 	}
+
+	const deleteAccountMutation = useMutation(deleteAccount, {
+		onSuccess: () => {
+			queryClient.invalidateQueries("account");
+
+			characterContext.setValue(-1);
+
+			queryClient.invalidateQueries("characters");
+		}
+	})
+	const deleteCharacterMutation = useMutation(deleteCharacter, {
+		onSuccess: (res) => {
+			if (res.length > 0) {
+				characterContext.setValue(res[0].id)
+			}
+			else {
+				characterContext.setValue(-1);
+			}
+
+			queryClient.invalidateQueries("characters");
+		}
+	})
 
 	return (
 		<div className={styles.menu}>
@@ -52,7 +75,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 			{charactersQuery.isSuccess && charactersQuery.data!.length > 0 && (
 				<label>
 					Character:
-					<select onChange={changeCharacter}>
+					<select value={characterContext.value} onChange={changeCharacter}>
 						{charactersQuery.data!.map((character, i) => (
 							<option
 								key={i}
@@ -98,6 +121,29 @@ export function UserSettings(props: { closeFunc: () => void }) {
 				onClick={() => logoutMutation.mutate()}
 			>
 				Log out
+			</button>
+
+			<button
+				className={styles["delete-button"]}
+				disabled={characterContext.value === -1}
+				onClick={() => {
+					if (confirm("Are you sure you want to delete this character?")) {
+						deleteCharacterMutation.mutate({ id: characterContext.value })
+					}
+				}}
+			>
+				Delete current character
+			</button>
+
+			<button
+				className={styles["delete-button"]}
+				onClick={() => {
+					if (confirm("Are you sure you want to delete your account?")) {
+						deleteAccountMutation.mutate()
+					}
+				}}
+			>
+				Delete account
 			</button>
 		</div >
 	)
