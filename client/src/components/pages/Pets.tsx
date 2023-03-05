@@ -10,7 +10,7 @@ import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
 import { useMutation, useQuery } from "react-query";
 import { getCharacter, isLoggedIn, patchCharacter } from "../../queries";
-import { SelectedCharacterContext } from "./Page";
+import { LangContext, SelectedCharacterContext } from "./Page";
 import { PetElement } from "../../types/pet";
 import { queryClient } from "../../App";
 
@@ -18,8 +18,9 @@ export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFou
 
 export function Pets() {
 	const params = useParams<Params>();
-	const lang = params.lang!;
 	const element = params.element;
+
+	const lang = useContext(LangContext);
 
 	const [searchParams] = useSearchParams();
 	const filter: Filter[] = JSON.parse(

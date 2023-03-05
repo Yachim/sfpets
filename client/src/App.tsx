@@ -12,13 +12,12 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<HashRouter>
 				<Routes>
-					<Route path="/" element={<Root />} />
 					<Route
-						path="/:lang"
+						path="/"
 						element={<Page />}
 					/>
 					<Route
-						path="/:lang/:element"
+						path="/:element"
 						element={<Page />}
 					/>
 				</Routes>

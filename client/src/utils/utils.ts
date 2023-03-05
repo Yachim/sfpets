@@ -1,3 +1,4 @@
+import { langList, Langs } from "../data/translation";
 import { Pet } from "../types";
 import {
 	isAprilFools,
@@ -20,24 +21,24 @@ import {
 export const filterableEvents: {
 	[key: string]: (date: Date) => boolean;
 } = {
-    "April Fools' Day": isAprilFools,
-    "Birthday event": isBDay,
-    "Valentine's day": isValentine,
-    "New Year's Eve & Day": isNewYears,
-    "Friday the 13th": isFriday13,
-    Easter: isEaster
+	"April Fools' Day": isAprilFools,
+	"Birthday event": isBDay,
+	"Valentine's day": isValentine,
+	"New Year's Eve & Day": isNewYears,
+	"Friday the 13th": isFriday13,
+	Easter: isEaster
 	// "Pentecost/Whitsun": () => {
-    //     const dt = new Date();
-    //     const year = dt.getFullYear();
-    //     const [M, D] = Easter(year);
+	//     const dt = new Date();
+	//     const year = dt.getFullYear();
+	//     const [M, D] = Easter(year);
 
-    //     const whitsunDate = new Date(year, M, D + 49);
+	//     const whitsunDate = new Date(year, M, D + 49);
 
-    //     return (
-    //         dt.getDate() === whitsunDate.getDate() &&
-    //         dt.getMonth() === whitsunDate.getMonth()
-    //     );
-    // }
+	//     return (
+	//         dt.getDate() === whitsunDate.getDate() &&
+	//         dt.getMonth() === whitsunDate.getMonth()
+	//     );
+	// }
 };
 
 export const isSeason: {
@@ -48,7 +49,7 @@ export const isSeason: {
 	fall: isFall,
 	winter: isWinter,
 	december: isDecember
-} 
+}
 
 export function isAvailable(pet: Pet, date: Date): "available" | "unknown" | "unavailable" {
 	if (pet.event) {
@@ -85,5 +86,14 @@ export function isAvailable(pet: Pet, date: Date): "available" | "unknown" | "un
 	}
 
 	return "available";
+}
+
+export function getLang(): Langs {
+	const localLang = navigator.language.slice(0, 2);
+	// if no language equals to localLang
+	if (langList.every((l) => l !== localLang)) {
+		return "en";
+	}
+	return localLang as Langs;
 }
 

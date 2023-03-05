@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Langs } from "./data/translation";
 
 const client = axios.create({
 	// TODO: change to env var
@@ -31,9 +32,21 @@ export async function postLogout() {
 type AccountInfo = {
 	id: number;
 	email: string;
+	dark_theme: boolean;
+	lang: Langs
 };
-export async function getAccountInfo(): Promise<AccountInfo> {
+export async function getAccount(): Promise<AccountInfo> {
 	const res = await client.get<AccountInfo>("account/");
+	return res.data;
+}
+
+type AccountInfoPatch = {
+	email?: string;
+	dark_theme?: boolean;
+	lang?: Langs
+};
+export async function patchAccount(data: AccountInfoPatch): Promise<AccountInfo> {
+	const res = await client.patch("account/", data);
 	return res.data;
 }
 

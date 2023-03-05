@@ -42,6 +42,8 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(('email address'), unique=True)
+    dark_theme = models.BooleanField(default=True)
+    lang = models.CharField(max_length=2, default="en")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
