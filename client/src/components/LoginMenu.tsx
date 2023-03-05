@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
 import { getCharacters, isLoggedIn, postLogin, postRegister } from "../queries";
 import styles from "../scss/LoginMenu.module.scss";
-import { LoggedInContext, SelectedCharacterContext } from "./pages/Page";
+import { SelectedCharacterContext } from "./Context";
 
 export function LoginMenu(props: {
 	closeFunc: () => void;

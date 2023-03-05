@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom";
-import { Params } from "../types";
 import styles from "../scss/PetCard.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +6,7 @@ import {
 	faMagnifyingGlassMinus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { PetInfoCardContext } from "./pages/Page";
+import { PetCardContext } from "./Context";
 import { PetElement } from "../types/pet";
 
 export type PetTimeProps = {
@@ -39,7 +37,7 @@ export function PetCard(
 		styles[`pet-index--${props.petInfo.status}`]
 	];
 
-	const context = useContext(PetInfoCardContext);
+	const context = useContext(PetCardContext);
 
 	return (
 		<div className={styles["pet-card"]} data-found={props.petInfo.found}>

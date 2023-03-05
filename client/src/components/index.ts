@@ -6,5 +6,6 @@ import { Filters } from "./Filters";
 import { PetInfoCard } from "./PetInfoCard";
 import { UserSettings } from "./UserSettings";
 import { Header } from "./Header";
+import { Context } from "./Context";
 
-export { Header, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard, UserSettings };
+export { Header, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard, UserSettings, Context };

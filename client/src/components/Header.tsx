@@ -5,7 +5,7 @@ import { useMutation } from "react-query";
 import { queryClient } from "../App";
 import { mainHeading } from "../data/translation";
 import { isLoggedIn, patchAccount } from "../queries";
-import { DarkThemeContext, LangContext, LoginShownContext, UserSettingsShownContext } from "./pages/Page";
+import { DarkThemeContext, LangContext, LoginShownContext, UserSettingsShownContext } from "./Context";
 import styles from "../scss/Header.module.scss";
 import { Link } from "react-router-dom";
 

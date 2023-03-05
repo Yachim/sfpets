@@ -1,9 +1,9 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
 import { deleteAccount, deleteCharacter, getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
-import { SelectedCharacterContext } from "./pages/Page";
+import { SelectedCharacterContext } from "./Context";
 
 export function UserSettings(props: { closeFunc: () => void }) {
 	const logoutMutation = useMutation(postLogout, {

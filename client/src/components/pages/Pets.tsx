@@ -10,7 +10,7 @@ import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
 import { useMutation, useQuery } from "react-query";
 import { getCharacter, isLoggedIn, patchCharacter } from "../../queries";
-import { LangContext, SelectedCharacterContext } from "./Page";
+import { LangContext, SelectedCharacterContext } from "./../Context";
 import { PetElement } from "../../types/pet";
 import { queryClient } from "../../App";
 
@@ -20,7 +20,7 @@ export function Pets() {
 	const params = useParams<Params>();
 	const element = params.element;
 
-	const lang = useContext(LangContext);
+	const langContext = useContext(LangContext);
 
 	const [searchParams] = useSearchParams();
 	const filter: Filter[] = JSON.parse(
@@ -52,19 +52,19 @@ export function Pets() {
 		let basePets = !element ? [...pets.shadow, ...pets.light, ...pets.earth, ...pets.fire, ...pets.water] : pets[element];
 		let editedPets: PetProps[] = basePets.map((pet) => {
 			let loc: string | null = null;
-			if (pet.loc_index) loc = locs[pet.loc_index][lang];
+			if (pet.loc_index) loc = locs[pet.loc_index][langContext.value];
 
 			let day: string | null = null;
-			if (pet.dayOfWeek !== null) day = daysOfWeek[pet.dayOfWeek][lang];
+			if (pet.dayOfWeek !== null) day = daysOfWeek[pet.dayOfWeek][langContext.value];
 
 			let event: string | null = null;
-			if (pet.event) event = pet.event[lang];
+			if (pet.event) event = pet.event[langContext.value];
 
 			const foundForElement = characterQuery.isSuccess ? characterQuery.data[`${pet.element}_found`] : [];
 			const found = foundForElement.includes(pet.index);
 
 			return {
-				name: pet.names[lang],
+				name: pet.names[langContext.value],
 				location: loc,
 				dayOfWeek: day,
 				event: event,
