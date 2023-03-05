@@ -54,6 +54,14 @@ export const LoginShownContext = createContext<{
 	setValue: (_) => { }
 });
 
+export const LangSelectShownContext = createContext<{
+	value: boolean,
+	setValue: Dispatch<SetStateAction<boolean>>
+}>({
+	value: false,
+	setValue: (_) => { }
+});
+
 export function Context(props: {
 	children: JSX.Element
 }) {
@@ -63,6 +71,7 @@ export function Context(props: {
 	const [userSettingsShown, setUserSettingsShown] = useState(false);
 	const [selectedCharacter, setSelectedCharacter] = useState(-1);
 	const [petCard, setPetCard] = useState<PetProps | null>(null);
+	const [langSelectShown, setLangSelectShown] = useState(false);
 
 	return (
 		<LangContext.Provider value={{
@@ -89,7 +98,12 @@ export function Context(props: {
 								value: petCard,
 								setValue: setPetCard
 							}}>
-								{props.children}
+								<LangSelectShownContext.Provider value={{
+									value: langSelectShown,
+									setValue: setLangSelectShown
+								}}>
+									{props.children}
+								</LangSelectShownContext.Provider>
 							</PetCardContext.Provider >
 						</SelectedCharacterContext.Provider >
 					</UserSettingsShownContext.Provider >

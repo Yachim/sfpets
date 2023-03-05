@@ -1,0 +1,66 @@
+.container {
+	position: absolute;
+	z-index: 9999;
+	background-color: var(--navbar-color);
+	padding: 1rem;
+
+	translate: -50% -50%;
+
+	top: 50%;
+	left: 50%;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	border-radius: 0.75rem;
+
+	p {
+		font-weight: bold;
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	animation: show 300ms ease-in-out both;
+}
+
+.close-button {
+	* {
+		transition: fill 300ms ease-in-out;
+
+	}
+
+	&:hover * {
+		fill: var(--close-color);
+	}
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.grid {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, min-content);
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.lang-button {
+	font-size: 2rem;
+	transition: translate 150ms ease-in-out;
+	padding: 0;
+
+	&:hover {
+		translate: 0 -3px;
+	}
+}

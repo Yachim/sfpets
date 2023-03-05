@@ -5,7 +5,13 @@ import { useMutation } from "react-query";
 import { queryClient } from "../App";
 import { mainHeading } from "../data/translation";
 import { isLoggedIn, patchAccount } from "../queries";
-import { DarkThemeContext, LangContext, LoginShownContext, UserSettingsShownContext } from "./Context";
+import {
+	DarkThemeContext,
+	LangContext,
+	LangSelectShownContext,
+	LoginShownContext,
+	UserSettingsShownContext
+} from "./Context";
 import styles from "../scss/Header.module.scss";
 import { Link } from "react-router-dom";
 
@@ -14,6 +20,7 @@ export function Header() {
 	const langContext = useContext(LangContext);
 	const userSettingsShownContext = useContext(UserSettingsShownContext);
 	const loginShownContext = useContext(LoginShownContext);
+	const langSelectShownContext = useContext(LangSelectShownContext);
 
 	const themeIcon = darkThemeContext.value ? faSun : faMoon;
 
@@ -33,7 +40,7 @@ export function Header() {
 	});
 
 	return (
-		<header className={styles["top-bar"]}>
+		<header className={styles["top-bar"]} id="header">
 			<Link to={`../`}>
 				<h1>{mainHeading[langContext.value]}</h1>
 			</Link>
@@ -46,6 +53,8 @@ export function Header() {
 				</button>
 				<button
 					className={styles["user-settings-button"]}
+					onClick={() => langSelectShownContext.setValue((prev) => !prev)}
+					id="lang-select-button"
 				>
 					<FontAwesomeIcon icon={faLanguage} />
 				</button>

@@ -11,10 +11,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { desc, title } from "../../data/translation";
 import { CSSProperties, useContext, useEffect } from "react";
-import { LoginMenu, PetInfoCard, Pets, UserSettings, Header } from "..";
+import { LoginMenu, PetInfoCard, Pets, UserSettings, Header, LanguageSelect } from "..";
 import { getAccount, isLoggedIn } from "../../queries";
 import { useQuery } from "react-query";
-import { DarkThemeContext, LangContext, LoginShownContext, PetCardContext, UserSettingsShownContext } from "../Context";
+import {
+	DarkThemeContext,
+	LangContext,
+	LangSelectShownContext,
+	LoginShownContext,
+	PetCardContext,
+	UserSettingsShownContext
+} from "../Context";
 
 export function Page() {
 	const langContext = useContext(LangContext);
@@ -22,6 +29,7 @@ export function Page() {
 	const loginShownContext = useContext(LoginShownContext);
 	const userSettingsShownContext = useContext(UserSettingsShownContext);
 	const petCardContext = useContext(PetCardContext);
+	const langSelectShownContext = useContext(LangSelectShownContext);
 
 	const params = useParams<Params>();
 	const element = params.element;
@@ -61,13 +69,16 @@ export function Page() {
 			className={styles.app}
 			data-login-open={loginShownContext.value}
 		>
+			{langSelectShownContext.value && <LanguageSelect closeFunc={() => langSelectShownContext.setValue(false)} />}
 			{loginShownContext.value && <LoginMenu closeFunc={() => loginShownContext.setValue(false)} />}
 			{userSettingsShownContext.value && <UserSettings closeFunc={() => userSettingsShownContext.setValue(false)} />}
 			{petCardContext.value && <PetInfoCard
 				{...petCardContext.value}
 				closeFunc={() => petCardContext.setValue(null)}
 			/>}
-			<div className={styles["modal-overlay"]} data-visible={loginShownContext.value || !!petCardContext.value} />
+			<div className={styles["modal-overlay"]} data-visible={
+				langSelectShownContext.value || loginShownContext.value || !!petCardContext.value
+			} />
 
 			<Header />
 

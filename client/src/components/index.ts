@@ -7,5 +7,17 @@ import { PetInfoCard } from "./PetInfoCard";
 import { UserSettings } from "./UserSettings";
 import { Header } from "./Header";
 import { Context } from "./Context";
+import { LanguageSelect } from "./LanguageSelect";
 
-export { Header, Page, Pets, PetCard, LoginMenu, Filters, PetInfoCard, UserSettings, Context };
+export {
+	Header,
+	Page,
+	Pets,
+	PetCard,
+	LoginMenu,
+	Filters,
+	PetInfoCard,
+	UserSettings,
+	Context,
+	LanguageSelect
+};
