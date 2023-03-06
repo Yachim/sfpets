@@ -40,7 +40,6 @@ export function LoginMenu(props: {
 
 			const characters = await getCharacters();
 
-			// TODO: load last selected character
 			if (characters.length > 0) {
 				characterContext.setValue(characters[0].id)
 			}
