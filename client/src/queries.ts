@@ -2,8 +2,7 @@ import axios from "axios";
 import { Langs } from "./data/translation";
 
 const client = axios.create({
-	// TODO: change to env var
-	baseURL: "http://localhost:8000/api/",
+	baseURL: import.meta.env.VITE_API_HOST,
 });
 
 type Credentials = {
