@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChangeEvent, FormEvent, useCallback, useContext, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
+import { loginMenu } from "../data/translation";
 import { getCharacters, isLoggedIn, postLogin, postRegister } from "../queries";
 import styles from "../scss/LoginMenu.module.scss";
-import { SelectedCharacterContext } from "./Context";
+import { LangContext, SelectedCharacterContext } from "./Context";
 
 export function LoginMenu(props: {
 	closeFunc: () => void;
@@ -77,6 +78,8 @@ export function LoginMenu(props: {
 	const [regPass1, setRegPass1] = useState("");
 	const [regPass2, setRegPass2] = useState("");
 
+	const langContext = useContext(LangContext);
+
 	return (
 		<div className={styles["login-menu"]}>
 			<div
@@ -87,12 +90,12 @@ export function LoginMenu(props: {
 						className={styles["sign-in"]}
 						data-selected={menuType === "login"}
 						onClick={() => setMenuType("login")}
-					>Log in</button>
+					>{loginMenu.switchLogInButton[langContext.value]}</button>
 					<button
 						className={styles["sign-up"]}
 						data-selected={menuType === "register"}
 						onClick={() => setMenuType("register")}
-					>Register</button>
+					>{loginMenu.switchRegisterButton[langContext.value]}</button>
 				</div>
 				<button
 					className={styles["close-icon"]}
@@ -105,7 +108,7 @@ export function LoginMenu(props: {
 				{menuType === "login" ?
 					<>
 						{loginMutation.isError && <p className={styles.error}>{loginMutation.error as string}</p>}
-						<label>Email:
+						<label>{loginMenu.email[langContext.value]}:
 							<input
 								value={loginEmail}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -114,7 +117,7 @@ export function LoginMenu(props: {
 								type={"email"}
 							/>
 						</label>
-						<label>Password:
+						<label>{loginMenu.password[langContext.value]}:
 							<input
 								value={loginPass}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -130,9 +133,13 @@ export function LoginMenu(props: {
 						/>
 					</> :
 					<>
-						{(regPass1 !== regPass2) && <p className={styles.error}>Passwords do not match</p>}
-						{registerMutation.data?.status === "error" && <p className={styles.error}>{registerMutation.data.message}</p>}
-						<label>Email:
+						{(regPass1 !== regPass2) &&
+							<p className={styles.error}>
+								{loginMenu.passwordsNotMatching[langContext.value]}
+							</p>
+						}
+						{registerMutation.isError && <p className={styles.error}>{registerMutation.error as string}</p>}
+						<label>{loginMenu.email[langContext.value]}:
 							<input
 								value={regEmail}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -141,7 +148,7 @@ export function LoginMenu(props: {
 								type={"email"}
 							/>
 						</label>
-						<label>Password:
+						<label>{loginMenu.password[langContext.value]}:
 							<input
 								value={regPass1}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -150,7 +157,7 @@ export function LoginMenu(props: {
 								type={"password"}
 							/>
 						</label>
-						<label>Repeat password:
+						<label>{loginMenu.repeatPassword[langContext.value]}:
 							<input
 								value={regPass2}
 								onChange={(e: ChangeEvent<HTMLInputElement>) =>

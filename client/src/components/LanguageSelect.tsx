@@ -8,6 +8,7 @@ import { LangContext } from "./Context";
 import styles from "../scss/LanguageSelect.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { languageSelect } from "../data/translation";
 
 export function LanguageSelect(props: { closeFunc: () => void }) {
 	const langContext = useContext(LangContext);
@@ -33,7 +34,7 @@ export function LanguageSelect(props: { closeFunc: () => void }) {
 	return (
 		<div className={styles.container}>
 			<p>
-				Select language
+				{languageSelect.heading[langContext.value]}
 				<button
 					className={styles["close-button"]}
 					onClick={props.closeFunc}
@@ -43,17 +44,22 @@ export function LanguageSelect(props: { closeFunc: () => void }) {
 			</p>
 			<div className={styles.grid}>
 				{langList.map((lang, i) =>
-					<button key={i} className={styles["lang-button"]} onClick={() => {
-						if (isLoggedIn()) {
-							accountMutation.mutate({
-								lang: lang
-							});
-						}
-						else {
-							langContext.setValue(lang);
-						}
-						props.closeFunc();
-					}}>{langs[lang]}</button>
+					<button
+						key={i}
+						className={styles["lang-button"]}
+						title={languageSelect.tooltips[lang]}
+						onClick={() => {
+							if (isLoggedIn()) {
+								accountMutation.mutate({
+									lang: lang
+								});
+							}
+							else {
+								langContext.setValue(lang);
+							}
+							props.closeFunc();
+						}}
+					>{langs[lang]}</button>
 				)}
 			</div>
 		</div>

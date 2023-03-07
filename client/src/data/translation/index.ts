@@ -1,23 +1,32 @@
 import { daysOfWeek } from "./daysOfWeek";
 import { langList, Langs } from "./langList";
-import { mainHeading, title, desc } from "./page";
-import { honorTranslation, removeTranslation, addTranslation } from "./pet";
+import * as page from "./page";
+import * as header from "./header";
 import * as elements from "./elements";
-import { season, time } from "./infoIcons";
-import { filterLabel } from "./filters";
+import * as filters from "./filters";
+import * as userSettings from "./userSettings";
+import locs from "./locs";
+import * as languageSelect from "./languageSelect";
+import * as loginMenu from "./loginMenu";
+
+type Translation = {
+	[key in Langs]: string
+}
 
 export {
-    honorTranslation,
-    removeTranslation,
-    addTranslation,
-    mainHeading,
-    title,
-    desc,
-    daysOfWeek,
-    langList,
-    elements,
-    season,
-    time,
-    filterLabel,
-    type Langs
+	page,
+	daysOfWeek,
+	langList,
+	elements,
+	filters,
+	userSettings,
+	locs,
+	header,
+	languageSelect,
+	loginMenu
 };
+
+export type {
+	Langs,
+	Translation
+}

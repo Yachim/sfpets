@@ -2,7 +2,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { pets } from "../../data/pets";
 import { Params } from "../../types";
 import styles from "../../scss/Pets.module.scss";
-import locs from "../../data/locs";
+import { locs } from "../../data/translation";
 import { daysOfWeek } from "../../data/translation";
 import { useContext, useEffect, useState } from "react";
 import { isAvailable } from "../../utils/utils";

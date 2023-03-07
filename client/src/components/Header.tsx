@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
-import { mainHeading } from "../data/translation";
+import { header } from "../data/translation";
 import { getCharacter, isLoggedIn, patchAccount } from "../queries";
 import {
 	DarkThemeContext,
@@ -50,22 +50,23 @@ export function Header() {
 		<header className={styles["top-bar"]} id="header">
 			<div>
 				<Link to={`../`}>
-					<h1>{mainHeading[langContext.value]}</h1>
+					<h1>{header.heading[langContext.value]}</h1>
 				</Link>
 				<p className={styles["selected-character"]}>{
 					isLoggedIn() ?
 						(
 							characterQuery.isSuccess ?
 								<><b>{characterQuery.data.name}</b> - {characterQuery.data!.world}</> :
-								"No character selected. Select a character to save."
+								header.subheadingLoggedIn[langContext.value]
 						) :
-						"Log in and add character to save."
+						header.subheadingNotLoggedIn[langContext.value]
 				}</p>
 			</div>
 			<div className={styles["user-settings"]}>
 				<button
 					className={styles["user-settings-button"]}
 					onClick={changeTheme}
+					title={header.themeSwitchTitle[langContext.value]}
 				>
 					<FontAwesomeIcon icon={themeIcon} />
 				</button>
@@ -73,6 +74,7 @@ export function Header() {
 					className={styles["user-settings-button"]}
 					onClick={() => langSelectShownContext.setValue((prev) => !prev)}
 					id="lang-select-button"
+					title={header.langTitle[langContext.value]}
 				>
 					<FontAwesomeIcon icon={faLanguage} />
 				</button>
@@ -84,6 +86,11 @@ export function Header() {
 							() => loginShownContext.setValue((prev) => !prev)
 					}
 					className={styles["user-settings-button"]}
+					title={
+						isLoggedIn() ?
+							header.userSettingsTitle[langContext.value] :
+							header.loginTitle[langContext.value]
+					}
 				>
 					<FontAwesomeIcon icon={faCircleUser} />
 				</button>

@@ -1,5 +1,5 @@
 import styles from "../../scss/Page.module.scss";
-import { desc, title } from "../../data/translation";
+import { page } from "../../data/translation";
 import { useContext, useEffect } from "react";
 import {
 	LoginMenu,
@@ -37,10 +37,10 @@ export function Page() {
 		}
 	});
 
-	document.title = title[langContext.value];
+	document.title = page.title[langContext.value];
 	document
 		.querySelector("meta[name='description']")
-		?.setAttribute("content", desc[langContext.value]);
+		?.setAttribute("content", page.desc[langContext.value]);
 
 	const themeClass = `${darkThemeContext.value ? "dark" : "light"}-theme`;
 

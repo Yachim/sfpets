@@ -1,24 +1,26 @@
-export const shadow = {
-    cs: "Stín",
-    en: "Shadow"
+import { Translation } from ".";
+
+export const shadow: Translation = {
+	cs: "Stín",
+	en: "Shadow"
 };
 
-export const light = {
-    cs: "Světlo",
-    en: "Light"
+export const light: Translation = {
+	cs: "Světlo",
+	en: "Light"
 };
 
-export const earth = {
-    cs: "Země",
-    en: "Earth"
+export const earth: Translation = {
+	cs: "Země",
+	en: "Earth"
 };
 
-export const fire = {
-    cs: "Oheň",
-    en: "Fire"
+export const fire: Translation = {
+	cs: "Oheň",
+	en: "Fire"
 };
 
-export const water = {
-    cs: "Voda",
-    en: "Water"
+export const water: Translation = {
+	cs: "Voda",
+	en: "Water"
 };

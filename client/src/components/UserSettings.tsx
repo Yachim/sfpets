@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
+import { userSettings } from "../data/translation";
 import { deleteAccount, deleteCharacter, getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
-import { SelectedCharacterContext } from "./Context";
+import { LangContext, SelectedCharacterContext } from "./Context";
 
 export function UserSettings(props: { closeFunc: () => void }) {
 	const logoutMutation = useMutation(postLogout, {
@@ -67,16 +68,22 @@ export function UserSettings(props: { closeFunc: () => void }) {
 		}
 	})
 
+	const langContext = useContext(LangContext);
+
 	return (
 		<div className={styles.menu} style={{
 			top: document.querySelector("header")?.clientHeight
 		}}>
-			{characterMutation.isSuccess && <p>Character added</p>}
-			{characterMutation.isError && <p>Error while adding character</p>}
+			{characterMutation.isSuccess &&
+				<p>{userSettings.characterAddedSuccess[langContext.value]}</p>
+			}
+			{characterMutation.isError &&
+				<p>{userSettings.characterAddedError[langContext.value]}</p>
+			}
 
 			{charactersQuery.isSuccess && charactersQuery.data!.length > 0 && (
 				<label>
-					Character:
+					{userSettings.character[langContext.value]}:
 					<select value={characterContext.value} onChange={changeCharacter}>
 						{charactersQuery.data!.map((character, i) => (
 							<option
@@ -90,12 +97,14 @@ export function UserSettings(props: { closeFunc: () => void }) {
 				</label>
 			)}
 
-			<p className={styles["add-character-form-heading"]}>Add character</p>
+			<p className={styles["add-character-form-heading"]}>
+				{userSettings.addCharacter[langContext.value]}
+			</p>
 			<form
 				className={styles["add-character-data"]}
 				onSubmit={handleSubmit}
 			>
-				<label>Name:
+				<label>{userSettings.name[langContext.value]}:
 					<input
 						value={characterName}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => setCharacterName(e.currentTarget.value)}
@@ -103,7 +112,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 						maxLength={50}
 					/>
 				</label>
-				<label>World:
+				<label>{userSettings.world[langContext.value]}:
 					<input
 						value={characterWorld}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => setCharacterWorld(e.currentTarget.value)}
@@ -115,7 +124,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 				<input
 					disabled={characterWorld === "" || characterName === ""}
 					type="submit"
-					value="Add character"
+					value={userSettings.addCharacter[langContext.value]}
 				/>
 			</form>
 
@@ -123,30 +132,34 @@ export function UserSettings(props: { closeFunc: () => void }) {
 				className={styles["logout-button"]}
 				onClick={() => logoutMutation.mutate()}
 			>
-				Log out
+				{userSettings.logout[langContext.value]}
 			</button>
 
 			<button
 				className={styles["delete-button"]}
 				disabled={characterContext.value === -1}
 				onClick={() => {
-					if (confirm("Are you sure you want to delete this character?")) {
+					if (confirm(
+						userSettings.deleteCurrentCharacterConfirmation[langContext.value]
+					)) {
 						deleteCharacterMutation.mutate({ id: characterContext.value })
 					}
 				}}
 			>
-				Delete current character
+				{userSettings.deleteCurrentCharacter[langContext.value]}
 			</button>
 
 			<button
 				className={styles["delete-button"]}
 				onClick={() => {
-					if (confirm("Are you sure you want to delete your account?")) {
+					if (confirm(
+						userSettings.deleteAccountConfirmation[langContext.value]
+					)) {
 						deleteAccountMutation.mutate()
 					}
 				}}
 			>
-				Delete account
+				{userSettings.deleteAccount[langContext.value]}
 			</button>
 		</div >
 	)
