@@ -90,6 +90,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 				</label>
 			)}
 
+			<p className={styles["add-character-form-heading"]}>Add character</p>
 			<form
 				className={styles["add-character-data"]}
 				onSubmit={handleSubmit}
