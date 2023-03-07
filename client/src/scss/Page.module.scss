@@ -9,35 +9,6 @@
     min-height: 100%;
 }
 
-.nav-bar {
-    grid-area: nav;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    background-color: var(--navbar-color);
-
-    a {
-        aspect-ratio: 1/1;
-        width: 5rem;
-        display: grid;
-        place-items: center;
-        font-size: 1.5rem;
-
-        * {
-            transition: fill 300ms ease-in-out;
-        }
-    }
-
-    a[data-active="true"] * {
-		fill: var(--accent-color);
-    }
-}
-
-.icon:hover * {
-	fill: var(--hover-color)
-}
-
 label {
 	width: 100%;
 	display: flex;

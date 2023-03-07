@@ -8,6 +8,7 @@ import { UserSettings } from "./UserSettings";
 import { Header } from "./Header";
 import { Context } from "./Context";
 import { LanguageSelect } from "./LanguageSelect";
+import { Nav } from "./Nav";
 
 export {
 	Header,
@@ -19,5 +20,6 @@ export {
 	PetInfoCard,
 	UserSettings,
 	Context,
-	LanguageSelect
+	LanguageSelect,
+	Nav
 };
