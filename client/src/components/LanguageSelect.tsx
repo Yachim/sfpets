@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { useMutation } from "react-query";
 import { queryClient } from "../App";
 import { langList } from "../data/translation";
@@ -11,6 +11,18 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export function LanguageSelect(props: { closeFunc: () => void }) {
 	const langContext = useContext(LangContext);
+
+	const handleKeyPress = useCallback((e: KeyboardEvent) => {
+		if (e.key === "Escape") {
+			props.closeFunc()
+		}
+	}, [])
+
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyPress);
+
+		return () => document.removeEventListener("keydown", handleKeyPress);
+	}, [handleKeyPress]);
 
 	const accountMutation = useMutation(patchAccount, {
 		onSuccess: () => {
