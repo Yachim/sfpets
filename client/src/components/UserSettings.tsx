@@ -68,7 +68,9 @@ export function UserSettings(props: { closeFunc: () => void }) {
 	})
 
 	return (
-		<div className={styles.menu}>
+		<div className={styles.menu} style={{
+			top: document.querySelector("header")?.clientHeight
+		}}>
 			{characterMutation.isSuccess && <p>Character added</p>}
 			{characterMutation.isError && <p>Error while adding character</p>}
 
@@ -81,7 +83,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 								key={i}
 								value={character.id}
 							>
-								{character.world} - {character.name}
+								{character.name} - {character.world}
 							</option>
 						))}
 					</select>

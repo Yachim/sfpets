@@ -33,3 +33,13 @@
 	}
 }
 
+.selected-character {
+    color: var(--accent-color);
+	margin-top: 0.25rem;
+	opacity: 0.9;
+
+	b {
+		font-weight: bold;
+	}
+}
+

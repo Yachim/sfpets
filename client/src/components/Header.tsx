@@ -1,15 +1,16 @@
 import { faCircleUser, faLanguage, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
 import { mainHeading } from "../data/translation";
-import { isLoggedIn, patchAccount } from "../queries";
+import { getCharacter, isLoggedIn, patchAccount } from "../queries";
 import {
 	DarkThemeContext,
 	LangContext,
 	LangSelectShownContext,
 	LoginShownContext,
+	SelectedCharacterContext,
 	UserSettingsShownContext
 } from "./Context";
 import styles from "../scss/Header.module.scss";
@@ -39,11 +40,28 @@ export function Header() {
 		onSuccess: () => queryClient.invalidateQueries("account")
 	});
 
+	const characterContext = useContext(SelectedCharacterContext);
+
+	const characterQuery = useQuery(["character", characterContext.value], async () => getCharacter(characterContext.value), {
+		enabled: isLoggedIn() && characterContext.value !== -1
+	});
+
 	return (
 		<header className={styles["top-bar"]} id="header">
-			<Link to={`../`}>
-				<h1>{mainHeading[langContext.value]}</h1>
-			</Link>
+			<div>
+				<Link to={`../`}>
+					<h1>{mainHeading[langContext.value]}</h1>
+				</Link>
+				<p className={styles["selected-character"]}>{
+					isLoggedIn() ?
+						(
+							characterQuery.isSuccess ?
+								<><b>{characterQuery.data.name}</b> - {characterQuery.data!.world}</> :
+								"No character selected. Select a character to save."
+						) :
+						"Log in and add character to save."
+				}</p>
+			</div>
 			<div className={styles["user-settings"]}>
 				<button
 					className={styles["user-settings-button"]}
