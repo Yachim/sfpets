@@ -58,7 +58,7 @@ export function PetCard(
 								className={styles["not-found-icon"]}
 								icon={faMagnifyingGlassMinus}
 							/>
-							Not<br />Found
+							Not Found
 						</>
 					) : (
 						<>
