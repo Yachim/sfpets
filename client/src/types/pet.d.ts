@@ -1,38 +1,26 @@
-type Time = "day" | "night" | "w_hour" | null;
-type LocIndex = number | null;
-type DayOfWeek = 1 | 2 | 3 | 4 | 5 | 6 | 0 | null;
-type Season = null | "spring" | "summer" | "fall" | "winter" | "december";
-type PetElement = "shadow" | "light" | "earth" | "fire" | "water";
+import { Translation } from "../data/translation";
+import PetElement from "./element";
+
+type Time = "day" | "night" | "w_hour";
+type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+type Season = "spring" | "summer" | "fall" | "winter" | "december";
 
 type Pet = {
-	names: {
-		en: string;
-		cs: string;
-	};
-	loc_index: LocIndex;
-	time: Time;
-	dayOfWeek: DayOfWeek;
-	event: null | {
-		cs: string;
-		en: string;
-	};
-	season: Season;
+	names: Translation;
+	loc_index: number | null;
+	time: Time | null;
+	dayOfWeek: DayOfWeek | null;
+	event: Translation | null;
+	season: Season | null;
 	hof: {
-		type: {
-			cs: string;
-			en: string;
-		};
+		type: Translation;
 		top: number;
 		honor: number;
 	} | null;
-	notes: null | {
-		cs: string;
-		en: string;
-	};
+	notes: null | Translation;
 	img: string;
 	index: number;
 	element: PetElement;
 };
 
 export default Pet;
-export { Time, LocIndex, DayOfWeek, Season, PetElement };

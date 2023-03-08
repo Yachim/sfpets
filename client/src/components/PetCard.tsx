@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { PetCardContext } from "./Context";
-import { PetElement } from "../types/pet";
+import { PetElement } from "../types";
 
 export type PetTimeProps = {
 	dayOfWeek: string | null;

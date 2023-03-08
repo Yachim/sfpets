@@ -1,4 +1,5 @@
-import Pet, { Time, LocIndex, DayOfWeek, Season } from "./pet";
-import { Params } from "./params";
+import Pet from "./pet";
+import Params from "./params";
+import PetElement from "./element";
 
-export { Pet, Time, LocIndex, DayOfWeek, Season, Params };
+export { Pet, Params, PetElement };
