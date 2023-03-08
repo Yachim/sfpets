@@ -2,16 +2,14 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { pets } from "../../data/pets";
 import { Params } from "../../types";
 import styles from "../../scss/Pets.module.scss";
-import { locs } from "../../data/translation";
-import { daysOfWeek } from "../../data/translation";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { isAvailable } from "../../utils/utils";
 import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
 import { useMutation, useQuery } from "react-query";
 import { getCharacter, isLoggedIn, patchCharacter } from "../../queries";
-import { LangContext, SelectedCharacterContext } from "./../Context";
-import { PetElement } from "../../types/pet";
+import { SelectedCharacterContext } from "./../Context";
+import { PetElement } from "../../types";
 import { queryClient } from "../../App";
 
 export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFound";
@@ -19,8 +17,6 @@ export type Filter = "available" | "unknown" | "unavailable" | "found" | "notFou
 export function Pets() {
 	const params = useParams<Params>();
 	const element = params.element;
-
-	const langContext = useContext(LangContext);
 
 	const [searchParams] = useSearchParams();
 	const filter: Filter[] = JSON.parse(
@@ -51,30 +47,14 @@ export function Pets() {
 	useEffect(() => {
 		let basePets = !element ? [...pets.shadow, ...pets.light, ...pets.earth, ...pets.fire, ...pets.water] : pets[element];
 		let editedPets: PetProps[] = basePets.map((pet) => {
-			let loc: string | null = null;
-			if (pet.loc_index) loc = locs[pet.loc_index][langContext.value];
-
-			let day: string | null = null;
-			if (pet.dayOfWeek !== null) day = daysOfWeek[pet.dayOfWeek][langContext.value];
-
-			let event: string | null = null;
-			if (pet.event) event = pet.event[langContext.value];
-
 			const foundForElement = characterQuery.isSuccess ? characterQuery.data[`${pet.element}_found`] : [];
 			const found = foundForElement.includes(pet.index);
 
 			return {
-				name: pet.names[langContext.value],
-				location: loc,
-				dayOfWeek: day,
-				event: event,
-				time: pet.time,
-				season: pet.season,
+				...pet,
 				status: isAvailable(pet, date),
-				img: pet.img,
 				found: found,
-				index: pet.index,
-				element: pet.element,
+				toggleFound: (_1, _2, _3) => { }
 			};
 		});
 
@@ -122,7 +102,7 @@ export function Pets() {
 		characterQuery.status
 	]);
 
-	function toggleFound(index: number, element: PetElement, newVal: boolean) {
+	const toggleFound = useCallback((index: number, element: PetElement, newVal: boolean) => {
 		if (characterQuery.isSuccess) {
 			const key = `${element}_found` as const;
 			const el_arr = characterQuery.data[key];
@@ -142,7 +122,6 @@ export function Pets() {
 			});
 		}
 		else {
-			console.log("session")
 			const i = petsData.findIndex((pet) =>
 				pet.element === element && pet.index === index
 			);
@@ -150,7 +129,7 @@ export function Pets() {
 			petsData[i].found = newVal;
 			setPetsData([...petsData]);
 		}
-	}
+	}, [JSON.stringify(petsData)])
 
 	return (
 		<main className={styles["pets-main"]}>
@@ -159,7 +138,7 @@ export function Pets() {
 			</div>}
 
 			<div className={styles["pets-grid"]}>
-				{petsData.map((pet) => <PetCard key={pet.name} petInfo={pet} toggleFound={toggleFound} />)}
+				{petsData.map((pet, i) => <PetCard key={i} {...pet} toggleFound={toggleFound} />)}
 			</div>
 		</main>
 	);
