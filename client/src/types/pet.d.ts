@@ -24,3 +24,4 @@ type Pet = {
 };
 
 export default Pet;
+export { Time, DayOfWeek, Season };

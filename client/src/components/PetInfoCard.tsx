@@ -7,6 +7,7 @@ import {
 	faLeaf,
 	faMagnifyingGlass,
 	faMoon,
+	faNoteSticky,
 	faSeedling,
 	faSleigh,
 	faSnowflake,
@@ -16,8 +17,10 @@ import {
 	faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
+import { daysOfWeek, locs, petInfoCard } from "../data/translation";
 import styles from "../scss/PetInfoCard.module.scss";
+import { LangContext } from "./Context";
 import { PetProps } from "./PetCard";
 
 const timeIcons = {
@@ -52,32 +55,45 @@ export function PetInfoCard(props: PetProps & { closeFunc: () => void }) {
 		return () => document.removeEventListener("keydown", handleKeyPress);
 	}, [handleKeyPress]);
 
+	const langContext = useContext(LangContext);
+
+	const name = props.names[langContext.value];
+	const location = !!props.loc_index ? locs[props.loc_index][langContext.value] : null;
+	const dayOfWeek = !!props.dayOfWeek ? daysOfWeek[props.dayOfWeek][langContext.value] : "";
+
+	const timeTitle = !!props.time ? petInfoCard.time[props.time][langContext.value] : "";
+	const seasonTitle = !!props.season ? petInfoCard.season[props.season][langContext.value] : "";
+	const statusTitle = props.status !== "unknown" ? petInfoCard.status[props.status][langContext.value] : "";
+
 	return (
 		<div className={styles["pet-info-card"]}>
 			<p className={styles["pet-name"]}>
-				{props.index + 1}. {props.name}
+				{props.index + 1}. {name}
 				{(props.time || props.season || props.found || props.status !== "unknown") &&
 					<span className={styles["pet-simple-info"]}>
-						{props.time && <FontAwesomeIcon title={props.time} icon={timeIcons[props.time]} />}
-						{props.season && <FontAwesomeIcon title={props.season} icon={seasonIcons[props.season]} />}
+						{props.time && <FontAwesomeIcon title={timeTitle} icon={timeIcons[props.time]} />}
+						{props.season && <FontAwesomeIcon title={seasonTitle} icon={seasonIcons[props.season]} />}
 						{props.found && <FontAwesomeIcon title="Found" icon={faMagnifyingGlass} />}
-						{props.status !== "unknown" && <FontAwesomeIcon title={props.status} icon={statusIcons[props.status]} />}
+						{props.status !== "unknown" && <FontAwesomeIcon title={statusTitle} icon={statusIcons[props.status]} />}
 					</span>
 				}
 			</p>
 			<button onClick={props.closeFunc} className={styles["close-button"]}>
 				<FontAwesomeIcon icon={faXmark} />
 			</button>
-			<img className={styles.img} src={props.img} />
+			<img className={styles.img} src={props.img} alt={petInfoCard.image[langContext.value]} />
 			<div className={styles["pet-data"]}>
-				{props.location && <p className={styles["pet-attr"]}>
-					<FontAwesomeIcon icon={faCompass} />{props.location}
+				{location && <p className={styles["pet-attr"]}>
+					<FontAwesomeIcon icon={faCompass} />{location}
 				</p>}
 				{props.dayOfWeek && <p className={styles["pet-attr"]}>
-					<FontAwesomeIcon icon={faCalendar} />{props.dayOfWeek}
+					<FontAwesomeIcon icon={faCalendar} />{dayOfWeek}
 				</p>}
 				{props.event && <p className={styles["pet-attr"]}>
-					<FontAwesomeIcon icon={faStar} />{props.event}
+					<FontAwesomeIcon icon={faStar} />{props.event[langContext.value]}
+				</p>}
+				{props.notes && <p className={styles["pet-attr"]}>
+					<FontAwesomeIcon icon={faNoteSticky} />{props.notes[langContext.value]}
 				</p>}
 			</div>
 		</div>

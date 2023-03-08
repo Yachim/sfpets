@@ -9,6 +9,7 @@ import locs from "./locs";
 import * as languageSelect from "./languageSelect";
 import * as loginMenu from "./loginMenu";
 import * as petCard from "./petCard";
+import * as petInfoCard from "./petInfoCard";
 
 type Translation = {
 	[key in Langs]: string
@@ -25,7 +26,8 @@ export {
 	header,
 	languageSelect,
 	loginMenu,
-	petCard
+	petCard,
+	petInfoCard
 };
 
 export type {
