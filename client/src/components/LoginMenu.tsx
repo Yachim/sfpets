@@ -8,6 +8,8 @@ import { getCharacters, isLoggedIn, postLogin, postRegister } from "../queries";
 import styles from "../scss/LoginMenu.module.scss";
 import { LangContext, SelectedCharacterContext } from "./Context";
 
+const withBackend = !!+import.meta.env.VITE_WITH_SERVER;
+
 export function LoginMenu(props: {
 	closeFunc: () => void;
 }) {
@@ -104,6 +106,11 @@ export function LoginMenu(props: {
 					<FontAwesomeIcon icon={faXmark} />
 				</button>
 			</div>
+
+			{!withBackend && <p className={styles["no-backend-notice"]}>
+				{loginMenu.noBackendNotice[langContext.value]}
+			</p>}
+
 			<form onSubmit={handleSubmit}>
 				{menuType === "login" ?
 					<>
@@ -127,9 +134,13 @@ export function LoginMenu(props: {
 							/>
 						</label>
 						<input
-							disabled={loginEmail === "" || loginPass === ""}
+							disabled={
+								!withBackend ||
+								loginEmail === "" ||
+								loginPass === ""
+							}
 							type="submit"
-							value="Log in"
+							value={loginMenu.logInButton[langContext.value]}
 						/>
 					</> :
 					<>
@@ -169,12 +180,13 @@ export function LoginMenu(props: {
 						<input
 							type="submit"
 							disabled={
+								!withBackend ||
 								regPass1 !== regPass2 ||
 								regPass1 === "" ||
 								regPass2 === "" ||
 								regEmail === ""
 							}
-							value="Register"
+							value={loginMenu.registerButton[langContext.value]}
 						/>
 					</>}
 			</form>

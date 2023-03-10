@@ -53,6 +53,14 @@
 	color: red;
 }
 
+.no-backend-notice {
+	color: red;
+	width: 30ch;
+	margin-left: 1.75rem;
+	margin-right: 1.75rem;
+	line-height: 1.25;
+}
+
 @keyframes show {
 	from {
 		opacity: 0;

@@ -10,6 +10,8 @@ The env file should contain following fields:
  - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
  - `BIND_ADDRESS` - address to bind the wsgi server on
  - `VITE_API_HOST`- tells the frontend the address the api is on
+ - `VITE_WITH_SERVER` - tells the frontend if it's with server or only client with localstorage
+ If running without server, you only need to specify `VITE_WITH_SERVER`.
 
 ## Contributing
 ### Requirements
@@ -33,6 +35,7 @@ ALLOWED_HOSTS=localhost 127.0.0.1 example.com
 BIND_ADDRESS=0.0.0.0
 
 VITE_API_HOST=http://localhost:8000/api/
+VITE_WITH_SERVER=1
 ```
 
 ### Backend development server
