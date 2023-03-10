@@ -1,13 +1,9 @@
-FROM node
+FROM node as builder
 
 WORKDIR /pets_frontend
-
-COPY package.json .
-
-RUN npm i
-
 COPY . .
+RUN npm run build
 
-EXPOSE 5173
+FROM nginx
 
-CMD ["npm", "run", "dev"]
+COPY --from=builder /pets_frontend/dist /usr/share/nginx/html

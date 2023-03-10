@@ -8,7 +8,7 @@ services:
     build: "./client"
 
     ports:
-      - "5173:5173"
+      - "80:80"
 
   wsgi:
     container_name: pets_backend

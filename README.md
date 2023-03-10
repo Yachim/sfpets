@@ -1,13 +1,11 @@
 # Shakes and Fidget pets tracker
 Tracks user's pets and shows the pets that can be caught today.
 
-# Preview the project
-If you have installed docker, you can easily preview the project:
- 1. set your environment manually or use the `.env.default` file (rename to `.env`)
- 2. run `docker compose up` in the root directory
-
 ## .env file
-The env file should contain following fields:
+The project has to have two `.env` files.
+
+The `.env` file at the root directory should contain following fields:
+
  - `DB_USER` - username for database user
  - `DB_PASS` - password for database user
  - `DB_NAME` - database name
@@ -15,10 +13,20 @@ The env file should contain following fields:
  - `DEBUG` - 0/1
  - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
  - `BIND_ADDRESS` - address to bind the wsgi server on
+
+The `.env` file in `client` directory should contain following fields:
+
  - `VITE_API_HOST`- tells the frontend the address the api is on
  - `VITE_WITH_SERVER` - tells the frontend if it's with server or only client with localstorage
 
  If running without server, you only need to specify `VITE_WITH_SERVER`.
+
+# Preview the project
+
+If you have installed docker, you can easily preview the project:
+
+ 1. [set your environment manually](#env-file) or use the `.env.default` files (rename to `.env`)
+ 2. run `docker compose up` in the root directory
 
 ## Contributing
 ### Requirements
