@@ -1,5 +1,11 @@
 # Shakes and Fidget pets tracker
 Tracks user's pets and shows the pets that can be caught today.
+
+# Preview the project
+If you have installed docker, you can easily preview the project:
+ 1. set your environment manually or use the `.env.default` file (rename to `.env`)
+ 2. run `docker compose up` in the root directory
+
 ## .env file
 The env file should contain following fields:
  - `DB_USER` - username for database user
@@ -11,6 +17,7 @@ The env file should contain following fields:
  - `BIND_ADDRESS` - address to bind the wsgi server on
  - `VITE_API_HOST`- tells the frontend the address the api is on
  - `VITE_WITH_SERVER` - tells the frontend if it's with server or only client with localstorage
+
  If running without server, you only need to specify `VITE_WITH_SERVER`.
 
 ## Contributing
@@ -54,7 +61,8 @@ The database must be started manually. Run `docker compose up db`.
 #### Run the development server
 Run `poetry run python manage.py runserver` inside the server directory.
 
-### Frontend
- 1. cd into the client directory
- 2. Install dependencies by running `npm install`
- 3. Start the development server by running `npm start`
+### Frontend development server
+ 1. start backend by running `docker compose up wsgi` in root directory
+ 2. cd into the client directory
+ 3. Install dependencies by running `npm install`
+ 4. Start the development server by running `npm run dev`

@@ -3,26 +3,12 @@
 
 version: "3.8"
 services:
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot
-      - ./certbot/conf/:/etc/letsencrypt
+  frontend:
+    container_name: pets_frontend
+    build: "./client"
 
-  web:
-    container_name: pets_webserver
-    image: nginx
-    volumes:
-      - ./templates:/etc/nginx/templates
-      - ./certbot/www:/var/www/certbot/:ro
     ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      - SERVER_NAME=${ALLOWED_HOSTS}
-    depends_on:
-      - wsgi
-    restart: always
+      - "5173:5173"
 
   wsgi:
     container_name: pets_backend
