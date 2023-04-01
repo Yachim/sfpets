@@ -13,9 +13,6 @@ The `.env` file at the root directory should contain following fields:
  - `DEBUG` - 0/1
  - `ALLOWED_HOSTS` - list of IPs/URLs separated by spaces
  - `BIND_ADDRESS` - address to bind the wsgi server on
-
-The `.env` file in `client` directory should contain following fields:
-
  - `VITE_API_HOST`- tells the frontend the address the api is on
  - `VITE_WITH_SERVER` - tells the frontend if it's with server or only client with localstorage
 
