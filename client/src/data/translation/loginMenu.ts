@@ -41,6 +41,6 @@ export const passwordsNotMatching: Translation = {
 }
 
 export const noBackendNotice: Translation = {
-	en: "The backend server is not running. Logging in and registration is not possible. Data gets reset after refreshing.",
-	cs: "Backend server neběží. Přihlašování a registrace není k dispozici. Data se po obnovení stránky smažou."
+	en: "Backend server is not running on the public version. Logging in and registration is not possible. Data gets reset after refreshing.",
+	cs: "Ve veřejné verzi backend server neběží. Přihlašování a registrace není k dispozici. Data se po obnovení stránky smažou."
 }
