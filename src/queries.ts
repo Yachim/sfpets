@@ -1,57 +1,35 @@
-import axios from "axios";
-import { Langs } from "./data/translation";
+import { langList, Langs } from "./data/translation";
 
-const client = axios.create({
-	baseURL: import.meta.env.VITE_API_HOST,
-});
-
-type Credentials = {
-	email: string;
-	password: string;
-};
-
-export function isLoggedIn(): boolean {
-	return !!client.defaults.headers.Authorization && client.defaults.headers.Authorization !== "";
+export function getDefaultLang(): Langs {
+	let lang = navigator.language.split("-")[0] as Langs
+	if (!langList.includes(lang)) lang = "en"
+	return lang
 }
 
-export async function postRegister(data: Credentials) {
-	client.post("register/", data);
-}
-
-export async function postLogin(data: Credentials) {
-	const res = await client.post("login/", data);
-	client.defaults.headers.Authorization = `Token ${res.data.token}`;
-}
-
-export async function postLogout() {
-	client.post("logout/");
-	delete client.defaults.headers.Authorization;
-}
-
-type AccountInfo = {
-	id: number;
-	email: string;
-	dark_theme: boolean;
+type Settings = {
+	darkTheme: boolean;
 	lang: Langs
 };
-export async function getAccount(): Promise<AccountInfo> {
-	const res = await client.get<AccountInfo>("account/");
-	return res.data;
+export function getSettings(): Settings {
+	const langRaw = localStorage.getItem("lang")
+	let lang = langRaw ?? getDefaultLang()
+
+	const darkThemeRaw = localStorage.getItem("darkTheme")
+	const darkTheme = (darkThemeRaw ?? "true") == "true"
+
+	if (langRaw == null) localStorage.setItem("lang", lang)
+	if (darkThemeRaw == null) localStorage.setItem("darkTheme", darkTheme.toString())
+
+	return {
+		darkTheme: darkTheme,
+		lang: lang as Langs,
+	}
 }
 
-type AccountInfoPatch = {
-	email?: string;
-	dark_theme?: boolean;
-	lang?: Langs
-};
-export async function patchAccount(data: AccountInfoPatch): Promise<AccountInfo> {
-	const res = await client.patch("account/", data);
-	return res.data;
-}
-
-export async function deleteAccount() {
-	client.delete("account/");
-	delete client.defaults.headers.Authorization;
+type SettingsPatch = Partial<Settings>
+export function patchSettings(data: SettingsPatch) {
+	if (data.darkTheme !== undefined) localStorage.setItem("darkTheme", data.darkTheme.toString())
+	if (data.lang !== undefined) localStorage.setItem("lang", data.lang)
 }
 
 type CharacterData = {
@@ -59,10 +37,8 @@ type CharacterData = {
 	world: string;
 }
 
-type CharacterInfo = {
-	id: number;
-	name: string;
-	world: string;
+type CharacterInfo = CharacterData & {
+	id: string;
 	shadow_found: number[];
 	light_found: number[];
 	earth_found: number[];
@@ -70,36 +46,54 @@ type CharacterInfo = {
 	water_found: number[];
 }
 
-export async function postCharacters(data: CharacterData): Promise<CharacterInfo> {
-	const res = await client.post("characters/", data);
-	return res.data;
+export function getCharacter(id: string): CharacterInfo {
+	return JSON.parse(localStorage.getItem(id)!)
 }
 
-export async function getCharacters(): Promise<CharacterInfo[]> {
-	const res = await client.get<CharacterInfo[]>("characters/");
-	return res.data;
+// returns id
+export function createCharacter(data: CharacterData): string {
+	const id = crypto.randomUUID()
+	localStorage.setItem(id, JSON.stringify({
+		id,
+		...data,
+		shadow_found: [],
+		light_found: [],
+		earth_found: [],
+		fire_found: [],
+		water_found: [],
+	}))
+	const characterIds = JSON.parse(localStorage.getItem("characterIds") ?? "[]") as string[]
+	characterIds.push(id)
+	localStorage.setItem("characterIds", JSON.stringify(characterIds))
+
+	return id
 }
 
-export async function getCharacter(id: number): Promise<CharacterInfo> {
-	const res = await client.get<CharacterInfo>(`characters/${id}`);
-	return res.data;
+function getCharacterIds(): string[] {
+	return JSON.parse(localStorage.getItem("characterIds") ?? "[]") as string[]
 }
 
-type CharacterInfoPatch = {
-	id: number;
-	name?: string;
-	world?: string;
-	shadow_found?: number[];
-	light_found?: number[];
-	earth_found?: number[];
-	fire_found?: number[];
-	water_found?: number[];
-}
-export async function patchCharacter(data: CharacterInfoPatch) {
-	client.patch(`characters/${data.id}/`, data);
+export function getCharacters(): CharacterInfo[] {
+	return getCharacterIds().map(id => getCharacter(id))
 }
 
-export async function deleteCharacter(data: { id: number }): Promise<CharacterInfo[]> {
-	const res = await client.delete(`characters/${data.id}/`);
-	return res.data;
+type CharacterInfoPatch = Partial<CharacterInfo> & {
+	[P in "id"]: CharacterInfo["id"]
+}
+export function patchCharacter(data: CharacterInfoPatch) {
+	console.log(data)
+	let characterInfo = getCharacter(data.id);
+	characterInfo = {
+		...characterInfo,
+		...data,
+		id: characterInfo.id,
+	}
+	localStorage.setItem(data.id, JSON.stringify(characterInfo))
+}
+
+export function deleteCharacter(data: { id: CharacterInfo["id"] }) {
+	localStorage.removeItem(data.id)
+	const charactersIds = getCharacterIds()
+	const filteredIds = charactersIds.filter(val => val !== data.id)
+	localStorage.setItem("characterIds", JSON.stringify(filteredIds))
 }

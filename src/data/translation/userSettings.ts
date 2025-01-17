@@ -1,15 +1,5 @@
 import { Translation } from ".";
 
-export const characterAddedSuccess: Translation = {
-	cs: "Postava přidána",
-	en: "Character added"
-};
-
-export const characterAddedError: Translation = {
-	cs: "Při přidávání postavy nastala chyba",
-	en: "Error while adding character"
-};
-
 export const character: Translation = {
 	cs: "Postava",
 	en: "Character"
@@ -25,14 +15,14 @@ export const name: Translation = {
 	en: "Name"
 };
 
+export const select: Translation = {
+	cs: "Vyberte",
+	en: "Select",
+}
+
 export const world: Translation = {
 	cs: "Svět",
 	en: "World"
-};
-
-export const logout: Translation = {
-	cs: "Odhlásit se",
-	en: "Log out"
 };
 
 export const deleteCurrentCharacter: Translation = {

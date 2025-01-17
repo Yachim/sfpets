@@ -2,89 +2,47 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
 import { userSettings } from "../data/translation";
-import { deleteAccount, deleteCharacter, getCharacters, isLoggedIn, postCharacters, postLogout } from "../queries";
+import { createCharacter, deleteCharacter, getCharacters } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
 import { LangContext, SelectedCharacterContext } from "./Context";
+import { select } from "../data/translation/userSettings";
 
 export function UserSettings(props: { closeFunc: () => void }) {
-	const logoutMutation = useMutation(postLogout, {
-		onSuccess: () => {
-			queryClient.invalidateQueries("account");
-			queryClient.invalidateQueries("characters");
-			props.closeFunc();
-			characterContext.setValue(-1);
-		}
-	})
-
 	const [characterName, setCharacterName] = useState("");
 	const [characterWorld, setCharacterWorld] = useState("");
 
-	const characterMutation = useMutation(postCharacters, {
-		onSuccess: (res) => {
-			queryClient.invalidateQueries("characters");
-			characterContext.setValue(res.id);
-		}
-	});
-	const charactersQuery = useQuery("characters", getCharacters, {
-		enabled: isLoggedIn()
-	});
+	const characterContext = useContext(SelectedCharacterContext);
+	const langContext = useContext(LangContext);
+
+	const charactersQuery = useQuery("characters", getCharacters);
 
 	function handleSubmit(e: FormEvent) {
 		if (characterName === "" || characterWorld === "") return;
 
-		characterMutation.mutate({
+		const id = createCharacter({
 			name: characterName,
 			world: characterWorld
 		});
+		characterContext.setValue(id);
+		queryClient.invalidateQueries("characters");
 
 		e.preventDefault();
 	}
 
-	const characterContext = useContext(SelectedCharacterContext);
-
 	function changeCharacter(e: ChangeEvent<HTMLSelectElement>) {
-		characterContext.setValue(+e.currentTarget.value);
+		characterContext.setValue(e.currentTarget.value);
+		queryClient.invalidateQueries("character")
 	}
-
-	const deleteAccountMutation = useMutation(deleteAccount, {
-		onSuccess: () => {
-			queryClient.invalidateQueries("account");
-
-			characterContext.setValue(-1);
-
-			queryClient.invalidateQueries("characters");
-		}
-	})
-	const deleteCharacterMutation = useMutation(deleteCharacter, {
-		onSuccess: (res) => {
-			if (res.length > 0) {
-				characterContext.setValue(res[0].id)
-			}
-			else {
-				characterContext.setValue(-1);
-			}
-
-			queryClient.invalidateQueries("characters");
-		}
-	})
-
-	const langContext = useContext(LangContext);
 
 	return (
 		<div className={styles.menu} style={{
 			top: document.querySelector("header")?.clientHeight
 		}}>
-			{characterMutation.isSuccess &&
-				<p>{userSettings.characterAddedSuccess[langContext.value]}</p>
-			}
-			{characterMutation.isError &&
-				<p>{userSettings.characterAddedError[langContext.value]}</p>
-			}
-
 			{charactersQuery.isSuccess && charactersQuery.data!.length > 0 && (
 				<label>
 					{userSettings.character[langContext.value]}:
 					<select value={characterContext.value} onChange={changeCharacter}>
+						<option disabled value="-1">-- {select[langContext.value]} --</option>
 						{charactersQuery.data!.map((character, i) => (
 							<option
 								key={i}
@@ -129,37 +87,20 @@ export function UserSettings(props: { closeFunc: () => void }) {
 			</form>
 
 			<button
-				className={styles["logout-button"]}
-				onClick={() => logoutMutation.mutate()}
-			>
-				{userSettings.logout[langContext.value]}
-			</button>
-
-			<button
 				className={styles["delete-button"]}
-				disabled={characterContext.value === -1}
+				disabled={characterContext.value === "-1"}
 				onClick={() => {
 					if (confirm(
 						userSettings.deleteCurrentCharacterConfirmation[langContext.value]
 					)) {
-						deleteCharacterMutation.mutate({ id: characterContext.value })
+						deleteCharacter({ id: characterContext.value })
+						queryClient.invalidateQueries("characters");
+						queryClient.invalidateQueries("character");
+						characterContext.setValue("-1")
 					}
 				}}
 			>
 				{userSettings.deleteCurrentCharacter[langContext.value]}
-			</button>
-
-			<button
-				className={styles["delete-button"]}
-				onClick={() => {
-					if (confirm(
-						userSettings.deleteAccountConfirmation[langContext.value]
-					)) {
-						deleteAccountMutation.mutate()
-					}
-				}}
-			>
-				{userSettings.deleteAccount[langContext.value]}
 			</button>
 		</div >
 	)

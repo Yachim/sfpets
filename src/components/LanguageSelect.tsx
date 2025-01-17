@@ -1,9 +1,8 @@
 import { useCallback, useContext, useEffect } from "react";
-import { useMutation } from "react-query";
 import { queryClient } from "../App";
 import { langList } from "../data/translation";
 import { langs } from "../data/translation/langList";
-import { isLoggedIn, patchAccount } from "../queries";
+import { patchSettings } from "../queries";
 import { LangContext } from "./Context";
 import styles from "../scss/LanguageSelect.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,12 +24,6 @@ export function LanguageSelect(props: { closeFunc: () => void }) {
 		return () => document.removeEventListener("keydown", handleKeyPress);
 	}, [handleKeyPress]);
 
-	const accountMutation = useMutation(patchAccount, {
-		onSuccess: () => {
-			queryClient.invalidateQueries("account");
-		}
-	})
-
 	return (
 		<div className={styles.container}>
 			<p>
@@ -49,14 +42,10 @@ export function LanguageSelect(props: { closeFunc: () => void }) {
 						className={styles["lang-button"]}
 						title={languageSelect.tooltips[lang]}
 						onClick={() => {
-							if (isLoggedIn()) {
-								accountMutation.mutate({
-									lang: lang
-								});
-							}
-							else {
-								langContext.setValue(lang);
-							}
+							patchSettings({
+								lang: lang
+							});
+							queryClient.invalidateQueries("settings")
 							props.closeFunc();
 						}}
 					>{langs[lang]}</button>

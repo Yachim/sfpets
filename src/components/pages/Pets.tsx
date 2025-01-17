@@ -7,7 +7,7 @@ import { isAvailable } from "../../utils/utils";
 import { PetCard, Filters } from "../.";
 import { PetProps } from "../PetCard";
 import { useMutation, useQuery } from "react-query";
-import { getCharacter, isLoggedIn, patchCharacter } from "../../queries";
+import { getCharacter, patchCharacter } from "../../queries";
 import { SelectedCharacterContext } from "./../Context";
 import { PetElement } from "../../types";
 import { queryClient } from "../../App";
@@ -36,12 +36,8 @@ export function Pets() {
 
 	const characterContext = useContext(SelectedCharacterContext);
 
-	const characterQuery = useQuery(["character", characterContext.value], async () => getCharacter(characterContext.value), {
-		enabled: isLoggedIn() && characterContext.value !== -1
-	});
-
-	const characterMutation = useMutation(patchCharacter, {
-		onSuccess: () => queryClient.invalidateQueries("character")
+	const characterQuery = useQuery(["character", characterContext.value], () => getCharacter(characterContext.value), {
+		enabled: characterContext.value !== "-1"
 	});
 
 	useEffect(() => {
@@ -103,33 +99,25 @@ export function Pets() {
 	]);
 
 	const toggleFound = useCallback((index: number, element: PetElement, newVal: boolean) => {
-		if (characterQuery.isSuccess) {
-			const key = `${element}_found` as const;
-			const el_arr = characterQuery.data[key];
+		if (!characterQuery.isSuccess) return
 
-			if (!newVal && el_arr.includes(index)) {
-				const i = el_arr.findIndex((val) => val === index);
-				el_arr.splice(i!);
-			}
-			else {
-				el_arr.push(index);
-			}
+		const key = `${element}_found` as const;
+		const el_arr = characterQuery.data[key];
 
-
-			characterMutation.mutate({
-				id: characterQuery.data.id,
-				[key]: el_arr
-			});
+		if (!newVal && el_arr.includes(index)) {
+			const i = el_arr.findIndex((val) => val === index);
+			el_arr.splice(i!);
 		}
 		else {
-			const i = petsData.findIndex((pet) =>
-				pet.element === element && pet.index === index
-			);
-
-			petsData[i].found = newVal;
-			setPetsData([...petsData]);
+			el_arr.push(index);
 		}
-	}, [JSON.stringify(petsData)])
+
+		patchCharacter({
+			id: characterQuery.data.id,
+			[key]: el_arr
+		});
+		queryClient.invalidateQueries(["character", characterContext.value])
+	}, [JSON.stringify(petsData), characterContext.value, characterQuery])
 
 	return (
 		<main className={styles["pets-main"]}>

@@ -30,23 +30,15 @@ export const PetCardContext = createContext<PetInfoCardContextValueType>({
 });
 
 export type SelectedCharacterContextType = {
-	value: number;
-	setValue: (val: number) => void;
+	value: string;
+	setValue: (val: string) => void;
 }
 export const SelectedCharacterContext = createContext<SelectedCharacterContextType>({
-	value: -1,
+	value: "-1",
 	setValue: (_) => { }
 });
 
 export const UserSettingsShownContext = createContext<{
-	value: boolean,
-	setValue: Dispatch<SetStateAction<boolean>>
-}>({
-	value: false,
-	setValue: (_) => { }
-});
-
-export const LoginShownContext = createContext<{
 	value: boolean,
 	setValue: Dispatch<SetStateAction<boolean>>
 }>({
@@ -67,9 +59,8 @@ export function Context(props: {
 }) {
 	const [lang, setLang] = useState<Langs>(getLang());
 	const [darkTheme, setDarkTheme] = useState(true);
-	const [loginShown, setLoginShown] = useState(false);
 	const [userSettingsShown, setUserSettingsShown] = useState(false);
-	const [selectedCharacter, setSelectedCharacter] = useState(-1);
+	const [selectedCharacter, setSelectedCharacter] = useState("-1");
 	const [petCard, setPetCard] = useState<PetProps | null>(null);
 	const [langSelectShown, setLangSelectShown] = useState(false);
 
@@ -82,32 +73,27 @@ export function Context(props: {
 				value: darkTheme,
 				setValue: setDarkTheme
 			}}>
-				<LoginShownContext.Provider value={{
-					value: loginShown,
-					setValue: setLoginShown
+				<UserSettingsShownContext.Provider value={{
+					value: userSettingsShown,
+					setValue: setUserSettingsShown
 				}}>
-					<UserSettingsShownContext.Provider value={{
-						value: userSettingsShown,
-						setValue: setUserSettingsShown
+					<SelectedCharacterContext.Provider value={{
+						value: selectedCharacter,
+						setValue: setSelectedCharacter
 					}}>
-						<SelectedCharacterContext.Provider value={{
-							value: selectedCharacter,
-							setValue: setSelectedCharacter
+						<PetCardContext.Provider value={{
+							value: petCard,
+							setValue: setPetCard
 						}}>
-							<PetCardContext.Provider value={{
-								value: petCard,
-								setValue: setPetCard
+							<LangSelectShownContext.Provider value={{
+								value: langSelectShown,
+								setValue: setLangSelectShown
 							}}>
-								<LangSelectShownContext.Provider value={{
-									value: langSelectShown,
-									setValue: setLangSelectShown
-								}}>
-									{props.children}
-								</LangSelectShownContext.Provider>
-							</PetCardContext.Provider >
-						</SelectedCharacterContext.Provider >
-					</UserSettingsShownContext.Provider >
-				</LoginShownContext.Provider >
+								{props.children}
+							</LangSelectShownContext.Provider>
+						</PetCardContext.Provider >
+					</SelectedCharacterContext.Provider >
+				</UserSettingsShownContext.Provider >
 			</DarkThemeContext.Provider >
 		</LangContext.Provider >
 	);

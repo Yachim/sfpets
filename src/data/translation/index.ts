@@ -7,7 +7,6 @@ import * as filters from "./filters";
 import * as userSettings from "./userSettings";
 import locs from "./locs";
 import * as languageSelect from "./languageSelect";
-import * as loginMenu from "./loginMenu";
 import * as petCard from "./petCard";
 import * as petInfoCard from "./petInfoCard";
 
@@ -25,7 +24,6 @@ export {
 	locs,
 	header,
 	languageSelect,
-	loginMenu,
 	petCard,
 	petInfoCard
 };
