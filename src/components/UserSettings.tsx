@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
-import { useMutation, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { queryClient } from "../App";
 import { userSettings } from "../data/translation";
-import { createCharacter, deleteCharacter, getCharacters } from "../queries";
+import { createCharacter, deleteCharacter, getCharacters, patchSettings } from "../queries";
 import styles from "../scss/UserSettings.module.scss";
 import { LangContext, SelectedCharacterContext } from "./Context";
 import { select } from "../data/translation/userSettings";
@@ -23,6 +23,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 			name: characterName,
 			world: characterWorld
 		});
+		patchSettings({lastCharacter: id})
 		characterContext.setValue(id);
 		queryClient.invalidateQueries("characters");
 
@@ -31,6 +32,7 @@ export function UserSettings(props: { closeFunc: () => void }) {
 
 	function changeCharacter(e: ChangeEvent<HTMLSelectElement>) {
 		characterContext.setValue(e.currentTarget.value);
+		patchSettings({lastCharacter: e.currentTarget.value})
 		queryClient.invalidateQueries("character")
 	}
 

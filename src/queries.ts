@@ -9,20 +9,17 @@ export function getDefaultLang(): Langs {
 type Settings = {
 	darkTheme: boolean;
 	lang: Langs
+	lastCharacter: string
 };
 export function getSettings(): Settings {
-	const langRaw = localStorage.getItem("lang")
-	let lang = langRaw ?? getDefaultLang()
-
-	const darkThemeRaw = localStorage.getItem("darkTheme")
-	const darkTheme = (darkThemeRaw ?? "true") == "true"
-
-	if (langRaw == null) localStorage.setItem("lang", lang)
-	if (darkThemeRaw == null) localStorage.setItem("darkTheme", darkTheme.toString())
+	const lang = (localStorage.getItem("lang") ?? getDefaultLang()) as Langs
+	const darkTheme = (localStorage.getItem("darkTheme") ?? "true") == "true"
+	const lastCharacter = localStorage.getItem("lastCharacter") ?? "-1"
 
 	return {
-		darkTheme: darkTheme,
-		lang: lang as Langs,
+		lang,
+		darkTheme,
+		lastCharacter,
 	}
 }
 
@@ -30,6 +27,7 @@ type SettingsPatch = Partial<Settings>
 export function patchSettings(data: SettingsPatch) {
 	if (data.darkTheme !== undefined) localStorage.setItem("darkTheme", data.darkTheme.toString())
 	if (data.lang !== undefined) localStorage.setItem("lang", data.lang)
+	if (data.lastCharacter !== undefined) localStorage.setItem("lastCharacter", data.lastCharacter)
 }
 
 type CharacterData = {
